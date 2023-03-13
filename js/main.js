@@ -96,10 +96,22 @@
 			strings: typed_strings.split(','),
 			typeSpeed: 80,
 			loop: true,
-			backDelay: 1100,
+			backDelay: 1500,
 			backSpeed: 30
 		});
 	}
+
+	/*--/ Star Typed /--*/
+	if ($('.new-slider').length == 1) {
+		var typed_strings = $('.new-slider-items').text();
+			var typed2 = new Typed('.new-slider', {
+				strings: typed_strings.split(','),
+				typeSpeed: 60,
+				loop: true,
+				backDelay: 1500,
+				backSpeed: 25,
+			});
+		}
 
 	/*--/ Testimonials owl /--*/
 	$('#testimonial-mf').owlCarousel({
