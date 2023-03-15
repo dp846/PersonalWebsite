@@ -1,3 +1,4 @@
+
 (function ($) {
 	"use strict";
 	var nav = $('nav');
@@ -94,7 +95,7 @@
     var typed_strings = $('.text-slider-items').text();
 		var typed = new Typed('.text-slider', {
 			strings: typed_strings.split(','),
-			typeSpeed: 80,
+			typeSpeed: 50,
 			loop: true,
 			backDelay: 1500,
 			backSpeed: 30
@@ -125,5 +126,26 @@
 			}
 		}
 	});
+
+
+
+
+
+	var planet = document.getElementById("planet");
+	document.addEventListener("mousemove", function(event) {
+	var x = event.clientX;
+	var y = event.clientY;
+	planet.style.left = -100 + (x / 100) + "px";
+	planet.style.top = -100 + (y / 100) + "px";
+	});
+
+	var planet2 = document.getElementById("planet2");
+	document.addEventListener("mousemove", function(event) {
+	var x = event.clientX;
+	var y = event.clientY;
+	planet2.style.left = 900 + (x / 12) + "px";
+	planet2.style.top = 200 + (y / 12) + "px";
+	});
+
 
 })(jQuery);

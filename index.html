@@ -26,19 +26,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@800&display=swap" rel="stylesheet">
 
   <script src="https://kit.fontawesome.com/50d99e6d73.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+
+  <script type="module">
+    import { rainbowCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+		new rainbowCursor({
+			length: 100,
+			colors: ["rgba(33, 255, 255,0.3)", "rgba(255, 33, 133,0.3)"],
+			size: 3.5,
+			// element: cursorEffectElement
+		  });
+  </script>
+
 
   <style type="text/css">body { cursor: url('data:image/x-icon;base64,AAACAAEAICAQAAYAAADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAA8usAAP///wCUjwAA4NkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAAAAAAjEgAAAAAAAAAAAAAAAAAAIxIAAAAAAAAAAAAAAAAAAjEgAAAAAAAAAAAAAAIAAAIxIAAAAAAAAAAAAAACIAAjEgAAAAAAAAAAAAAAAhIAIxIAAAAAAAAAAAAAAAIRIjEgAAAAAAAAAAAAAAACExIxIAAAAAAAAAAAAAAAAhMzMSIiIAAAAAAAAAAAAAITMzMREgAAAAAAAAAAAAACEzMzNCAAAAAAAAAAAAAAAhMzMxIAAAAAAAAAAAAAAAITMzEgAAAAAAAAAAAAAAACEzMSAAAAAAAAAAAAAAAAAhMxIAAAAAAAAAAAAAAAAAITEgAAAAAAAAAAAAAAAAACESAAAAAAAAAAAAAAAAAAAhIAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAD////////////////////////////////////////////////////////////8////+H////h////w///98P///OH///xh///8A////AP///wAP//8AH///AD///wB///8A////Af///wP///8H////D////x////8/////f///w=='), auto; }</style>
 
 
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-    Theme Name: DevFolio
-    Theme URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 
 <body id="page-top">
@@ -65,9 +72,9 @@
           <li class="nav-item">
             <a class="nav-link js-scroll" href="#work">Work</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link js-scroll" href="#blog">Other Stuff</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -75,7 +82,7 @@
   <!--/ Nav End /-->
 
   <!--/ Intro Skew Star /-->
-  <div id="home" class="intro route bg-image" style="background-image: url(img/bg.png)">
+  <div id="home" class="intro route bg-image" style="background-image: url(img/bg.jpg)">
     <div class="overlay-itro"></div>
     <div class="intro-content display-table">
       <div class="table-cell">
@@ -84,29 +91,10 @@
           
           <div class="oscillate-text">
 
-            <h1 class="intro-title mb-4">
-              <span>H</span>
-              <span>i</span>
-              <span>, </span>
-              <span>&nbsp;</span>
-              <span>I</span>
-              <span>'</span>
-              <span>m</span>
-              <span>&nbsp;</span>
-              <span>D</span>
-              <span>a</span>
-              <span>n</span>
-              <span>&nbsp;</span>
-              <span>P</span>
-              <span>a</span>
-              <span>r</span>
-              <span>s</span>
-              <span>l</span>
-              <span>e</span>
-              <span>y</span>
-              <span>.</span>
-      
-            </h1>
+            <h1 class="intro-title mb-4">Hi, I'm Dan Parsley</h1>
+
+            <img id="planet" src="img/planet.png">
+            <img id="planet2" src="img/planet2.png">
 
         </div>
 
@@ -121,70 +109,44 @@
   <section id="about" class="about-mf sect-pt4 route">
     <div class="col-sm-12">
       <div class="title-box text-center">
-        <h3 class="title-a">
-          About Me
-        </h3>
-
-          <p class="subtitle-a">
-            A bit about myself.
-          </p>
-
-        <div class="line-mf"></div>
 
         <br>
+        
+        <span class="header">
+        <div class="text-zone">
+            <h1 aria-label="about me" class="blast-root">
+              A Bit About Me
+            </h1>
+        </div>
+        </span>
 
         <p class="subtitle-a">
-          I am a second year undergraduate student at the <i>University of Bath</i> studying BSc Computer Science (Hons). <br> 
-          I have a keen interest in Artificial Intelligence and Machine Learning with more than 7 years of programming experience. <br>
+          A second year undergraduate student at the <strong>University of Bath</strong> studying BSc Computer Science (Hons).
+          I have a keen interest in Artificial Intelligence and Machine Learning with more than 7 years of programming experience.
+          Using problem solving and mathematical skills, I take on my passions of bringing solutions to life.
         </p>
 
-        
+        <br>
+
         <div class="contact-details">
-          <p><i class="fa-regular fa-envelope"></i><a href="mailto:danparsley03@gmail.com" class="email">danparsley03@gmail.com</a></p>
-          <p><i class="fa-solid fa-phone"></i><a href="tel: 07398229780" class="phone"> (+44) 07398 229780</a></p>
-          <p><i class="fa-brands fa-github"></i><a href="https://github.com/dp846" class="github"> github.com/dp846</a></p>
-          <p><i class="fa-solid fa-file-lines"></i><a href="https://drive.google.com/file/d/1ZzBLtXKx9ttuqbaPN7iqIyLKvPSId1ac/view?usp=sharing" class="cv"> Check out my CV</a></p>
+          <p><i class="fa-regular fa-envelope"></i><a href="mailto:danparsley03@gmail.com" class="link email">danparsley03@gmail.com</a></p>
+          <p><i class="fa-solid fa-phone"></i><a href="tel: 07398229780" class="link phone"> (+44) 07398 229780</a></p>
+          <p><i class="fa-brands fa-github"></i><a href="https://github.com/dp846" class="link github"> github.com/dp846</a></p>
+          <p><i class="fa-solid fa-file-lines"></i><a href="https://drive.google.com/file/d/1ZzBLtXKx9ttuqbaPN7iqIyLKvPSId1ac/view?usp=sharing" class="link cv"> Check out my CV</a></p>
 
-        </div>
-      
-
-        <br>
-
-        <div class="personal-photo">
-          <img src="img/personal.jpg" alt="Your Image">
         </div>
 
         <br>
 
-        <div class="shell-container">
-          <div class="shell">
-            <div class="line">
-              <span class="prompt">$</span> <span class="command">ls</span>
-            </div>
-            <div class="line">
-              file1.txt file2.txt file3.txt
-            </div>
-            <div class="line">
-              <span class="prompt">$</span> <span class="command">cd directory</span>
-            </div>
-            <div class="line">
-              <span class="prompt">$</span> <span class="command">pwd</span>
-            </div>
-              <p class="line">I have experience with: <span class="new-slider-items">
-                Python,
-                Java,
-                C,
-                JavaScript,
-                HTML,
-                CSS</span><strong class="new-slider"></strong></p>
-          </div>
-        </div>
+        <img class="avatar" src="img/avatar.png">
+        
+
         
       </div>
     </div>
   </section>
 
-  <!-- <div class="section-counter paralax-mf bg-image" style="background-image: url(img/counters-bg.jpg)">
+  <div class="section-counter paralax-mf bg-image" style="background-image: url(img/counters-bg.jpg)">
     <div class="overlay-mf"></div>
     <div class="container">
       <div class="row">
@@ -194,8 +156,8 @@
               <span class="ico-circle"><i class="ion-checkmark-round"></i></span>
             </div>
             <div class="counter-num">
-              <p class="counter">450</p>
-              <span class="counter-text">WORKS COMPLETED</span>
+              <p class="counter">84</p>
+              <span class="counter-text">% DEGREE AVERAGE</span>
             </div>
           </div>
         </div>
@@ -205,8 +167,8 @@
               <span class="ico-circle"><i class="ion-ios-calendar-outline"></i></span>
             </div>
             <div class="counter-num">
-              <p class="counter">15</p>
-              <span class="counter-text">YEARS OF EXPERIENCE</span>
+              <p class="counter">7</p>
+              <span class="counter-text">YEARS OF PROGRAMMING</span>
             </div>
           </div>
         </div>
@@ -216,7 +178,7 @@
               <span class="ico-circle"><i class="ion-ios-people"></i></span>
             </div>
             <div class="counter-num">
-              <p class="counter">550</p>
+              <p class="counter">6</p>
               <span class="counter-text">TOTAL CLIENTS</span>
             </div>
           </div>
@@ -227,14 +189,14 @@
               <span class="ico-circle"><i class="ion-ribbon-a"></i></span>
             </div>
             <div class="counter-num">
-              <p class="counter">36</p>
-              <span class="counter-text">AWARDS WON</span>
+              <p class="counter">4</p>
+              <span class="counter-text">UKMT GOLD AWARDS WON</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
 
 
@@ -245,13 +207,25 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="title-box text-center">
-            <h3 class="title-a">
-              Portfolio
-            </h3>
+
+            <br>
+
+
+            <span class="header">
+              <div class="text-zone">
+                  <h1 aria-label="about me" class="blast-root">
+                    Work
+                  </h1>
+                <script src='js/blast.js'></script>
+              </div>
+              </span>
+
+
             <p class="subtitle-a">
               Here's some of the projects I've done in the past.
             </p>
-            <div class="line-mf"></div>
+
+
           </div>
         </div>
       </div>
@@ -328,7 +302,7 @@
             </a>
           </div>
         </div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-4">
           <div class="work-box">
             <a href="img/work-4.jpg" data-lightbox="gallery-mf">
               <div class="work-img">
@@ -399,7 +373,7 @@
               </div>
             </a>
           </div>
-        </div>
+        </div> -->
         
       </div>
     </div>
@@ -411,7 +385,7 @@
 
 
   <!--/ Section Blog Star /-->
-  <section id="blog" class="blog-mf sect-pt4 route">
+  <!-- <section id="blog" class="blog-mf sect-pt4 route">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -522,7 +496,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <!--/ Section Blog End /-->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
