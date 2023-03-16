@@ -80,7 +80,11 @@
   transition: all 0.1s ease;
 }
 
-
+#planet3 {
+  position: absolute;
+  top: 400px;
+  left: 1000px
+}
 
 
 
@@ -802,11 +806,6 @@ a:hover {
 /*======================================
 //--//-->   ABOUT
 ======================================*/
-
-.about-mf{
-  border-color: #00e1ff;
-  border-width: 4px;
-}
 
 
 .avatar{
