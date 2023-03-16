@@ -130,7 +130,8 @@
 body {
   background: radial-gradient(ellipse at bottom, #0c0c0c 0%, #000000 100%);
   color: #BBE1FA;
-  font-family: 'Roboto Slab', sans-serif;
+  /* font-family: 'Roboto Slab', sans-serif; */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   cursor: url('/img/cursor.cur');
 }
 
@@ -276,6 +277,7 @@ a:hover {
 .subtitle-a {
   color: #fff;
   font-size: 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin-bottom: 14px;
   padding-left: 300px;
   padding-right: 300px;
@@ -801,7 +803,10 @@ a:hover {
 //--//-->   ABOUT
 ======================================*/
 
-
+.about-mf{
+  border-color: #00e1ff;
+  border-width: 4px;
+}
 
 
 .avatar{
@@ -824,7 +829,7 @@ a:hover {
 }
 
 .about-mf .new-slider-items {
-  font-family: monospace;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   display: none;
 }
 
@@ -851,7 +856,7 @@ a:hover {
 .shell {
   background-color: black;
   color: white;
-  font-family: monospace;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 20px;
   width: 500px;
   align-items: center;
@@ -861,7 +866,7 @@ a:hover {
 .line {
   display: block;
   text-align: left;
-  font-family: monospace;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .prompt {
@@ -1352,7 +1357,7 @@ a:hover {
   margin-right: 10px;
   display: inline-block;
   vertical-align: middle;
-  transform: translateX(-70px) scale(1.4);
+  transform: translateX(-68px) scale(1.4);
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
@@ -1362,7 +1367,7 @@ a:hover {
   margin-right: 10px;
   display: inline-block;
   vertical-align: middle;
-  transform: translateX(-38px) scale(1.4);
+  transform: translateX(-48px) scale(1.4);
   font-size: 24px;
   transition: all 0.3s ease-in-out;
 }
@@ -1372,7 +1377,7 @@ a:hover {
   margin-right: 10px;
   display: inline-block;
   vertical-align: middle;
-  transform: translateX(-72px) scale(1.4);
+  transform: translateX(-75px) scale(1.4);
   font-size: 24px;
   transition: all 0.3s ease-in-out;
 }
@@ -1382,7 +1387,7 @@ a:hover {
   margin-right: 10px;
   display: inline-block;
   vertical-align: middle;
-  transform: translateX(-75px) scale(1.4);
+  transform: translateX(-80px)scale(1.25);
   font-size: 24px;
   transition: all 0.3s ease-in-out;
 }
@@ -1392,7 +1397,7 @@ a:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0px 20px #fff;
-  transform: translateX(-70px) scale(1.9);
+  transform: translateX(-68px) scale(1.9);
 }
 
 
@@ -1401,7 +1406,7 @@ a:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0px 20px #fff;
-  transform: translateX(-38px) scale(1.9);
+  transform: translateX(-48px) scale(1.9);
 }
 
 .fa-github:hover {
@@ -1409,7 +1414,7 @@ a:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0px 20px #fff;
-  transform: translateX(-72px) scale(1.9);
+  transform: translateX(-75px) scale(1.9);
 }
 
 .fa-file-lines:hover {
@@ -1417,7 +1422,7 @@ a:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0px 20px #fff;
-  transform: translateX(-75px) scale(1.8);
+  transform: translateX(-80px) scale(1.8);
 }
 
 
