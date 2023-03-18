@@ -130,22 +130,23 @@
 
 
 
+	// code for moving the planets towards the cursor for interactive feel
 
-	var planet = document.getElementById("planet");
-	document.addEventListener("mousemove", function(event) {
-	var x = event.clientX;
-	var y = event.clientY;
-	planet.style.left = -100 + (x / 100) + "px";
-	planet.style.top = -100 + (y / 100) + "px";
-	});
+	// var planet = document.getElementById("planet");
+	// document.addEventListener("mousemove", function(event) {
+	// var x = event.clientX;
+	// var y = event.clientY;
+	// planet.style.left = -100 + (x / 100) + "px";
+	// planet.style.top = -100 + (y / 100) + "px";
+	// });
 
-	var planet2 = document.getElementById("planet2");
-	document.addEventListener("mousemove", function(event) {
-	var x = event.clientX;
-	var y = event.clientY;
-	planet2.style.left = 900 + (x / 12) + "px";
-	planet2.style.top = 200 + (y / 12) + "px";
-	});
+	// var planet2 = document.getElementById("planet2");
+	// document.addEventListener("mousemove", function(event) {
+	// var x = event.clientX;
+	// var y = event.clientY;
+	// planet2.style.left = 900 + (x / 12) + "px";
+	// planet2.style.top = 200 + (y / 12) + "px";
+	// });
 
 
 })(jQuery);
