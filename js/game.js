@@ -16,8 +16,10 @@ const friction = 0.98;
 const topSpeed = 10;
 const initialVelocity = 8;
 
-const planet1Mass = 1200;
-const planet2Mass = 300;
+const planet1Mass = 600;
+const planet2Mass = 1200;
+const planet3Mass = 300;
+
 
 
 const keys = {
@@ -27,11 +29,11 @@ const keys = {
     d: false
 };
 
-const trailColor = 'rgba(255, 255, 255, 0.5)';
+const trailColor = 'rgba(255, 255, 255, 0.8)';
 const trailSize = 5;
 
 const projectiles = [];
-const cometGravityScale = 0.5; // Adjust this value to change the strength of gravity acting on the comets
+const asteroidGravityScale = 0.35; // Adjust this value to change the strength of gravity acting on the asteroids
 
 document.addEventListener('click', (event) => {
     if (!shipVisible) return;
@@ -67,6 +69,13 @@ planet1.addEventListener('click', () => {
 
 planet2.addEventListener('click', () => {
     const planetRect = planet2.getBoundingClientRect();
+    if (!shipVisible){
+      spawnSpaceship(planetRect.right + 30, planetRect.top + planetRect.height / 2)
+    };
+});
+
+planet3.addEventListener('click', () => {
+    const planetRect = planet3.getBoundingClientRect();
     if (!shipVisible){
       spawnSpaceship(planetRect.right + 30, planetRect.top + planetRect.height / 2)
     };
@@ -120,9 +129,9 @@ function createTrailParticle(x, y) {
 function createBulletTrailParticle(x, y) {
     const particle = document.createElement('div');
     particle.style.position = 'absolute';
-    particle.style.width = '2px';
-    particle.style.height = '2px';
-    particle.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+    particle.style.width = '8px';
+    particle.style.height = '8px';
+    particle.style.backgroundColor = 'rgba(235, 52, 122, 0.8)';
     particle.style.left = `${x}px`;
     particle.style.top = `${y}px`;
     particle.style.borderRadius = '50%';
@@ -190,21 +199,22 @@ function checkSpaceshipOutOfBounds() {
 
 
 
-function checkCollision(elem1, elem2) {
+function checkCollision(elem1, elem2, isSpaceship = false) {
     const rect1 = elem1.getBoundingClientRect();
     const rect2 = elem2.getBoundingClientRect();
-
+  
     const centerX1 = rect1.left + rect1.width / 2;
     const centerY1 = rect1.top + rect1.height / 2;
     const centerX2 = rect2.left + rect2.width / 2;
     const centerY2 = rect2.top + rect2.height / 2;
-
+  
     const distance = Math.sqrt((centerX1 - centerX2) ** 2 + (centerY1 - centerY2) ** 2);
-    const radius1 = rect1.width / 2;
+    const radius1 = isSpaceship ? rect1.width / 4 : rect1.width / 2; // adjust radius for spaceship
+  
     const radius2 = rect2.width / 2;
-
+  
     return distance < (radius1 + radius2);
-}
+  }
 
 function destroySpaceship() {
     shipVisible = false;
@@ -238,10 +248,12 @@ function updateSpaceshipPosition() {
 
     const gravityForce1 = calculateGravityForce(shipX, shipY, planet1, planet1Mass);
      const gravityForce2 = calculateGravityForce(shipX, shipY, planet2, planet2Mass);
+     const gravityForce3 = calculateGravityForce(shipX, shipY, planet3, planet3Mass);
+
 
     if (shipVisible) {
-        shipVx += shipAx + gravityForce1.forceX + gravityForce2.forceX;
-        shipVy += shipAy + gravityForce1.forceY + gravityForce2.forceY;
+        shipVx += shipAx + gravityForce1.forceX + gravityForce2.forceX + gravityForce3.forceX;
+        shipVy += shipAy + gravityForce1.forceY + gravityForce2.forceY + gravityForce3.forceY;
 
         shipVx *= friction;
         shipVy *= friction;
@@ -266,9 +278,9 @@ function updateSpaceshipPosition() {
 function spawnProjectile(targetX, targetY) {
     const projectile = document.createElement('div');
     projectile.style.position = 'absolute';
-    projectile.style.width = '10px';
-    projectile.style.height = '10px';
-    projectile.style.backgroundColor = 'white';
+    projectile.style.width = '20px';
+    projectile.style.height = '20px';
+    projectile.style.backgroundColor = 'rgba(235, 52, 122, 1)';
     projectile.style.left = `${shipX}px`;
     projectile.style.top = `${shipY}px`;
     projectile.style.borderRadius = '50%';
@@ -277,7 +289,7 @@ function spawnProjectile(targetX, targetY) {
     const distanceY = targetY - shipY;
     const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
 
-    const projectileSpeed = 16;
+    const projectileSpeed = 25;
     const velocityX = (distanceX / distance) * projectileSpeed;
     const velocityY = (distanceY / distance) * projectileSpeed;
 
@@ -293,34 +305,47 @@ function spawnProjectile(targetX, targetY) {
 
 
 
-const comets = [];
+const asteroids = [];
 
-function createComet(x, y, vx, vy, radius) {
-    const comet = document.createElement('div');
-    comet.style.position = 'absolute';
-    comet.style.width = `${radius}px`;
-    comet.style.height = `${radius}px`;
-    comet.style.backgroundColor = 'gray';
-    comet.style.left = `${x}px`;
-    comet.style.top = `${y}px`;
-    comet.style.borderRadius = '50%';
+function createAsteroid(x, y, vx, vy, radius) {
+    const asteroid = document.createElement('div');
+    asteroid.style.position = 'absolute';
 
-    document.body.appendChild(comet);
-    comets.push({
-        element: comet,
+    asteroid.style.backgroundImage = "url('img/asteroid.png')";
+    asteroid.style.backgroundRepeat = 'no-repeat';
+    asteroid.style.backgroundSize = 'cover';
+
+    asteroid.style.width = `${radius}px`;
+    asteroid.style.height = `${radius}px`;
+    asteroid.style.left = `${x}px`;
+    asteroid.style.top = `${y}px`;
+    asteroid.style.borderRadius = '50%';
+
+    // Add an initial random rotation and rotation speed
+    const rotation = Math.random() * 360;
+    const rotationSpeed = Math.random() * 2 - 1; // Random value between -1 and 1
+
+    asteroid.style.transform = `rotate(${rotation}deg)`;
+
+    document.body.appendChild(asteroid);
+    asteroids.push({
+        element: asteroid,
         velocityX: vx,
         velocityY: vy,
+        rotation: rotation,
+        rotationSpeed: rotationSpeed,
     });
 }
 
-function spawnComet() {
+
+function spawnAsteroid() {
     const side = Math.floor(Math.random() * 4);
     let x, y, vx, vy;
 
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
 
-    const speed = Math.random() * (1.5 - 0.7) + 0.7;
+    const speed = Math.random() * (0.9 - 0.5) + 0.5;
 
     // Choose a random position and velocity based on the side of the screen
     if (side === 0) {
@@ -341,7 +366,7 @@ function spawnComet() {
         y = Math.random() * window.innerHeight;
     }
 
-    // Calculate the direction from the comet's spawn position towards the center of the screen
+    // Calculate the direction from the asteroid's spawn position towards the center of the screen
     const directionX = centerX - x;
     const directionY = centerY - y;
     const distance = Math.sqrt(directionX * directionX + directionY * directionY);
@@ -352,27 +377,27 @@ function spawnComet() {
     vx = normalizedDirectionX * speed;
     vy = normalizedDirectionY * speed;
 
-    // Randomize the comet size
-    const cometSize = Math.random() * (80 - 35) + 35;
+    // Randomize the asteroid size
+    const asteroidSize = Math.random() * (80 - 35) + 35;
 
-    createComet(x, y, vx, vy, cometSize);
+    createAsteroid(x, y, vx, vy, asteroidSize);
 }
 
 
 
 
-function checkSpaceshipCometCollisions() {
+function checkSpaceshipAsteroidCollisions() {
     if (!shipVisible) return;
 
-    for (let i = comets.length - 1; i >= 0; i--) {
-        const comet = comets[i];
-        if (checkCollision(spaceship, comet.element)) {
+    for (let i = asteroids.length - 1; i >= 0; i--) {
+        const asteroid = asteroids[i];
+        if (checkCollision(spaceship, asteroid.element, true)) {
             // Destroy the spaceship
             destroySpaceship();
 
-            // Remove the comet
-            document.body.removeChild(comet.element);
-            comets.splice(i, 1);
+            // Remove the asteroid
+            document.body.removeChild(asteroid.element);
+            asteroids.splice(i, 1);
 
             // No need to check further collisions for the spaceship
             break;
@@ -381,19 +406,19 @@ function checkSpaceshipCometCollisions() {
 }
 
 
-function checkProjectileCometCollisions() {
+function checkProjectileAsteroidCollisions() {
     for (let i = projectiles.length - 1; i >= 0; i--) {
         const projectile = projectiles[i];
-        for (let j = comets.length - 1; j >= 0; j--) {
-            const comet = comets[j];
-            if (checkCollision(projectile.element, comet.element)) {
+        for (let j = asteroids.length - 1; j >= 0; j--) {
+            const asteroid = asteroids[j];
+            if (checkCollision(projectile.element, asteroid.element)) {
                 // Remove the projectile
                 document.body.removeChild(projectile.element);
                 projectiles.splice(i, 1);
 
-                // Remove the comet
-                document.body.removeChild(comet.element);
-                comets.splice(j, 1);
+                // Remove the asteroid
+                document.body.removeChild(asteroid.element);
+                asteroids.splice(j, 1);
 
                 // No need to check further collisions for this projectile
                 break;
@@ -402,36 +427,42 @@ function checkProjectileCometCollisions() {
     }
 }
 
-function updateCometVelocity(comet) {
+function updateAsteroidVelocity(asteroid) {
     const gravityForce1 = calculateGravityForce(
-        parseFloat(comet.element.style.left),
-        parseFloat(comet.element.style.top),
+        parseFloat(asteroid.element.style.left),
+        parseFloat(asteroid.element.style.top),
         planet1,
         planet1Mass
     );
     const gravityForce2 = calculateGravityForce(
-        parseFloat(comet.element.style.left),
-        parseFloat(comet.element.style.top),
+        parseFloat(asteroid.element.style.left),
+        parseFloat(asteroid.element.style.top),
         planet2,
         planet2Mass
     );
+    const gravityForce3 = calculateGravityForce(
+        parseFloat(asteroid.element.style.left),
+        parseFloat(asteroid.element.style.top),
+        planet3,
+        planet3Mass
+    );
 
-    comet.velocityX += (gravityForce1.forceX + gravityForce2.forceX) * cometGravityScale;
-    comet.velocityY += (gravityForce1.forceY + gravityForce2.forceY) * cometGravityScale;
+    asteroid.velocityX += (gravityForce1.forceX + gravityForce2.forceX) * asteroidGravityScale;
+    asteroid.velocityY += (gravityForce1.forceY + gravityForce2.forceY) * asteroidGravityScale;
 }
 
-function destroyComet(index) {
-    document.body.removeChild(comets[index].element);
-    comets.splice(index, 1);
+function destroyAsteroid(index) {
+    document.body.removeChild(asteroids[index].element);
+    asteroids.splice(index, 1);
 }
 
 
 
-let cometCount = 0;
-const maxComets = 20;
+let asteroidCount = 0;
+const maxAsteroids = 20;
 
 
-function cometSpawnLoop() {
+function asteroidSpawnLoop() {
     const spaceshipElement = document.getElementById("spaceship");
     const rect = spaceshipElement.getBoundingClientRect();
     const inViewport =
@@ -442,16 +473,16 @@ function cometSpawnLoop() {
   
     const isVisible = spaceshipElement.style.display !== "none";
   
-    if (inViewport && isVisible && cometCount < maxComets) {
-      spawnComet();
-      cometCount++;
+    if (inViewport && isVisible && asteroidCount < maxAsteroids) {
+      spawnAsteroid();
+      asteroidCount++;
     }
   
     const spawnTime = Math.random() * (1900 - 500) + 500;
-    setTimeout(cometSpawnLoop, spawnTime);
+    setTimeout(asteroidSpawnLoop, spawnTime);
   }
 
-cometSpawnLoop();
+asteroidSpawnLoop();
 
 
 
@@ -486,47 +517,51 @@ function gameLoop() {
         }
     }
   
-    // Update comet positions
-    for (let i = comets.length - 1; i >= 0; i--) {
-        const comet = comets[i];
-        const oldX = parseFloat(comet.element.style.left);
-        const oldY = parseFloat(comet.element.style.top);
+     // Update asteroid positions
+     for (let i = asteroids.length - 1; i >= 0; i--) {
+        const asteroid = asteroids[i];
+        const oldX = parseFloat(asteroid.element.style.left);
+        const oldY = parseFloat(asteroid.element.style.top);
 
-        updateCometVelocity(comet);
+        updateAsteroidVelocity(asteroid);
 
-        comet.element.style.left = `${oldX + comet.velocityX}px`;
-        comet.element.style.top = `${oldY + comet.velocityY}px`;
+        asteroid.element.style.left = `${oldX + asteroid.velocityX}px`;
+        asteroid.element.style.top = `${oldY + asteroid.velocityY}px`;
 
-        // Check if the comet is colliding with a planet
-        if (checkCollision(comet.element, planet1) || checkCollision(comet.element, planet2)) {
-            destroyComet(i);
+        // Update asteroid rotation
+        asteroid.rotation = (asteroid.rotation + asteroid.rotationSpeed) % 360;
+        asteroid.element.style.transform = `rotate(${asteroid.rotation}deg)`;
+
+        // Check if the asteroid is colliding with a planet
+        if (checkCollision(asteroid.element, planet1, true) || checkCollision(asteroid.element, planet2, true) || checkCollision(asteroid.element, planet3, true)) {
+            destroyAsteroid(i);
             continue;
         }
 
-        // Remove comets that travel too far outside the window view
-        const cometRect = comet.element.getBoundingClientRect();
-        const buffer = 100; // Distance outside the window view before the comet is destroyed
+        // Remove asteroids that travel too far outside the window view
+        const asteroidRect = asteroid.element.getBoundingClientRect();
+        const buffer = 100; // Distance outside the window view before the asteroid is destroyed
         if (
-            cometRect.left < -buffer ||
-            cometRect.right > window.innerWidth + buffer ||
-            cometRect.top < -buffer ||
-            cometRect.bottom > window.innerHeight + buffer
+            asteroidRect.left < -buffer ||
+            asteroidRect.right > window.innerWidth + buffer ||
+            asteroidRect.top < -buffer ||
+            asteroidRect.bottom > window.innerHeight + buffer
         ) {
-            destroyComet(i);
+            destroyAsteroid(i);
         }
     }
    
-  // Check for collisions between projectiles and comets
-  checkProjectileCometCollisions();
+  // Check for collisions between projectiles and asteroids
+  checkProjectileAsteroidCollisions();
   
-  // Check for collisions between the spaceship and comets
-  checkSpaceshipCometCollisions();
+  // Check for collisions between the spaceship and asteroids
+  checkSpaceshipAsteroidCollisions();
   
   // Check if the spaceship is out of bounds
   //checkSpaceshipOutOfBounds();
 
     if (shipVisible) {
-        if (checkCollision(spaceship, planet1) || checkCollision(spaceship, planet2)) {
+        if (checkCollision(spaceship, planet1, true) || checkCollision(spaceship, planet2, true) || checkCollision(spaceship, planet3, true)) {
             destroySpaceship();
         }
     }

@@ -7,9 +7,14 @@
 
 }
 
-#planet, #planet2 {
+#planet, #planet2, #planet3 {
   position: absolute;
   border-radius: 50%;
+
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 #page-top
@@ -32,13 +37,11 @@
   transform-origin: center;
 }
 
-/* #comet {
-  width: 30px;
-  height: 30px;
-  background-image: url('img/comet.png');
+#asteroid {
+  background-image: url('img/asteroid.png');
   background-repeat: no-repeat;
   background-size: cover;
-} */
+}
 
 /* .planet {
   position: absolute;
@@ -49,29 +52,36 @@
 
 #planet {
   position: absolute;
-  left: 320px;
-  top: 280px;
-  width: 130px;
-  height: 130px;
+  left: 70%; /* Adjust this value for horizontal positioning */
+  top: 55%; /* Adjust this value for vertical positioning */
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   box-shadow: 0px 0px 40px #00ffea;
   z-index: 1;
 }
 
-
 #planet2 {
   position: absolute;
-  left: 1300px;
-  top: 600px;
-  width: 70px;
-  height: 70px;
+  left: 30%; /* Adjust this value for horizontal positioning */
+  top: 60%; /* Adjust this value for vertical positioning */
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   box-shadow: 0px 0px 40px #ffae00;
   z-index: 1;
 }
 
-
-
+#planet3 {
+  position: absolute;
+  left: 50%; /* Adjust this value for horizontal positioning */
+  top: 25%; /* Adjust this value for vertical positioning */
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 40px #ea00ff;
+  z-index: 1;
+}
 
 
 
@@ -85,6 +95,11 @@
 }
 
 #planet2:hover{
+  transform: scale(1.3);
+  transition: all 0.1s ease;
+}
+
+#planet3:hover{
   transform: scale(1.3);
   transition: all 0.1s ease;
 }
@@ -110,6 +125,7 @@
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+  user-select: none;
 }
 
 
@@ -209,8 +225,9 @@ html, body {
 
 .intro-title span {
   font-size: 100px;
-  display: inline-block;
+  text-align: left;
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* needs to be hidden during game */
 }
 
 .intro-title span:hover {
@@ -223,15 +240,13 @@ html, body {
 }
 
 
-
 .oscillate-text {
   font-weight: bold;
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100px;
-  animation: oscillate-animation 7s ease-in-out infinite;
+  animation: oscillate-animation 7s ease-in-out infinite;  
 }
 
 @keyframes oscillate-animation {
@@ -864,11 +879,12 @@ a:hover {
   position: absolute;
 }
 
+
 .intro .overlay-intro {
   background-color: rgba(0, 0, 0, 0.6);
-  position: absolute;
-  top: 0;
-  left: 0px;
+  position: fixed;
+  top: 20px; /* Adjust this value to set the desired amount of padding from the top */
+  left: 20px; /* Adjust this value to set the desired amount of padding from the left */
   padding: 0;
   height: 100%;
   width: 100%;
@@ -888,6 +904,11 @@ a:hover {
 
 .intro .text-slider-items {
   display: none;
+}
+
+.text-slider{
+  /* needs to be hidden during game */
+  color: white;
 }
 
 .intro-single {
