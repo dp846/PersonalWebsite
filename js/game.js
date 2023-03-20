@@ -180,39 +180,6 @@ document.addEventListener('keyup', (event) => {
     }
 });
 
-function createTrailParticle(x, y) {
-    const particle = document.createElement('div');
-    particle.style.position = 'absolute';
-    particle.style.width = `${trailSize}px`;
-    particle.style.height = `${trailSize}px`;
-    particle.style.backgroundColor = trailColor;
-    particle.style.left = `${x}px`;
-    particle.style.top = `${y}px`;
-    particle.style.borderRadius = '50%';
-
-    document.body.appendChild(particle);
-
-    setTimeout(() => {
-        document.body.removeChild(particle);
-    }, 300);
-}
-
-function createBulletTrailParticle(x, y) {
-    const particle = document.createElement('div');
-    particle.style.position = 'absolute';
-    particle.style.width = '8px';
-    particle.style.height = '8px';
-    particle.style.backgroundColor = 'rgba(235, 52, 122, 0.8)';
-    particle.style.left = `${x}px`;
-    particle.style.top = `${y}px`;
-    particle.style.borderRadius = '50%';
-
-    document.body.appendChild(particle);
-
-    setTimeout(() => {
-        document.body.removeChild(particle);
-    }, 200); // Adjust the bullet trail duration (in milliseconds)
-}
 
 
 
@@ -231,19 +198,19 @@ function updateAcceleration() {
 
 
 
-function checkSpaceshipOutOfBounds() {
-    if (!shipVisible) return;
+// function checkSpaceshipOutOfBounds() {
+//     if (!shipVisible) return;
 
-    const spaceshipRect = spaceship.getBoundingClientRect();
-    if (
-        spaceshipRect.left < 0 ||
-        spaceshipRect.right > window.innerWidth ||
-        spaceshipRect.top < 0 ||
-        spaceshipRect.bottom > window.innerHeight
-    ) {
-        destroySpaceship();
-    }
-}
+//     const spaceshipRect = spaceship.getBoundingClientRect();
+//     if (
+//         spaceshipRect.left < 0 ||
+//         spaceshipRect.right > window.innerWidth ||
+//         spaceshipRect.top < 0 ||
+//         spaceshipRect.bottom > window.innerHeight
+//     ) {
+//         destroySpaceship();
+//     }
+// }
 
 
 
@@ -329,7 +296,6 @@ function updateSpaceshipPosition() {
     spaceship.style.left = `${shipX}px`;
     spaceship.style.top = `${shipY}px`;
 }
-
 
 
 // Global variables
@@ -418,7 +384,6 @@ function removeOldestTrailPoint() {
 }
 
 
-
 function spawnProjectile(targetX, targetY) {
     const projectile = document.createElement('div');
     projectile.style.position = 'absolute';
@@ -457,10 +422,6 @@ function spawnProjectile(targetX, targetY) {
   }
   
   
-  
-
-
-
 function createExplosion(x, y) {
     const explosionDuration = 1000; // Duration of the explosion animation in milliseconds
     const explosionSize = 50; // Width and height of the explosion element
@@ -566,8 +527,6 @@ function spawnAsteroid() {
 
     createAsteroid(x, y, vx, vy, asteroidSize);
 }
-
-
 
 
 function checkSpaceshipAsteroidCollisions() {
