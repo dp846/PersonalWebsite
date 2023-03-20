@@ -80,8 +80,6 @@
 
 
 
-
-
 /* #planet:hover{
   transform: scale(1.18);
   transition: all 0.1s ease;
@@ -342,6 +340,11 @@ a:hover {
   height: 32px;
   margin-right: 4px;
   overflow: hidden;
+
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .bg-image {

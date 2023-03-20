@@ -1,5 +1,6 @@
 const planet1 = document.getElementById('planet');
 const planet2 = document.getElementById('planet2');
+const planet3 = document.getElementById('planet3');
 const spaceship = document.getElementById('spaceship');
 const title = document.getElementsByClassName('container')
 const typing = document.getElementsByClassName('intro-subtitle')
@@ -11,7 +12,20 @@ let shipVy = 0;
 let shipAx = 0;
 let shipAy = 0;
 let shipVisible = false;
+
 updatePlanetHoverEffects();
+// Call the updateSvgSize function initially and on window resize
+updateSvgSize();
+
+// Update svgSize on scroll
+window.addEventListener('scroll', () => {
+    updateSvgSize();
+});
+
+// Update svgSize on window resize
+window.addEventListener('resize', () => {
+    updateSvgSize();
+});
 
 const friction = 0.98;
 const topSpeed = 10;
@@ -37,6 +51,30 @@ const projectiles = [];
 const asteroidGravityScale = 0.35; // Adjust this value to change the strength of gravity acting on the asteroids
 
 
+function updateSvgSize() {
+    const trailSvg = document.getElementById("trail-svg");
+    const body = document.body;
+    const html = document.documentElement;
+  
+    const width = Math.max(
+      body.scrollWidth,
+      body.offsetWidth,
+      html.clientWidth,
+      html.scrollWidth,
+      html.offsetWidth
+    );
+  
+    const height = Math.max(
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight
+    );
+  
+    trailSvg.setAttribute("width", width);
+    trailSvg.setAttribute("height", height);
+}
 
 
 function updatePlanetHoverEffects() {
@@ -68,8 +106,8 @@ function updatePlanetHoverEffects() {
 
 document.addEventListener('click', (event) => {
     if (!shipVisible) return;
-    const targetX = event.clientX;
-    const targetY = event.clientY;
+    const targetX = event.pageX;
+    const targetY = event.pageY;
 
     const projectile = spawnProjectile(targetX, targetY);
     projectiles.push(projectile);
@@ -236,7 +274,7 @@ function destroySpaceship() {
 
     updatePlanetHoverEffects();
     clearTrail();
-}
+    }
 
 function calculateGravityForce(shipX, shipY, planet, planetMass) {
     const planetRect = planet.getBoundingClientRect();
@@ -260,9 +298,8 @@ function updateSpaceshipPosition() {
     updateAcceleration();
 
     const gravityForce1 = calculateGravityForce(shipX, shipY, planet1, planet1Mass);
-     const gravityForce2 = calculateGravityForce(shipX, shipY, planet2, planet2Mass);
-     const gravityForce3 = calculateGravityForce(shipX, shipY, planet3, planet3Mass);
-
+    const gravityForce2 = calculateGravityForce(shipX, shipY, planet2, planet2Mass);
+    const gravityForce3 = calculateGravityForce(shipX, shipY, planet3, planet3Mass);
 
     if (shipVisible) {
         shipVx += shipAx + gravityForce1.forceX + gravityForce2.forceX + gravityForce3.forceX;
@@ -280,12 +317,20 @@ function updateSpaceshipPosition() {
         shipX += shipVx;
         shipY += shipVy;
 
+        // Calculate rotation angle based on current speed
+        const rotationAngle = Math.atan2(shipVy, shipVx) * (180 / Math.PI) + 90;
+
+        // Apply rotation to the spaceship
+        spaceship.style.transform = `translate(-50%, -50%) rotate(${rotationAngle}deg)`;
+
         updateTrailPath(shipX, shipY);
     }
 
     spaceship.style.left = `${shipX}px`;
     spaceship.style.top = `${shipY}px`;
 }
+
+
 
 // Global variables
 let trailPoints = [];
@@ -574,6 +619,28 @@ function checkProjectileAsteroidCollisions() {
     }
 }
 
+function checkProjectilePlanetCollisions() {
+    for (let i = projectiles.length - 1; i >= 0; i--) {
+        const projectile = projectiles[i];
+
+        if (checkCollision(projectile.element, planet1, true) || checkCollision(projectile.element, planet2, true) || checkCollision(projectile.element, planet3, true)) {
+            // Get the spaceship's x and y coordinates
+            const projectileX = parseFloat(projectile.element.style.left);
+            const projectileY = parseFloat(projectile.element.style.top);
+
+            // Create an explosion at the spaceship's coordinates
+            createExplosion(projectileX, projectileY);
+
+            // Remove the projectile
+            document.body.removeChild(projectile.element);
+            projectiles.splice(i, 1);
+
+        }
+    }
+}
+
+
+
 function updateAsteroidVelocity(asteroid) {
     const gravityForce1 = calculateGravityForce(
         parseFloat(asteroid.element.style.left),
@@ -594,8 +661,8 @@ function updateAsteroidVelocity(asteroid) {
         planet3Mass
     );
 
-    asteroid.velocityX += (gravityForce1.forceX + gravityForce2.forceX) * asteroidGravityScale;
-    asteroid.velocityY += (gravityForce1.forceY + gravityForce2.forceY) * asteroidGravityScale;
+    asteroid.velocityX += (gravityForce1.forceX + gravityForce2.forceX + gravityForce3.forceX) * asteroidGravityScale;
+    asteroid.velocityY += (gravityForce1.forceY + gravityForce2.forceY + gravityForce3.forceY) * asteroidGravityScale;
 }
 
 function destroyAsteroid(index) {
@@ -606,7 +673,7 @@ function destroyAsteroid(index) {
 
 
 let asteroidCount = 0;
-const maxAsteroids = 20;
+const maxAsteroids = 40;
 
 
 function asteroidSpawnLoop() {
@@ -625,7 +692,7 @@ function asteroidSpawnLoop() {
       asteroidCount++;
     }
   
-    const spawnTime = Math.random() * (1900 - 500) + 500;
+    const spawnTime = Math.random() * (2200 - 1000) + 1000;
     setTimeout(asteroidSpawnLoop, spawnTime);
   }
 
@@ -646,8 +713,6 @@ function gameLoop() {
 
         projectile.element.style.left = `${oldX + projectile.velocityX}px`;
         projectile.element.style.top = `${oldY + projectile.velocityY}px`;
-
-        //createBulletTrailParticle(oldX + 2.5, oldY + 2.5);
 
         // Remove projectiles that go off-screen
         const projectileRect = projectile.element.getBoundingClientRect();
@@ -713,6 +778,9 @@ function gameLoop() {
   
   // Check for collisions between the spaceship and asteroids
   checkSpaceshipAsteroidCollisions();
+
+  // Check for collisions between the projectiles and planets
+  checkProjectilePlanetCollisions();
   
   // Check if the spaceship is out of bounds
   //checkSpaceshipOutOfBounds();
