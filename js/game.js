@@ -377,29 +377,42 @@ function removeOldestTrailPoint() {
 function spawnProjectile(targetX, targetY) {
     const projectile = document.createElement('div');
     projectile.style.position = 'absolute';
-    projectile.style.width = '20px';
-    projectile.style.height = '20px';
+    projectile.style.width = '4px';
+    projectile.style.height = '100px'; // Increase the length here
     projectile.style.backgroundColor = 'rgba(235, 52, 122, 1)';
     projectile.style.left = `${shipX}px`;
     projectile.style.top = `${shipY}px`;
-    projectile.style.borderRadius = '50%';
-
+    projectile.style.transformOrigin = 'center';
+  
     const distanceX = targetX - shipX;
     const distanceY = targetY - shipY;
+    const angle = Math.atan2(distanceY, distanceX) * (180 / Math.PI) + 90; // Add 90 degrees rotation here
+    projectile.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+  
+    const glowStyle = `
+      box-shadow: 0 0 10px rgba(235, 52, 122, 0.5), 
+                  0 0 20px rgba(235, 52, 122, 0.5), 
+                  0 0 30px rgba(235, 52, 122, 0.5), 
+                  0 0 40px rgba(235, 52, 122, 0.5);
+    `;
+    projectile.style.cssText += glowStyle;
+  
     const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
-
     const projectileSpeed = 25;
     const velocityX = (distanceX / distance) * projectileSpeed;
     const velocityY = (distanceY / distance) * projectileSpeed;
-
+  
     document.body.appendChild(projectile);
-
+  
     return {
-        element: projectile,
-        velocityX: velocityX,
-        velocityY: velocityY
+      element: projectile,
+      velocityX: velocityX,
+      velocityY: velocityY,
     };
-}
+  }
+  
+  
+  
 
 
 
@@ -634,7 +647,7 @@ function gameLoop() {
         projectile.element.style.left = `${oldX + projectile.velocityX}px`;
         projectile.element.style.top = `${oldY + projectile.velocityY}px`;
 
-        createBulletTrailParticle(oldX + 2.5, oldY + 2.5);
+        //createBulletTrailParticle(oldX + 2.5, oldY + 2.5);
 
         // Remove projectiles that go off-screen
         const projectileRect = projectile.element.getBoundingClientRect();
