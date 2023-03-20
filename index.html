@@ -31,7 +31,9 @@
 
   <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
 
-  <script type="module">
+
+
+  <!-- <script type="module">
     import { rainbowCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
 		new rainbowCursor({
 			length: 100,
@@ -39,7 +41,9 @@
 			size: 3.5,
 			// element: cursorEffectElement
 		  });
-  </script>
+  </script> -->
+
+
 
 
   <style type="text/css">body { cursor: url('data:image/x-icon;base64,AAACAAEAICAQAAYAAADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAA8usAAP///wCUjwAA4NkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAAAAAAjEgAAAAAAAAAAAAAAAAAAIxIAAAAAAAAAAAAAAAAAAjEgAAAAAAAAAAAAAAIAAAIxIAAAAAAAAAAAAAACIAAjEgAAAAAAAAAAAAAAAhIAIxIAAAAAAAAAAAAAAAIRIjEgAAAAAAAAAAAAAAACExIxIAAAAAAAAAAAAAAAAhMzMSIiIAAAAAAAAAAAAAITMzMREgAAAAAAAAAAAAACEzMzNCAAAAAAAAAAAAAAAhMzMxIAAAAAAAAAAAAAAAITMzEgAAAAAAAAAAAAAAACEzMSAAAAAAAAAAAAAAAAAhMxIAAAAAAAAAAAAAAAAAITEgAAAAAAAAAAAAAAAAACESAAAAAAAAAAAAAAAAAAAhIAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAD////////////////////////////////////////////////////////////8////+H////h////w///98P///OH///xh///8A////AP///wAP//8AH///AD///wB///8A////Af///wP///8H////D////x////8/////f///w=='), auto; }</style>
@@ -55,6 +59,26 @@
     <img id="planet" src="img/planet.png">
     <img id="planet2" src="img/planet2.png">
     <img id="planet3" src="img/planet3.png">
+
+    <svg id="trail-svg" width="100%" height="100%" style="position: absolute; z-index: 1; pointer-events: none;">
+      <defs>
+        <filter id="glow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+        <linearGradient id="trailGradient" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#FF69B4" stop-opacity="0" />
+          <stop offset="100%" stop-color="#FF69B4" stop-opacity="1" />
+      </linearGradient>
+    </defs>
+    </svg>
+
+    <svg id="projectile-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></svg>
+
+
 
     <img id="spaceship" src="img/spaceship.jpg">
     <script src="js/game.js"></script>

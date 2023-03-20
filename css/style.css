@@ -43,13 +43,6 @@
   background-size: cover;
 }
 
-/* .planet {
-  position: absolute;
-  border-radius: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
-
 #planet {
   position: absolute;
   left: 70%; /* Adjust this value for horizontal positioning */
@@ -89,7 +82,7 @@
 
 
 
-#planet:hover{
+/* #planet:hover{
   transform: scale(1.18);
   transition: all 0.1s ease;
 }
@@ -102,6 +95,19 @@
 #planet3:hover{
   transform: scale(1.3);
   transition: all 0.1s ease;
+} */
+
+
+
+@keyframes explosion {
+  0% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
 }
 
 

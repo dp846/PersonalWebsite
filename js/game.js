@@ -11,6 +11,7 @@ let shipVy = 0;
 let shipAx = 0;
 let shipAy = 0;
 let shipVisible = false;
+updatePlanetHoverEffects();
 
 const friction = 0.98;
 const topSpeed = 10;
@@ -29,11 +30,41 @@ const keys = {
     d: false
 };
 
-const trailColor = 'rgba(255, 255, 255, 0.8)';
-const trailSize = 5;
+const trailSize = 5; // Adjust this value to control the thickness of the trail
+const trailColor = '#FF69B4'; // Neon pink color
 
 const projectiles = [];
 const asteroidGravityScale = 0.35; // Adjust this value to change the strength of gravity acting on the asteroids
+
+
+
+
+function updatePlanetHoverEffects() {
+    const planet1 = document.getElementById('planet');
+    const planet2 = document.getElementById('planet2');
+    const planet3 = document.getElementById('planet3');
+  
+    function applyHoverEffect(planet, scale) {
+      if (!shipVisible) {
+        planet.style.transform = `scale(${scale})`;
+        planet.style.transition = 'all 0.1s ease';
+      }
+    }
+  
+    function removeHoverEffect(planet) {
+      planet.style.transform = '';
+      planet.style.transition = '';
+    }
+  
+    planet1.onmouseenter = () => applyHoverEffect(planet1, 1.18);
+    planet1.onmouseleave = () => removeHoverEffect(planet1);
+  
+    planet2.onmouseenter = () => applyHoverEffect(planet2, 1.3);
+    planet2.onmouseleave = () => removeHoverEffect(planet2);
+  
+    planet3.onmouseenter = () => applyHoverEffect(planet3, 1.3);
+    planet3.onmouseleave = () => removeHoverEffect(planet3);
+}
 
 document.addEventListener('click', (event) => {
     if (!shipVisible) return;
@@ -61,9 +92,9 @@ planet1.addEventListener('click', () => {
     const planetRect = planet1.getBoundingClientRect();
     if (!shipVisible){
       spawnSpaceship(planetRect.right + 60, planetRect.top + planetRect.height / 2)
-      title.style.visibility = 'hidden';
-      typing.style.visibility = 'hidden';
     };
+
+    asteroidSpawnLoop();
 
 });
 
@@ -72,6 +103,8 @@ planet2.addEventListener('click', () => {
     if (!shipVisible){
       spawnSpaceship(planetRect.right + 30, planetRect.top + planetRect.height / 2)
     };
+
+    asteroidSpawnLoop();
 });
 
 planet3.addEventListener('click', () => {
@@ -158,29 +191,6 @@ function updateAcceleration() {
     if (keys.d) shipAx = acceleration;
 }
 
-function updateSpaceshipPosition() {
-    updateAcceleration();
-
-    shipVx += shipAx;
-    shipVy += shipAy;
-
-    shipVx *= friction;
-    shipVy *= friction;
-
-    const currentSpeed = Math.sqrt(shipVx ** 2 + shipVy ** 2);
-    if (currentSpeed > topSpeed) {
-        shipVx = (shipVx / currentSpeed) * topSpeed;
-        shipVy = (shipVy / currentSpeed) * topSpeed;
-    }
-
-    shipX += shipVx;
-    shipY += shipVy;
-
-    spaceship.style.left = `${shipX}px`;
-    spaceship.style.top = `${shipY}px`;
-
-    createTrailParticle(shipX + trailSize / 2, shipY + trailSize / 2);
-}
 
 
 function checkSpaceshipOutOfBounds() {
@@ -223,6 +233,9 @@ function destroySpaceship() {
     shipVy = 0;
     shipAx = 0;
     shipAy = 0;
+
+    updatePlanetHoverEffects();
+    clearTrail();
 }
 
 function calculateGravityForce(shipX, shipY, planet, planetMass) {
@@ -267,12 +280,98 @@ function updateSpaceshipPosition() {
         shipX += shipVx;
         shipY += shipVy;
 
-        createTrailParticle(shipX + trailSize / 2, shipY + trailSize / 2);
+        updateTrailPath(shipX, shipY);
     }
 
     spaceship.style.left = `${shipX}px`;
     spaceship.style.top = `${shipY}px`;
 }
+
+// Global variables
+let trailPoints = [];
+const maxTrailPoints = 50; // Adjust this value to control the length of the trail
+
+function updateTrailPath(x, y) {
+    // Add the new point to the array
+    trailPoints.push({x: x, y: y});
+
+    // Call the updateTrail function to handle the trail drawing
+    updateTrail();
+}
+
+
+function updateTrail() {
+    // Remove the oldest point if the array is too long
+    if (trailPoints.length > maxTrailPoints) {
+        removeOldestTrailPoint();
+    }
+
+    // Generate the path data
+    const pathData = trailPoints
+        .map((point, index) => {
+            const command = index === 0 ? 'M' : 'L';
+            return `${command} ${point.x},${point.y}`;
+        })
+        .join(' ');
+
+    // Create or update the path element
+    let trailPath = document.getElementById('trail-path');
+    if (trailPoints.length > 0) {
+        if (!trailPath) {
+            trailPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            trailPath.setAttribute('id', 'trail-path');
+            trailPath.setAttribute('fill', 'none');
+            trailPath.setAttribute('stroke', 'url(#trailGradient)');
+            trailPath.setAttribute('stroke-width', trailSize);
+            trailPath.setAttribute('stroke-linecap', 'round');
+            trailPath.setAttribute('stroke-linejoin', 'round');
+            trailPath.setAttribute('filter', 'url(#glow)'); // Add the glow effect
+            document.getElementById('trail-svg').appendChild(trailPath);
+        }
+
+        if (trailPoints.length > 1) {
+            const startX = trailPoints[0].x;
+            const startY = trailPoints[0].y;
+            const endX = trailPoints[trailPoints.length - 1].x;
+            const endY = trailPoints[trailPoints.length - 1].y;
+        
+            const trailGradient = document.getElementById('trailGradient');
+            trailGradient.setAttribute('x1', startX);
+            trailGradient.setAttribute('y1', startY);
+            trailGradient.setAttribute('x2', endX);
+            trailGradient.setAttribute('y2', endY);
+        }
+
+        // Update the path data
+        trailPath.setAttribute('d', pathData);
+    } else if (trailPath) {
+        trailPath.parentNode.removeChild(trailPath);
+    }
+}
+
+
+function clearTrail() {
+    // Remove trail points one by one with a delay
+    const delay = 1; // Adjust this value to control the speed of the trail disappearing
+
+    function removeTrailPoint() {
+        if (trailPoints.length > 0) {
+            removeOldestTrailPoint();
+            updateTrail();
+            setTimeout(removeTrailPoint, delay);
+        }
+    }
+
+    removeTrailPoint();
+}
+
+
+function removeOldestTrailPoint() {
+    if (trailPoints.length > 0) {
+        trailPoints.shift();
+    }
+}
+
 
 
 function spawnProjectile(targetX, targetY) {
@@ -301,6 +400,33 @@ function spawnProjectile(targetX, targetY) {
         velocityY: velocityY
     };
 }
+
+
+
+function createExplosion(x, y) {
+    const explosionDuration = 1000; // Duration of the explosion animation in milliseconds
+    const explosionSize = 50; // Width and height of the explosion element
+  
+    const div = document.createElement('div');
+    div.style.position = 'absolute';
+    div.style.left = `${x - explosionSize / 2}px`; // Center horizontally
+    div.style.top = `${y - explosionSize / 2}px`; // Center vertically
+    div.style.width = `${explosionSize}px`;
+    div.style.height = `${explosionSize}px`;
+    div.style.background = 'radial-gradient(circle, rgba(255,255,0,1) 0%, rgba(255,0,0,1) 100%)';
+    div.style.borderRadius = '50%';
+    div.style.animation = `explosion ${explosionDuration}ms forwards`;
+  
+    document.body.appendChild(div);
+  
+    setTimeout(() => {
+      document.body.removeChild(div);
+    }, explosionDuration);
+  }
+
+
+
+
 
 
 
@@ -393,6 +519,7 @@ function checkSpaceshipAsteroidCollisions() {
         const asteroid = asteroids[i];
         if (checkCollision(spaceship, asteroid.element, true)) {
             // Destroy the spaceship
+            createExplosion(shipX, shipY)
             destroySpaceship();
 
             // Remove the asteroid
@@ -412,6 +539,13 @@ function checkProjectileAsteroidCollisions() {
         for (let j = asteroids.length - 1; j >= 0; j--) {
             const asteroid = asteroids[j];
             if (checkCollision(projectile.element, asteroid.element)) {
+                // Get the asteroid's x and y coordinates (center of the asteroid)
+                const asteroidX = asteroid.element.offsetLeft + asteroid.element.offsetWidth / 2;
+                const asteroidY = asteroid.element.offsetTop + asteroid.element.offsetHeight / 2;
+
+                // Create an explosion at the asteroid's coordinates
+                createExplosion(asteroidX, asteroidY);
+
                 // Remove the projectile
                 document.body.removeChild(projectile.element);
                 projectiles.splice(i, 1);
@@ -482,8 +616,6 @@ function asteroidSpawnLoop() {
     setTimeout(asteroidSpawnLoop, spawnTime);
   }
 
-asteroidSpawnLoop();
-
 
 
 
@@ -532,11 +664,23 @@ function gameLoop() {
         asteroid.rotation = (asteroid.rotation + asteroid.rotationSpeed) % 360;
         asteroid.element.style.transform = `rotate(${asteroid.rotation}deg)`;
 
+
+
         // Check if the asteroid is colliding with a planet
         if (checkCollision(asteroid.element, planet1, true) || checkCollision(asteroid.element, planet2, true) || checkCollision(asteroid.element, planet3, true)) {
+            // Get the asteroid's x and y coordinates
+            const asteroidX = asteroid.element.offsetLeft;
+            const asteroidY = asteroid.element.offsetTop;
+
+            // Create an explosion at the asteroid's coordinates
+            createExplosion(asteroidX, asteroidY);
+
             destroyAsteroid(i);
             continue;
         }
+
+
+
 
         // Remove asteroids that travel too far outside the window view
         const asteroidRect = asteroid.element.getBoundingClientRect();
@@ -560,11 +704,18 @@ function gameLoop() {
   // Check if the spaceship is out of bounds
   //checkSpaceshipOutOfBounds();
 
-    if (shipVisible) {
-        if (checkCollision(spaceship, planet1, true) || checkCollision(spaceship, planet2, true) || checkCollision(spaceship, planet3, true)) {
-            destroySpaceship();
-        }
+if (shipVisible) {
+    if (checkCollision(spaceship, planet1, true) || checkCollision(spaceship, planet2, true) || checkCollision(spaceship, planet3, true)) {
+        // Get the spaceship's x and y coordinates
+        const spaceshipX = spaceship.offsetLeft;
+        const spaceshipY = spaceship.offsetTop;
+
+        // Create an explosion at the spaceship's coordinates
+        createExplosion(spaceshipX, spaceshipY);
+
+        destroySpaceship();
     }
+}
 
 
     requestAnimationFrame(gameLoop);
