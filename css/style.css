@@ -171,6 +171,11 @@ html, body {
   display: inline-block;
   -webkit-transition: all 0.1s ease-out;
   transition: all 0.1s ease-out;
+
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Safari */
 }
 .blast:hover {
   color: #2600ff;

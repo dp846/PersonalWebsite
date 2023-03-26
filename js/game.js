@@ -82,10 +82,12 @@ function updatePlanetHoverEffects() {
     const planet2 = document.getElementById('planet2');
     const planet3 = document.getElementById('planet3');
   
-    function applyHoverEffect(planet, scale) {
-      if (!shipVisible) {
-        planet.style.transform = `scale(${scale})`;
-        planet.style.transition = 'all 0.1s ease';
+    function applyHoverEffect(planet, scale) { 
+      
+        if (!shipVisible) {
+          planet.style.transform = `scale(${scale})`;
+          planet.style.transition = 'all 0.1s ease';
+      
       }
     }
   
@@ -132,7 +134,7 @@ planet1.addEventListener('click', () => {
       spawnSpaceship(planetRect.right + 60, planetRect.top + planetRect.height / 2)
     };
 
-    asteroidSpawnLoop();
+    initGame();
 
 });
 
@@ -142,7 +144,7 @@ planet2.addEventListener('click', () => {
       spawnSpaceship(planetRect.right + 30, planetRect.top + planetRect.height / 2)
     };
 
-    asteroidSpawnLoop();
+    initGame();
 });
 
 planet3.addEventListener('click', () => {
@@ -150,6 +152,8 @@ planet3.addEventListener('click', () => {
     if (!shipVisible){
       spawnSpaceship(planetRect.right + 30, planetRect.top + planetRect.height / 2)
     };
+
+    initGame();
 });
 
 document.addEventListener('keydown', (event) => {
@@ -631,11 +635,39 @@ function destroyAsteroid(index) {
 
 
 
+let currentAsteroids = 0;
+const asteroidWaveCount = 40;
+const asteroidWaveDelay = 1000;
+let currentWave = 0;
+const addedAsteroidsPerWave = 4;
+const spawnTimeDecreasePerWave = 100;
+
+function initGame() {
+    if (gameStarted) return;
+    asteroidSpawnLoop();
+
+
+    // const numAsteroids = asteroidWaveCount + (currentWave - 1) * addedAsteroidsPerWave;
+    // startNewWave(numAsteroids, spawnTimeDecreasePerWave);
+}
+
+function startNewWave(numAsteroids, spawnTimeDecrease) {
+    currentAsteroids = 0;
+    currentWave++;
+    spawnAsteroids(numAsteroids, spawnTimeDecrease);
+}
+
+
+
+
 let asteroidCount = 0;
 const maxAsteroids = 40;
+let gameStarted = false;
 
 
 function asteroidSpawnLoop() {
+    gameStarted = true;
+    
     const spaceshipElement = document.getElementById("spaceship");
     const rect = spaceshipElement.getBoundingClientRect();
     const inViewport =
@@ -744,18 +776,18 @@ function gameLoop() {
   // Check if the spaceship is out of bounds
   //checkSpaceshipOutOfBounds();
 
-if (shipVisible) {
-    if (checkCollision(spaceship, planet1, true) || checkCollision(spaceship, planet2, true) || checkCollision(spaceship, planet3, true)) {
-        // Get the spaceship's x and y coordinates
-        const spaceshipX = spaceship.offsetLeft;
-        const spaceshipY = spaceship.offsetTop;
+    if (shipVisible) {
+        if (checkCollision(spaceship, planet1, true) || checkCollision(spaceship, planet2, true) || checkCollision(spaceship, planet3, true)) {
+            // Get the spaceship's x and y coordinates
+            const spaceshipX = spaceship.offsetLeft;
+            const spaceshipY = spaceship.offsetTop;
 
-        // Create an explosion at the spaceship's coordinates
-        createExplosion(spaceshipX, spaceshipY);
+            // Create an explosion at the spaceship's coordinates
+            createExplosion(spaceshipX, spaceshipY);
 
-        destroySpaceship();
+            destroySpaceship();
+        }
     }
-}
 
 
     requestAnimationFrame(gameLoop);
