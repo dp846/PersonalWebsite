@@ -1,6 +1,7 @@
 const planet1 = document.getElementById('planet');
 const planet2 = document.getElementById('planet2');
 const planet3 = document.getElementById('planet3');
+const blackhole = document.getElementById('black-hole');
 const spaceship = document.getElementById('spaceship');
 const title = document.getElementsByClassName('container')
 const typing = document.getElementsByClassName('intro-subtitle')
@@ -77,34 +78,40 @@ function updateSvgSize() {
 }
 
 
+
+
 function updatePlanetHoverEffects() {
     const planet1 = document.getElementById('planet');
     const planet2 = document.getElementById('planet2');
     const planet3 = document.getElementById('planet3');
   
-    function applyHoverEffect(planet, scale) { 
-      
+    function applyHoverEffect(planet, scale) {
         if (!shipVisible) {
           planet.style.transform = `scale(${scale})`;
-          planet.style.transition = 'all 0.1s ease';
-      
-      }
+        }
     }
   
     function removeHoverEffect(planet) {
       planet.style.transform = '';
-      planet.style.transition = '';
     }
   
-    planet1.onmouseenter = () => applyHoverEffect(planet1, 1.18);
+    // Set the transition property for each planet
+    [planet1, planet2, planet3].forEach(planet => {
+      planet.style.transition = 'all 0.5s ease';
+    });
+
+    planet1.onmouseenter = () => applyHoverEffect(planet1, 1.3);
     planet1.onmouseleave = () => removeHoverEffect(planet1);
   
-    planet2.onmouseenter = () => applyHoverEffect(planet2, 1.3);
+    planet2.onmouseenter = () => applyHoverEffect(planet2, 1.5);
     planet2.onmouseleave = () => removeHoverEffect(planet2);
   
-    planet3.onmouseenter = () => applyHoverEffect(planet3, 1.3);
+    planet3.onmouseenter = () => applyHoverEffect(planet3, 1.5);
     planet3.onmouseleave = () => removeHoverEffect(planet3);
 }
+
+window.onload = updatePlanetHoverEffects;
+
 
 document.addEventListener('click', (event) => {
     if (!shipVisible) return;
@@ -741,12 +748,21 @@ function gameLoop() {
             const asteroidX = asteroid.element.offsetLeft;
             const asteroidY = asteroid.element.offsetTop;
 
-            // Create an explosion at the asteroid's coordinates
-            createExplosion(asteroidX, asteroidY);
+            // Get the asteroid's width and height
+            const asteroidWidth = asteroid.element.offsetWidth;
+            const asteroidHeight = asteroid.element.offsetHeight;
+
+            // Calculate the center of the asteroid
+            const centerX = asteroidX + asteroidWidth / 2;
+            const centerY = asteroidY + asteroidHeight / 2;
+
+            // Create an explosion at the asteroid's center
+            createExplosion(centerX, centerY);
 
             destroyAsteroid(i);
             continue;
         }
+
 
 
 

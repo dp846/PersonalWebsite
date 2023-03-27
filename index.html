@@ -37,7 +37,7 @@
     import { rainbowCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
 		new rainbowCursor({
 			length: 100,
-			colors: ["rgba(33, 255, 255,0.3)", "rgba(255, 33, 133,0.3)"],
+			colors: ["rgba(33, 255, 255,0.8)", "rgba(255, 33, 133,0.8)"],
 			size: 3.5,
 			// element: cursorEffectElement
 		  });
@@ -71,14 +71,13 @@
             </feMerge>
         </filter>
         <linearGradient id="trailGradient" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stop-color="#FF69B4" stop-opacity="0" />
-          <stop offset="100%" stop-color="#FF69B4" stop-opacity="1" />
+          <stop offset="0%" stop-color="#ffb20d" stop-opacity="0" />
+          <stop offset="100%" stop-color="#ff1100" stop-opacity="1" />
       </linearGradient>
     </defs>
     </svg>
 
     <img id="spaceship" src="img/spaceship.jpg">
-    <script src="js/game.js"></script>
   </div>
 
 
@@ -132,7 +131,7 @@
           <img id="spaceship">
           <script src="js/game.js"></script> -->
 
-          <p class="intro-subtitle"><span class="text-slider-items">Machine Learning,Software Design,Software Development,Web Development,Artificial Intelligence,Physics,Game Development</span><strong class="text-slider"></strong></p>
+          <p class="intro-subtitle"><span class="text-slider-items">Machine Learning,Software Engineering,Web Development,Artificial Intelligence,Physics,Game Development</span><strong class="text-slider"></strong></p>
         </div>
       </div>
     </div>
@@ -144,6 +143,10 @@
       <div class="title-box text-center">
 
         <br>
+
+        <div id="black-hole-wrapper">
+          <div class="black-hole"></div>
+        </div>
         
         <span class="header">
         <div class="text-zone">
@@ -547,6 +550,10 @@
     </div>
   </section> -->
   <!--/ Section Blog End /-->
+
+
+
+  <script src="js/game.js"></script>
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <div id="preloader"></div>

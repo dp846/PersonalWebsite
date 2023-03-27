@@ -95,7 +95,7 @@
     var typed_strings = $('.text-slider-items').text();
 		var typed = new Typed('.text-slider', {
 			strings: typed_strings.split(','),
-			typeSpeed: 50,
+			typeSpeed: 40,
 			loop: true,
 			backDelay: 1500,
 			backSpeed: 30
@@ -148,5 +148,43 @@
 	// planet2.style.top = 200 + (y / 12) + "px";
 	// });
 
+
+	// Crosshair code
+
+	// document.addEventListener('DOMContentLoaded', () => {
+	// 	// Create the crosshair element and add it to the body
+	// 	const crosshair = document.createElement('div');
+	// 	crosshair.classList.add('crosshair');
+	// 	document.body.appendChild(crosshair);
+	
+	// 	// Update the crosshair position based on the mouse movement
+	// 	document.addEventListener('mousemove', (e) => {
+	// 		const x = e.clientX;
+	// 		const y = e.clientY;
+	
+	// 		crosshair.style.left = `${x - crosshair.offsetWidth / 2}px`;
+	// 		crosshair.style.top = `${y - crosshair.offsetHeight / 2}px`;
+	// 	});
+	
+	// 	let isAnimating = false; // Flag to track the animation state
+	
+	// 	// Add click event listener to play the shooting animation
+	// 	document.addEventListener('click', () => {
+	// 		if (!isAnimating) {
+	// 			isAnimating = true;
+	// 			crosshair.classList.add('shoot');
+	
+	// 			// Remove the shooting animation class after the animation is complete
+	// 			setTimeout(() => {
+	// 				crosshair.classList.remove('shoot');
+	// 				isAnimating = false;
+	// 			}, 500); // Duration of the animation in milliseconds
+	// 		}
+	// 	});
+	// });
+	
+
+	
+	
 
 })(jQuery);
