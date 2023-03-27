@@ -32,6 +32,22 @@
     return false;
   });
 
+
+  //Scroll for more indicator
+  const scrollForMore = document.querySelector('.scroll-for-more');
+
+	function showHideScrollForMore() {
+	if (window.pageYOffset === 0) {
+		scrollForMore.style.opacity = '1';
+		} else {
+			scrollForMore.style.opacity = '0';
+		}
+	}
+
+showHideScrollForMore(); // Call the function to display the indicator initially
+window.addEventListener('scroll', showHideScrollForMore);
+
+
 	/*--/ Star ScrollTop /--*/
 	$('.scrolltop-mf').on("click", function () {
 		$('html, body').animate({
@@ -182,7 +198,6 @@
 	// 		}
 	// 	});
 	// });
-	
 
 	
 	

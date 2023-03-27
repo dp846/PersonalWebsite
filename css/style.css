@@ -370,7 +370,7 @@ a:hover {
   background-position: center center;
 }
 
-.overlay-mf {
+/* .overlay-mf {
   background-color: #1200b6;
 }
 
@@ -382,7 +382,7 @@ a:hover {
   height: 100%;
   width: 100%;
   opacity: .15;
-}
+} */
 
 .paralax-mf {
   position: relative;
@@ -940,6 +940,22 @@ a:hover {
   color: white;
 }
 
+.typed-cursor {
+  opacity: 1;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+
+
 .intro-single {
   height: 350px;
 }
@@ -970,6 +986,58 @@ a:hover {
   color: #fff;
 }
 
+
+
+
+.scroll-for-more {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: transparent; /* Changed to transparent */
+  border: 0px solid #fff; /* Added a white border */
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  animation: float 5s ease-in-out infinite; /* Added float animation */
+}
+
+.down-arrow {
+  width: 0;
+  height: 0;
+  margin: 8px auto;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #fff;
+}
+
+/* Add float keyframe animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-50%);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*======================================
 //--//-->   ABOUT
 ======================================*/
@@ -978,16 +1046,20 @@ a:hover {
 /* #black-hole-wrapper{
 } */
 
+:root {
+  --rotation: 0deg;
+}
+
 .black-hole, .black-hole:before, .black-hole:after {
   position: absolute;
-	display: flex;
-	border-radius: 50%;
-	animation: anim 7s linear infinite;
+  display: flex;
+  border-radius: 50%;
+  animation: anim 7s linear infinite;
 }
 
 @keyframes anim {
-	0% {transform: rotate(0deg)}
-  100% {transform: rotate(-360deg)}
+  0% {transform: rotate(var(--rotation)) scale(1)}
+  100% {transform: rotate(calc(var(--rotation) - 360deg)) scale(1)}
 }
 
 .black-hole {
@@ -996,22 +1068,25 @@ a:hover {
   left: 40px;
 
   background: #000;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: blur(4px);
 
-	width: 35vh;
-	height: 35vh;
-	box-shadow: 1vh 0 2vh 2vh #f50, 
+  width: 35vh;
+  height: 35vh;
+  box-shadow: 1vh 0 2vh 2vh #f50, 
        inset -1vh 0 1vh 2vh #f80,
              -1vh -1vh 20vh 0 #f60;
+
+  transition: transform 0.3s ease;
 }
 
-.black-hole:before, #black-hole:after {
-	content: '';
-	background: #fff;
-	position: relative;
+
+.black-hole:before, .black-hole:after {
+  content: '';
+  background: #fff;
+  position: relative;
   top: 6vh;
 }
 
@@ -1026,6 +1101,8 @@ a:hover {
 
 
 
+
+
 .avatar {
   margin-right: 4px;
   max-width: 350px;
@@ -1035,9 +1112,7 @@ a:hover {
   -webkit-user-drag: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  box-shadow: 
-    0 0 20px #03fde8, /* blue glow shadow */
-    0 0 30px rgba(0, 0, 0, 0.3); /* darker shadow behind the glow */
+
   object-fit: cover;
   transition: all 0.3s ease-in-out;
   position: relative;
@@ -1045,6 +1120,9 @@ a:hover {
 
 .avatar:hover {
   transform: scale(0.96);
+  box-shadow: 
+  0 0 20px #03fde8, /* blue glow shadow */
+  0 0 30px rgba(0, 0, 0, 0.3); /* darker shadow behind the glow */
 }
 
 
@@ -1122,7 +1200,7 @@ a:hover {
 .service-box:hover .ico-circle {
   transition: all 500ms ease;
   color: #fff;
-  background-color: #340e9e;
+  background-color: #000000;
   box-shadow: 0 0 0 10px #cde1f8;
 }
 
@@ -1164,7 +1242,7 @@ a:hover {
   height: 60px;
   width: 60px;
   line-height: 1.8;
-  box-shadow: 0 0 0 10px #cde1f8;
+  box-shadow: 0 0 0 10px #001aff;
 }
 
 .counter-num .counter {

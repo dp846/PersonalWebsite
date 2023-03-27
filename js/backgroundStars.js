@@ -74,10 +74,6 @@ particlesJS("overlay-intro", {
           "enable": true,
           "mode": "grab" // change this to "repulse" or "bubble" for different effects
         },
-        "onclick": {
-          "enable": true,
-          "mode": "push"
-        },
         "resize": true
       },
       "modes": {
@@ -99,7 +95,7 @@ particlesJS("overlay-intro", {
           "duration": 0.4
         },
         "push": {
-          "particles_nb": 4
+          "particles_nb": 0
         },
         "remove": {
           "particles_nb": 2
