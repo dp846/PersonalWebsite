@@ -363,18 +363,6 @@ a:hover {
   line-height: 1.1;
 }
 
-.avatar {
-  width: 32px;
-  height: 32px;
-  margin-right: 4px;
-  overflow: hidden;
-
-  user-select: none;
-  -webkit-user-drag: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
 .bg-image {
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -1011,7 +999,7 @@ a:hover {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	filter: blur(1px);
+	filter: blur(4px);
 
 	width: 35vh;
 	height: 35vh;
@@ -1038,13 +1026,30 @@ a:hover {
 
 
 
-
-
-.avatar{
-  width: 400px;
-  height: 400px;
+.avatar {
+  margin-right: 4px;
+  max-width: 350px;
   margin-bottom: 30px;
+  border-radius: 3%;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  box-shadow: 
+    0 0 20px #03fde8, /* blue glow shadow */
+    0 0 30px rgba(0, 0, 0, 0.3); /* darker shadow behind the glow */
+  object-fit: cover;
+  transition: all 0.3s ease-in-out;
+  position: relative;
 }
+
+.avatar:hover {
+  transform: scale(0.96);
+}
+
+
+
+
 
 .about-mf .box-shadow-full {
   padding-top: 4rem;
@@ -1067,15 +1072,6 @@ a:hover {
 .personal-photo {
   text-align: center;
 }
-
-.personal-photo img {
-  border: 10px solid #BBE1FA;
-  border-radius: 2%;
-  width: 500px;
-  height: 500px;
-  object-fit: cover;
-}
-
 
 
 .shell-container {
@@ -1184,7 +1180,7 @@ a:hover {
   margin-bottom: 3rem;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  background-image: linear-gradient(to top, #0000A0, #4B0082);
+  background-image: linear-gradient(to top, #0000A0, #00028d);
   border-radius: 20px;
   color: #0F4C75;
 }
