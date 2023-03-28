@@ -25,5 +25,5 @@ What will be a full game at some point, is now just a playable demo. Click any p
 
 https://codepen.io/bob6664569/pen/rOzmve  
 https://codepen.io/kathykato/pen/rZRaNe  
-https://codepen.io/gmawji/pen/yorxKR  
+https://codepen.io/gmawji/pen/yorxKR    
 https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/  
