@@ -110,7 +110,7 @@ window.addEventListener('scroll', showHideScrollForMore);
 	if ($('.text-slider').length == 1) {
     var typed_strings = $('.text-slider-items').text();
 		var typed = new Typed('.text-slider', {
-			strings: typed_strings.split(','),
+			strings: typed_strings.split('|'),
 			typeSpeed: 40,
 			loop: true,
 			backDelay: 1500,
@@ -198,6 +198,88 @@ window.addEventListener('scroll', showHideScrollForMore);
 	// 		}
 	// 	});
 	// });
+
+
+
+
+	// Code for the subtitles on the portfolio projects
+	const createWord = (text, index) => {
+		const word = document.createElement("span");
+	  
+		word.innerHTML = `${text} `;
+	  
+		word.classList.add("card-subtitle-word");
+	  
+		word.style.transitionDelay = `${index * 55}ms`;
+	  
+		return word;
+	  };
+	  
+	  const addWord = (text, index, subtitleElement) =>
+		subtitleElement.appendChild(createWord(text, index));
+	  
+	  const createSubtitle = (text, subtitleElement) =>
+		text.split(" ").map((word, index) => addWord(word, index, subtitleElement));
+	  
+	  const subtitles = [
+		{
+		  element: document.getElementsByClassName("subtitle-1")[0],
+		  text:
+			"Tensorflow object detection models created and trained to recognise many British Sign Language signs for an education and translation platform",
+		},
+		{
+		  element: document.getElementsByClassName("subtitle-2")[0],
+		  text:
+			"A probability-driven Battleships AI opponent using Python, and an original single-player Battleships game using a soundtrack composed by me",
+		},
+		{
+		  element: document.getElementsByClassName("subtitle-3")[0],
+		  text:
+			"A personal informatics Flask web application that links a user's Spotify listening data to their productivity when working - 'does that 2 hour heavy metal playlist make me more productive...?'",
+		},
+		{
+		  element: document.getElementsByClassName("subtitle-4")[0],
+		  text:
+			"A fully AI generated React application created in a team of 4 in the Bath Hack 2023 hackathon - 'Attends a hackathon. Writes 0 lines of code. Leaves'",
+		},
+		{
+		  element: document.getElementsByClassName("subtitle-5")[0],
+		  text:
+			"The website you are scrolling through, with a small JavaScript game on the top of the home screen - have you tried clicking a planet yet?",
+		},
+		{
+		  element: document.getElementsByClassName("subtitle-6")[0],
+		  text:
+			"An EPQ dissertation analysing the extreme ethical and moral issues surrounding Artificial Intelligence - discussing the potential future demise of humanity was definitely an interesting project",
+		},
+		{
+		  element: document.getElementsByClassName("subtitle-7")[0],
+		  text:
+			"An enigma machine simulation in Python using Object Oriented Programming",
+		},
+	  ];
+	  
+	  subtitles.forEach(({ element, text }) => createSubtitle(text, element));
+	  
+
+
+	// Code for the portfolio projects images to appear on click
+
+	  document.querySelectorAll('.card').forEach((card) => {
+		card.addEventListener('click', () => {
+		  const imageContainer = card.querySelector('.card-image-container');
+		  const isHidden = imageContainer.hasAttribute('hidden');
+	  
+		  if (isHidden) {
+			imageContainer.removeAttribute('hidden');
+			imageContainer.style.display = 'flex';
+		  } else {
+			imageContainer.setAttribute('hidden', true);
+			imageContainer.style.display = 'none';
+		  }
+		});
+	  });
+	  
 
 	
 	

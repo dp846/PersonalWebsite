@@ -652,7 +652,7 @@ const spawnTimeDecreasePerWave = 100;
 
 function initGame() {
     if (gameStarted) return;
-    asteroidSpawnLoop();
+    // asteroidSpawnLoop();
 
 
     // const numAsteroids = asteroidWaveCount + (currentWave - 1) * addedAsteroidsPerWave;
