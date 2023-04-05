@@ -257,30 +257,38 @@ window.addEventListener('scroll', showHideScrollForMore);
 		  text:
 			"An enigma machine simulation in Python using Object Oriented Programming",
 		},
+		{
+			element: document.getElementsByClassName("subtitle-8")[0],
+			text:
+			  "Python program that solves given sudokus using recursion, backtracking, and heuristics",
+		  },
 	  ];
 	  
 	  subtitles.forEach(({ element, text }) => createSubtitle(text, element));
 	  
 
 
-	// Code for the portfolio projects images to appear on click
-
-	  document.querySelectorAll('.card').forEach((card) => {
-		card.addEventListener('click', () => {
-		  const imageContainer = card.querySelector('.card-image-container');
-		  const isHidden = imageContainer.hasAttribute('hidden');
-	  
-		  if (isHidden) {
-			imageContainer.removeAttribute('hidden');
-			imageContainer.style.display = 'flex';
-		  } else {
-			imageContainer.setAttribute('hidden', true);
-			imageContainer.style.display = 'none';
+	  // Code for the planets moving towards the centre
+	  document.addEventListener("DOMContentLoaded", function () {
+		const cards = document.querySelectorAll(".card");
+		const windowHeight = window.innerHeight;
+	
+		function checkCardPosition() {
+		  for (let i = 0; i < cards.length; i++) {
+			const card = cards[i];
+			const cardPosition = card.getBoundingClientRect().top;
+	
+			if (cardPosition < windowHeight - (windowHeight/5)) {
+			  card.classList.add("visible");
+			} else {
+			  card.classList.remove("visible");
+			}
 		  }
-		});
+		}
+	
+		window.addEventListener("scroll", checkCardPosition);
+		checkCardPosition();
 	  });
-	  
-
 	
 	
 

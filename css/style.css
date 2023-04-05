@@ -201,7 +201,7 @@ html, body {
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Safari */
 }
 .blast:hover {
-  color: #48adff;
+  color: #00fdfd;
 }
 
 
@@ -810,6 +810,13 @@ a:hover {
   font-weight: 600;
 }
 
+.navbar-b .navbar-brand:hover {
+  color: #00fdfd;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+
 .navbar-b .navbar-nav .dropdown-item.show .dropdown-menu,
 .navbar-b .dropdown.show .dropdown-menu,
 .navbar-b .dropdown-btn.show .dropdown-menu {
@@ -1253,10 +1260,9 @@ a:hover {
 /*======================================
 //--//-->   PORTFOLIO
 ======================================*/
-
 :root {
   --border: rgb(3, 169, 244);
-  
+
   --g1: rgb(98, 0, 234);
   --g2: rgb(236, 64, 122);
   --g3: rgb(253, 216, 53);
@@ -1279,6 +1285,9 @@ a:hover {
   width: 100%;
   margin: 30px;
   background-color: transparent;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .card:hover:before {
@@ -1373,6 +1382,15 @@ a:hover {
   z-index: 2;
 }
 
+.card.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+
+
+
 /* Card images */
 
 .card-image-container {
@@ -1381,6 +1399,7 @@ a:hover {
   height: 400px;
   justify-content: center;
   align-items: center;
+  padding: 25px;
 }
 
 .card-image {
@@ -1388,6 +1407,9 @@ a:hover {
   max-width: 100%;
   object-fit: contain;
 }
+
+
+
 
 
 
