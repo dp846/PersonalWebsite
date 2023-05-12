@@ -245,7 +245,7 @@ window.addEventListener('scroll', showHideScrollForMore);
 		{
 		  element: document.getElementsByClassName("subtitle-5")[0],
 		  text:
-			"The website you are scrolling through, with a small JavaScript game on the top of the home screen - have you tried clicking a planet yet?",
+			"The website you are scrolling through, with a small JavaScript game on the top of the home scree - try clicking a planet! Control the the spaceship with WASD and click to shoot the asteroids! (Improvements to come soon...",
 		},
 		{
 		  element: document.getElementsByClassName("subtitle-6")[0],

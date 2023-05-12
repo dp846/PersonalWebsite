@@ -100,13 +100,13 @@ function updatePlanetHoverEffects() {
       planet.style.transition = 'all 0.5s ease';
     });
 
-    planet1.onmouseenter = () => applyHoverEffect(planet1, 1.5);
+    planet1.onmouseenter = () => applyHoverEffect(planet1, 1.25);
     planet1.onmouseleave = () => removeHoverEffect(planet1);
   
-    planet2.onmouseenter = () => applyHoverEffect(planet2, 1.5);
+    planet2.onmouseenter = () => applyHoverEffect(planet2, 1.25);
     planet2.onmouseleave = () => removeHoverEffect(planet2);
   
-    planet3.onmouseenter = () => applyHoverEffect(planet3, 1.5);
+    planet3.onmouseenter = () => applyHoverEffect(planet3, 1.25);
     planet3.onmouseleave = () => removeHoverEffect(planet3);
 
 }
@@ -652,7 +652,7 @@ const spawnTimeDecreasePerWave = 100;
 
 function initGame() {
     if (gameStarted) return;
-    // asteroidSpawnLoop();
+    asteroidSpawnLoop(); // Comment out if not workinggggg
 
 
     // const numAsteroids = asteroidWaveCount + (currentWave - 1) * addedAsteroidsPerWave;

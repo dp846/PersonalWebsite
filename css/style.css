@@ -76,7 +76,7 @@
 
 #planet {
   position: absolute;
-  left: 70%;
+  left: 65%;
   top: 55%;
   width: 9vw; /* Changed from 'em' to 'vw' */
   height: 9vw; /* Changed from 'em' to 'vw' */
@@ -87,7 +87,7 @@
 
 #planet2 {
   position: absolute;
-  left: 30%;
+  left: 25%;
   top: 60%;
   width: 10vw; /* Changed from 'em' to 'vw' */
   height: 10vw; /* Changed from 'em' to 'vw' */
@@ -98,7 +98,7 @@
 
 #planet3 {
   position: absolute;
-  left: 50%;
+  left: 48%;
   top: 25%;
   width: 6vw; /* Changed from 'em' to 'vw' */
   height: 6vw; /* Changed from 'em' to 'vw' */
@@ -136,12 +136,13 @@
 
 
 
-
-
 html, body {
   max-width: 100%;
   overflow-x: hidden;
   user-select: none;
+
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -185,7 +186,7 @@ html, body {
   font-weight: 300;
 }
 .blast {
-  font-size: 70px;
+  font-size: 1.6em;
   opacity: 0;
   display: inline-block;
   -webkit-transition: all 0.1s ease-out;
@@ -252,7 +253,7 @@ html, body {
 
 
 .intro-title span {
-  font-size: 11vmin;
+  font-size: 1.3em;
   text-align: left;
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   /* needs to be hidden during game */
@@ -291,7 +292,8 @@ html, body {
 }
 
 body {
-  background: radial-gradient(ellipse at bottom, #0c0c0c 0%, #000000 100%);
+  /* background: radial-gradient(ellipse at bottom, #0c0c0c 0%, #000000 100%);*/
+  background: #02010e;
   color: #BBE1FA;
   /* font-family: 'Roboto Slab', sans-serif; */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -408,9 +410,7 @@ a:hover {
   padding-top: 4rem;
 }
 
-.sect-mt4 {
-  margin-top: 4rem;
-}
+
 
 /*--/ Title s /--*/
 
@@ -493,56 +493,6 @@ a:hover {
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-/*------/ Socials /------*/
-
-.socials {
-  padding: 1.5rem 0;
-}
-
-.socials ul li {
-  display: inline-block;
-}
-
-.socials .ico-circle {
-  height: 40px;
-  width: 40px;
-  font-size: 1.7rem;
-  border-radius: 50%;
-  line-height: 1.4;
-  margin: 0 15px 0 0;
-  box-shadow: 0 0 0 3px #0078ff;
-  transition: all 500ms ease;
-}
-
-.socials .ico-circle:hover {
-  background-color: #0078ff;
-  color: #1B262C;
-  box-shadow: 0 0 0 3px #fff;
-  transition: all 500ms ease;
-}
-
-/*------/ Ul resect /------*/
-
-.ul-resect,
-.socials ul,
-.list-ico,
-.blog-wrapper .post-meta ul,
-.box-comments .list-comments,
-.widget-sidebar .list-sidebar,
-.widget-tags ul {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 0;
-}
-
-.list-ico {
-  line-height: 2;
-}
-
-.list-ico span {
-  color: #0078ff;
-  margin-right: 10px;
-}
 
 /*------/ Ico Circle /------*/
 
@@ -572,7 +522,7 @@ a:hover {
 .owl-theme .owl-dots .owl-dot span {
   width: 18px;
   height: 7px;
-  margin: 5px 5px;
+  /* margin: 5px 5px; */
   background: #1B262C;
   border: 0px solid #cde1f8;
   display: block;
@@ -596,7 +546,7 @@ a:hover {
   display: none;
 }
 
-.scrolltop-mf span {
+/* .scrolltop-mf span {
   z-index: 999;
   position: fixed;
   width: 42px;
@@ -613,7 +563,7 @@ a:hover {
   bottom: 50px;
   cursor: pointer;
   border-radius: 50%;
-}
+} */
 
 /* Back to top button */
 
@@ -1056,8 +1006,8 @@ a:hover {
   position: absolute;
   display: flex;
   border-radius: 50%;
-  animation: anim 7s linear infinite;
-  z-index: 0;
+  animation: anim 9s linear infinite;
+  z-index: -1;
 }
 
 @keyframes anim {
@@ -1067,8 +1017,8 @@ a:hover {
 
 .black-hole {
   position: absolute;
-  top: 400px;
-  left: 40px;
+  top: 50%;
+  left: 70%;
 
   background: #000;
   display: flex;
@@ -1141,9 +1091,9 @@ a:hover {
   margin-bottom: 2rem;
 }
 
-.about-mf .about-img img {
+/* .about-mf .about-img img {
   margin-left: 10px;
-}
+} */
 
 .about-mf .new-slider-items {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -1161,72 +1111,6 @@ a:hover {
   align-items: center;
 }
 
-.shell {
-  background-color: black;
-  color: white;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  padding: 20px;
-  width: 500px;
-  align-items: center;
-  justify-content: center;
-}
-
-.line {
-  display: block;
-  text-align: left;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-.prompt {
-  color: green;
-  display: inline-block;
-  margin-right: 5px;
-}
-
-.command {
-  color: white;
-  display: inline-block;
-}
-
-
-/*======================================
-//--//-->   SERVICES
-======================================*/
-
-.service-box {
-  background-color: #BBE1FA;
-  padding: 2.5rem 1.3rem;
-  border-radius: 1rem;
-  margin-bottom: 3rem;
-}
-
-.service-box:hover .ico-circle {
-  transition: all 500ms ease;
-  color: #fff;
-  background-color: #000000;
-  box-shadow: 0 0 0 10px #cde1f8;
-}
-
-.service-box .service-ico {
-  margin-bottom: 1rem;
-  color: #1e1e1e;
-}
-
-.service-box .ico-circle {
-  transition: all 500ms ease;
-  font-size: 4rem;
-}
-
-.service-box .s-title {
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  text-align: center;
-  padding: .4rem 0;
-}
-
-.service-box .s-description {
-  color: #4e4e4e;
-}
 
 /*======================================
 //--//-->   COUNTER
@@ -1651,10 +1535,6 @@ button:hover .button-text {
   margin-top: 1rem;
 }
 
-.blog-wrapper .post-meta ul li {
-  display: inline-block;
-  margin-left: 15px;
-}
 
 .blog-wrapper .post-meta ul a {
   color: #0078ff;
