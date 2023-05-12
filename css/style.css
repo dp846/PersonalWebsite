@@ -76,41 +76,35 @@
 
 #planet {
   position: absolute;
-  left: 70%; /* Adjust this value for horizontal positioning */
-  top: 55%; /* Adjust this value for vertical positioning */
-  width: 9em;
-  height: 9em;
+  left: 70%;
+  top: 55%;
+  width: 9vw; /* Changed from 'em' to 'vw' */
+  height: 9vw; /* Changed from 'em' to 'vw' */
   border-radius: 50%;
   box-shadow: 0px 0px 40px #00ffea;
   z-index: 1;
-
-  /* animation: oscillate-animation 10s ease-in-out infinite;   */
 }
 
 #planet2 {
   position: absolute;
-  left: 30%; /* Adjust this value for horizontal positioning */
-  top: 60%; /* Adjust this value for vertical positioning */
-  width: 10em;
-  width: 10em;
+  left: 30%;
+  top: 60%;
+  width: 10vw; /* Changed from 'em' to 'vw' */
+  height: 10vw; /* Changed from 'em' to 'vw' */
   border-radius: 50%;
   box-shadow: 0px 0px 40px #ffae00;
   z-index: 1;
-
-  /* animation: oscillate-animation 5s ease-in-out infinite;   */
 }
 
 #planet3 {
   position: absolute;
-  left: 50%; /* Adjust this value for horizontal positioning */
-  top: 25%; /* Adjust this value for vertical positioning */
-  width: 6em;
-  width: 6em;
+  left: 50%;
+  top: 25%;
+  width: 6vw; /* Changed from 'em' to 'vw' */
+  height: 6vw; /* Changed from 'em' to 'vw' */
   border-radius: 50%;
   box-shadow: 0px 0px 40px #ea00ff;
   z-index: 1;
-
-  /* animation: oscillate-animation 9s ease-in-out infinite;   */
 }
 
 
@@ -177,12 +171,9 @@ html, body {
 .text-zone {
   display: inline-block;
   white-space: nowrap;
-  left: 10%;
-  top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  width: 40%;
   max-height: 90%;
 
   align-items: center;
@@ -443,7 +434,7 @@ a:hover {
 
 .subtitle-a {
   color: #fff;
-  font-size: 20px;
+  font-size: 1.6em;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin-bottom: 14px;
 
@@ -456,7 +447,7 @@ a:hover {
 
 .link {
   color: #fff;
-  font-size: 20px;
+  font-size: 1.6em;
   margin-bottom: 14px;
 }
 
@@ -1133,8 +1124,8 @@ a:hover {
 .avatar:hover {
   transform: scale(0.96);
   box-shadow: 
-  0 0 20px #03fde8, /* blue glow shadow */
-  0 0 30px rgba(0, 0, 0, 0.3); /* darker shadow behind the glow */
+  0 0 10px #03fde8, /* blue glow shadow */
+  0 0 20px rgba(0, 0, 0, 0.3); /* darker shadow behind the glow */
 }
 
 
@@ -1359,11 +1350,11 @@ a:hover {
 }
 
 .card-title {
-  font-size: 3vmin; /* Reduced from 6vmin to 4vmin */
+  font-size: 2.2em; 
 }
 
 .card-subtitle {
-  font-size: 2vmin; /* Reduced from 3vmin to 2vmin */
+  font-size: 1.2em;
   margin-top: 2vmin;
 }
 

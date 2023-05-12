@@ -72,7 +72,7 @@ particlesJS("overlay-intro", {
       "events": {
         "onhover": {
           "enable": true,
-          "mode": "grab" // change this to "repulse" or "bubble" for different effects
+          "mode": "bubble" // change this to "repulse" or "bubble" for different effects
         },
         "resize": true
       },
