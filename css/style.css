@@ -958,6 +958,11 @@ a:hover {
   animation: float 5s ease-in-out infinite; /* Added float animation */
 }
 
+#message {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
 .down-arrow {
   width: 0;
   height: 0;
