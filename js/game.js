@@ -14,6 +14,9 @@ let shipAx = 0;
 let shipAy = 0;
 let shipVisible = false;
 
+let lastTimestamp = performance.now();
+const FPSscale = 144;
+
 updatePlanetHoverEffects();
 // Call the updateSvgSize function initially and on window resize
 updateSvgSize();
@@ -273,7 +276,7 @@ function calculateGravityForce(shipX, shipY, planet, planetMass) {
     return { forceX, forceY };
 }
 
-function updateSpaceshipPosition() {
+function updateSpaceshipPosition(deltaTime) {
     updateAcceleration();
 
     const gravityForce1 = calculateGravityForce(shipX, shipY, planet1, planet1Mass);
@@ -281,8 +284,8 @@ function updateSpaceshipPosition() {
     const gravityForce3 = calculateGravityForce(shipX, shipY, planet3, planet3Mass);
 
     if (shipVisible) {
-        shipVx += shipAx + gravityForce1.forceX + gravityForce2.forceX + gravityForce3.forceX;
-        shipVy += shipAy + gravityForce1.forceY + gravityForce2.forceY + gravityForce3.forceY;
+        shipVx += (shipAx + gravityForce1.forceX + gravityForce2.forceX + gravityForce3.forceX) * deltaTime * FPSscale;
+        shipVy += (shipAy + gravityForce1.forceY + gravityForce2.forceY + gravityForce3.forceY) * deltaTime * FPSscale;
 
         shipVx *= friction;
         shipVy *= friction;
@@ -293,8 +296,8 @@ function updateSpaceshipPosition() {
             shipVy = (shipVy / currentSpeed) * topSpeed;
         }
 
-        shipX += shipVx;
-        shipY += shipVy;
+        shipX += shipVx * deltaTime * FPSscale;
+        shipY += shipVy * deltaTime * FPSscale;
 
         // Calculate rotation angle based on current speed
         const rotationAngle = Math.atan2(shipVy, shipVx) * (180 / Math.PI) + 90;
@@ -673,6 +676,7 @@ const maxAsteroids = 40;
 let gameStarted = false;
 
 
+
 function asteroidSpawnLoop() {
     gameStarted = true;
     
@@ -696,22 +700,16 @@ function asteroidSpawnLoop() {
   }
 
 
-
-
-
-
-
-function gameLoop() {
-    updateSpaceshipPosition();
-
+  function updateProjectilePositions(deltaTime) {
     // Update projectile positions and create bullet trail particles
     for (let i = projectiles.length - 1; i >= 0; i--) {
         const projectile = projectiles[i];
         const oldX = parseFloat(projectile.element.style.left);
         const oldY = parseFloat(projectile.element.style.top);
 
-        projectile.element.style.left = `${oldX + projectile.velocityX}px`;
-        projectile.element.style.top = `${oldY + projectile.velocityY}px`;
+        // Multiply by deltaTime
+        projectile.element.style.left = `${oldX + projectile.velocityX * deltaTime * FPSscale}px`;
+        projectile.element.style.top = `${oldY + projectile.velocityY * deltaTime * FPSscale}px`;
 
         // Remove projectiles that go off-screen
         const projectileRect = projectile.element.getBoundingClientRect();
@@ -725,61 +723,74 @@ function gameLoop() {
             projectiles.splice(i, 1);
         }
     }
-  
-     // Update asteroid positions
-     for (let i = asteroids.length - 1; i >= 0; i--) {
-        const asteroid = asteroids[i];
-        const oldX = parseFloat(asteroid.element.style.left);
-        const oldY = parseFloat(asteroid.element.style.top);
+}
 
-        updateAsteroidVelocity(asteroid);
+function updateAsteroidPositions(deltaTime) {
+    // Update asteroid positions
+    for (let i = asteroids.length - 1; i >= 0; i--) {
+    const asteroid = asteroids[i];
+    const oldX = parseFloat(asteroid.element.style.left);
+    const oldY = parseFloat(asteroid.element.style.top);
 
-        asteroid.element.style.left = `${oldX + asteroid.velocityX}px`;
-        asteroid.element.style.top = `${oldY + asteroid.velocityY}px`;
+    updateAsteroidVelocity(asteroid);
 
-        // Update asteroid rotation
-        asteroid.rotation = (asteroid.rotation + asteroid.rotationSpeed) % 360;
-        asteroid.element.style.transform = `rotate(${asteroid.rotation}deg)`;
+    asteroid.element.style.left = `${oldX + asteroid.velocityX * deltaTime * FPSscale}px`;
+    asteroid.element.style.top = `${oldY + asteroid.velocityY * deltaTime * FPSscale}px`;
 
+    // Update asteroid rotation
+    asteroid.rotation = (asteroid.rotation + asteroid.rotationSpeed) % 360;
+    asteroid.element.style.transform = `rotate(${asteroid.rotation}deg)`;
 
+    // Check if the asteroid is colliding with a planet
+    if (checkCollision(asteroid.element, planet1, true) || checkCollision(asteroid.element, planet2, true) || checkCollision(asteroid.element, planet3, true)) {
+        // Get the asteroid's x and y coordinates
+        const asteroidX = asteroid.element.offsetLeft;
+        const asteroidY = asteroid.element.offsetTop;
 
-        // Check if the asteroid is colliding with a planet
-        if (checkCollision(asteroid.element, planet1, true) || checkCollision(asteroid.element, planet2, true) || checkCollision(asteroid.element, planet3, true)) {
-            // Get the asteroid's x and y coordinates
-            const asteroidX = asteroid.element.offsetLeft;
-            const asteroidY = asteroid.element.offsetTop;
+        // Get the asteroid's width and height
+        const asteroidWidth = asteroid.element.offsetWidth;
+        const asteroidHeight = asteroid.element.offsetHeight;
 
-            // Get the asteroid's width and height
-            const asteroidWidth = asteroid.element.offsetWidth;
-            const asteroidHeight = asteroid.element.offsetHeight;
+        // Calculate the center of the asteroid
+        const centerX = asteroidX + asteroidWidth / 2;
+        const centerY = asteroidY + asteroidHeight / 2;
 
-            // Calculate the center of the asteroid
-            const centerX = asteroidX + asteroidWidth / 2;
-            const centerY = asteroidY + asteroidHeight / 2;
+        // Create an explosion at the asteroid's center
+        createExplosion(centerX, centerY);
 
-            // Create an explosion at the asteroid's center
-            createExplosion(centerX, centerY);
-
-            destroyAsteroid(i);
-            continue;
-        }
-
-
-
-
-
-        // Remove asteroids that travel too far outside the window view
-        const asteroidRect = asteroid.element.getBoundingClientRect();
-        const buffer = 100; // Distance outside the window view before the asteroid is destroyed
-        if (
-            asteroidRect.left < -buffer ||
-            asteroidRect.right > window.innerWidth + buffer ||
-            asteroidRect.top < -buffer ||
-            asteroidRect.bottom > window.innerHeight + buffer
-        ) {
-            destroyAsteroid(i);
-        }
+        destroyAsteroid(i);
+        continue;
     }
+
+    // Remove asteroids that travel too far outside the window view
+    const asteroidRect = asteroid.element.getBoundingClientRect();
+    const buffer = 100; // Distance outside the window view before the asteroid is destroyed
+    if (
+        asteroidRect.left < -buffer ||
+        asteroidRect.right > window.innerWidth + buffer ||
+        asteroidRect.top < -buffer ||
+        asteroidRect.bottom > window.innerHeight + buffer
+    ) {
+        destroyAsteroid(i);
+    }
+}
+}
+
+
+
+
+
+
+function gameLoop(timestamp) {
+
+    const deltaTime = (timestamp - lastTimestamp) / 1000;  // Divide by 1000 to convert ms to s
+    lastTimestamp = timestamp;
+
+    updateSpaceshipPosition(deltaTime);
+  
+    updateAsteroidPositions(deltaTime);
+
+    updateProjectilePositions(deltaTime);
    
   // Check for collisions between projectiles and asteroids
   checkProjectileAsteroidCollisions();
@@ -811,4 +822,4 @@ function gameLoop() {
 }
 
 
-gameLoop();
+gameLoop(lastTimestamp);
