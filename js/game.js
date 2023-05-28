@@ -256,7 +256,7 @@ function destroySpaceship() {
 
     updatePlanetHoverEffects();
     clearTrail();
-    }
+}
 
 function calculateGravityForce(shipX, shipY, planet, planetMass) {
     const planetRect = planet.getBoundingClientRect();
