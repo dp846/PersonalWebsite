@@ -15,7 +15,7 @@ let shipAy = 0;
 let shipVisible = false;
 
 let lastTimestamp = performance.now();
-const FPSscale = 144;
+const FPSscale = 120;
 
 updatePlanetHoverEffects();
 // Call the updateSvgSize function initially and on window resize
@@ -32,7 +32,7 @@ window.addEventListener('resize', () => {
 });
 
 const friction = 0.98;
-const topSpeed = 10;
+const topSpeed = 8;
 const initialVelocity = 8;
 
 const planet1Mass = 600;
@@ -672,7 +672,7 @@ function startNewWave(numAsteroids, spawnTimeDecrease) {
 
 
 let asteroidCount = 0;
-const maxAsteroids = 40;
+const maxAsteroids = 20;
 let gameStarted = false;
 
 
@@ -783,8 +783,10 @@ function updateAsteroidPositions(deltaTime) {
 
 function gameLoop(timestamp) {
 
-    const deltaTime = (timestamp - lastTimestamp) / 1000;  // Divide by 1000 to convert ms to s
+    let deltaTime = (timestamp - lastTimestamp) / 1000;  // Divide by 1000 to convert ms to s
     lastTimestamp = timestamp;
+
+    deltaTime = Math.min(deltaTime, 1 / 15);
 
     updateSpaceshipPosition(deltaTime);
   
