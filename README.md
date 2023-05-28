@@ -17,8 +17,11 @@ What will be a full game at some point, is now just a playable demo. Click any p
 
 ![image](https://user-images.githubusercontent.com/117474143/228104835-02124f78-b529-45b4-8897-f5dea16690da.png)
 
+![image](https://user-images.githubusercontent.com/117474143/228104018-511508ed-0eff-4723-b6c5-a1de9f507dc9.png)  
 
-![image](https://user-images.githubusercontent.com/117474143/228104018-511508ed-0eff-4723-b6c5-a1de9f507dc9.png)
+![image](https://github.com/dp846/PersonalWebsite/assets/117474143/5d27d7b1-a1e6-49f4-b0a7-260759ff1788)
+
+
 
 
 ## Credits:
