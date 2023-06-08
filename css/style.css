@@ -589,7 +589,18 @@ a:hover {
   color: #fff;
 }
 
-/* Prelaoder */
+/* Preloader */
+
+.loading-text {
+  position: fixed;
+  top: calc(50% + 40px); /* Position below spinner */
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 20px;
+  font-family: monospace;
+  letter-spacing: 3px;
+}
 
 #preloader {
   position: fixed;
@@ -599,44 +610,52 @@ a:hover {
   bottom: 0;
   z-index: 9999;
   overflow: hidden;
-  background: #fff;
+  background: #02010e;
 }
 
-#preloader:before {
+#preloader-content {
+  opacity: 0;  /* Initially invisible */
+  transition: opacity 0.75s;  /* Control the speed of fading in and out */
+}
+
+
+#preloader-content:before {
   content: "";
   position: fixed;
   top: calc(50% - 30px);
   left: calc(50% - 30px);
-  border: 6px solid #f2f2f2;
-  border-top: 6px solid #0078ff;
+  border: 3px solid #390084;
+  border-top: 6px solid #00e5ff;
   border-radius: 50%;
   width: 60px;
   height: 60px;
   -webkit-animation: animate-preloader 1s linear infinite;
   animation: animate-preloader 1s linear infinite;
+  background: linear-gradient(130deg, var(--g1), var(--g2), var(--g3));
+  background-size: 300% 300%;
 }
 
-@-webkit-keyframes animate-preloader {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
 
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
+
 
 @keyframes animate-preloader {
   0% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-
   100% {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
@@ -876,6 +895,7 @@ a:hover {
   color: #fff;
   font-weight: 600;
   font-size: 3rem;
+  display: none;
 }
 
 .intro .intro-subtitle {
@@ -2035,8 +2055,3 @@ footer .credits a {
   }
 }
 
-@media (max-width: 768px) {
-  .back-to-top {
-    bottom: 15px;
-  }
-}

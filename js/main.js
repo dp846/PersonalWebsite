@@ -10,27 +10,57 @@
     }
   })
 
-  // Preloader
-  $(window).on('load', function () {
-    if ($('#preloader').length) {
-      $('#preloader').delay(100).fadeOut('slow', function () {
-        $(this).remove();
-      });
-    }
-  });
+  
+// Call the function from Blast.js file as soon as the page loads
+startBlastJsEffect();
 
-  // Back to top button
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 100) {
-      $('.back-to-top').fadeIn('slow');
-    } else {
-      $('.back-to-top').fadeOut('slow');
+// Preloader
+$(window).on('load', function () {
+    if ($('#preloader').length) {
+
+        $('#preloader-content').css('opacity', 0); // Make sure preloader content is initially invisible
+
+        setTimeout(function() {
+            $('#preloader-content').animate({ opacity: 1 }, 500, function() { // Fade in preloader content
+
+                // Start the text scrambling after a delay of 1000ms
+                setTimeout(function() {
+                    scrambleInterval = setInterval(scramble, 25);  // Start the text scrambling
+                    revealInterval = setInterval(reveal, 100);  // Start the text revealing
+                }, 1000);
+            });
+
+            // Wait 2.5 seconds before fading out preloader content
+            setTimeout(function() {
+                clearInterval(scrambleInterval);  // Stop the text scrambling
+                clearInterval(revealInterval);  // Stop the text revealing
+
+                $('#preloader-content').animate({ opacity: 0 }, 1000, function() { // Fade out preloader content
+
+                    // After preloader content has faded out, wait 500ms before fading out the preloader
+                    setTimeout(function() {
+                        $('#preloader').fadeOut(750, function() {
+                            $(this).remove();
+                        });
+                    }, 500);
+                });
+            }, 2500);
+        }, 500); // Delay for 500ms before starting fade-in
     }
-  });
-  $('.back-to-top').click(function(){
-    $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
-    return false;
-  });
+});
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
 
 
   //Scroll for more indicator
@@ -323,6 +353,8 @@ window.addEventListener('scroll', showHideScrollForMore);
 
 	// Call the function every 3 seconds (3000 milliseconds)
 	setInterval(changeMessage, 3000);
+
+
 
 	
 
