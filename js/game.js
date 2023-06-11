@@ -136,6 +136,8 @@ function spawnSpaceship(x, y) {
     spaceship.style.visibility = 'visible';
     shipVx = initialVelocity;
     shipVy = 0;
+
+    $('.intro-title, .intro-subtitle').animate({opacity: 0}, 700);
 }
 
 planet1.addEventListener('click', () => {
@@ -256,6 +258,8 @@ function destroySpaceship() {
 
     updatePlanetHoverEffects();
     clearTrail();
+
+    $('.intro-title, .intro-subtitle').animate({opacity: 1}, 1100);
 }
 
 function calculateGravityForce(shipX, shipY, planet, planetMass) {
@@ -777,6 +781,8 @@ function updateAsteroidPositions(deltaTime) {
 }
 
 
+var elementsToFade = $('.intro-title, .intro-subtitle');
+
 
 
 
@@ -818,6 +824,8 @@ function gameLoop(timestamp) {
             destroySpaceship();
         }
     }
+
+
 
 
     requestAnimationFrame(gameLoop);

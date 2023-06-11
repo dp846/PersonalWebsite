@@ -14,40 +14,40 @@
 // Call the function from Blast.js file as soon as the page loads
 startBlastJsEffect();
 
-// Preloader
-$(window).on('load', function () {
-    if ($('#preloader').length) {
+	// Preloader
+	$(window).on('load', function () {
+		if ($('#preloader').length) {
 
-        $('#preloader-content').css('opacity', 0); // Make sure preloader content is initially invisible
+			$('#preloader-content').css('opacity', 0); // Make sure preloader content is initially invisible
 
-        setTimeout(function() {
-            $('#preloader-content').animate({ opacity: 1 }, 500, function() { // Fade in preloader content
+			setTimeout(function() {
+				$('#preloader-content').animate({ opacity: 1 }, 500, function() { // Fade in preloader content
 
-                // Start the text scrambling after a delay of 1000ms
-                setTimeout(function() {
-                    scrambleInterval = setInterval(scramble, 25);  // Start the text scrambling
-                    revealInterval = setInterval(reveal, 100);  // Start the text revealing
-                }, 1000);
-            });
+					// Start the text scrambling after a delay of 1000ms
+					setTimeout(function() {
+						scrambleInterval = setInterval(scramble, 25);  // Start the text scrambling
+						revealInterval = setInterval(reveal, 100);  // Start the text revealing
+					}, 1000);
+				});
 
-            // Wait 2.5 seconds before fading out preloader content
-            setTimeout(function() {
-                clearInterval(scrambleInterval);  // Stop the text scrambling
-                clearInterval(revealInterval);  // Stop the text revealing
+				// Wait 2.5 seconds before fading out preloader content
+				setTimeout(function() {
+					clearInterval(scrambleInterval);  // Stop the text scrambling
+					clearInterval(revealInterval);  // Stop the text revealing
 
-                $('#preloader-content').animate({ opacity: 0 }, 1000, function() { // Fade out preloader content
+					$('#preloader-content').animate({ opacity: 0 }, 1000, function() { // Fade out preloader content
 
-                    // After preloader content has faded out, wait 500ms before fading out the preloader
-                    setTimeout(function() {
-                        $('#preloader').fadeOut(750, function() {
-                            $(this).remove();
-                        });
-                    }, 500);
-                });
-            }, 2500);
-        }, 500); // Delay for 500ms before starting fade-in
-    }
-});
+						// After preloader content has faded out, wait 500ms before fading out the preloader
+						setTimeout(function() {
+							$('#preloader').fadeOut(750, function() {
+								$(this).remove();
+							});
+						}, 500);
+					});
+				}, 2500);
+			}, 500); // Delay for 500ms before starting fade-in
+		}
+	});
 
 
   
@@ -172,62 +172,6 @@ window.addEventListener('scroll', showHideScrollForMore);
 			}
 		}
 	});
-
-
-
-
-	// code for moving the planets towards the cursor for interactive feel
-
-	// var planet = document.getElementById("planet");
-	// document.addEventListener("mousemove", function(event) {
-	// var x = event.clientX;
-	// var y = event.clientY;
-	// planet.style.left = -100 + (x / 100) + "px";
-	// planet.style.top = -100 + (y / 100) + "px";
-	// });
-
-	// var planet2 = document.getElementById("planet2");
-	// document.addEventListener("mousemove", function(event) {
-	// var x = event.clientX;
-	// var y = event.clientY;
-	// planet2.style.left = 900 + (x / 12) + "px";
-	// planet2.style.top = 200 + (y / 12) + "px";
-	// });
-
-
-	// Crosshair code
-
-	// document.addEventListener('DOMContentLoaded', () => {
-	// 	// Create the crosshair element and add it to the body
-	// 	const crosshair = document.createElement('div');
-	// 	crosshair.classList.add('crosshair');
-	// 	document.body.appendChild(crosshair);
-	
-	// 	// Update the crosshair position based on the mouse movement
-	// 	document.addEventListener('mousemove', (e) => {
-	// 		const x = e.clientX;
-	// 		const y = e.clientY;
-	
-	// 		crosshair.style.left = `${x - crosshair.offsetWidth / 2}px`;
-	// 		crosshair.style.top = `${y - crosshair.offsetHeight / 2}px`;
-	// 	});
-	
-	// 	let isAnimating = false; // Flag to track the animation state
-	
-	// 	// Add click event listener to play the shooting animation
-	// 	document.addEventListener('click', () => {
-	// 		if (!isAnimating) {
-	// 			isAnimating = true;
-	// 			crosshair.classList.add('shoot');
-	
-	// 			// Remove the shooting animation class after the animation is complete
-	// 			setTimeout(() => {
-	// 				crosshair.classList.remove('shoot');
-	// 				isAnimating = false;
-	// 			}, 500); // Duration of the animation in milliseconds
-	// 		}
-	// 	});
-	// });
 
 
 
