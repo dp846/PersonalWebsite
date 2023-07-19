@@ -242,7 +242,6 @@ window.addEventListener('scroll', showHideScrollForMore);
 	  
 
 
-	  // Code for the planets moving towards the centre
 	  document.addEventListener("DOMContentLoaded", function () {
 		const cards = document.querySelectorAll(".card");
 		const windowHeight = window.innerHeight;
