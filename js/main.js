@@ -44,7 +44,7 @@ startBlastJsEffect();
 							});
 						}, 500);
 					});
-				}, 2500);
+				}, 1500);
 			}, 500); // Delay for 500ms before starting fade-in
 		}
 	});

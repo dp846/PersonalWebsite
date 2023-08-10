@@ -34,6 +34,7 @@ window.addEventListener('resize', () => {
 const friction = 0.98;
 const topSpeed = 8;
 const initialVelocity = 8;
+let currentTopSpeed = topSpeed;
 
 const planet1Mass = 600;
 const planet2Mass = 1200;
@@ -45,7 +46,8 @@ const keys = {
     w: false,
     s: false,
     a: false,
-    d: false
+    d: false,
+    shift: false
 };
 
 const trailSize = 5; // Adjust this value to control the thickness of the trail
@@ -181,6 +183,12 @@ document.addEventListener('keydown', (event) => {
         keys[key] = true;
         event.preventDefault();
     }
+
+    // Shift key
+    if (event.key.toLowerCase() === "shift") {
+        keys.shift = true;
+        event.preventDefault();
+    }
 });
 
 document.addEventListener('keyup', (event) => {
@@ -195,6 +203,12 @@ document.addEventListener('keyup', (event) => {
         keys[key] = false;
         event.preventDefault();
     }
+
+    // Shift key
+    if (event.key.toLowerCase() === "shift") {
+        keys.shift = false;
+        event.preventDefault();
+    }
 });
 
 
@@ -204,17 +218,19 @@ function updateAcceleration() {
     if (!shipVisible) return;
 
     const acceleration = 0.2;
+    const boostMultiplier = keys.shift ? 3 : 1; // Double the acceleration when boosting. Adjust this as needed.
+    
     shipAx = 0;
     shipAy = 0;
 
-    if (keys.w) shipAy = -acceleration;
-    if (keys.s) shipAy = acceleration;
-    if (keys.a) shipAx = -acceleration;
-    if (keys.d) shipAx = acceleration;
+    if (keys.w) shipAy = -acceleration * boostMultiplier;
+    if (keys.s) shipAy = acceleration * boostMultiplier;
+    if (keys.a) shipAx = -acceleration * boostMultiplier;
+    if (keys.d) shipAx = acceleration * boostMultiplier;
 }
 
 
-
+// I don't like the idea of being killed when you go out of bounds - commented out until I think of a solution
 // function checkSpaceshipOutOfBounds() {
 //     if (!shipVisible) return;
 
@@ -295,7 +311,10 @@ function updateSpaceshipPosition(deltaTime) {
         shipVy *= friction;
 
         const currentSpeed = Math.sqrt(shipVx ** 2 + shipVy ** 2);
-        if (currentSpeed > topSpeed) {
+
+        const currentTopSpeed = keys.shift ? topSpeed * 1.3 : topSpeed; // Boosting topSpeed by 50% when Shift is pressed. Adjust as necessary.
+
+        if (currentSpeed > currentTopSpeed) {
             shipVx = (shipVx / currentSpeed) * topSpeed;
             shipVy = (shipVy / currentSpeed) * topSpeed;
         }
