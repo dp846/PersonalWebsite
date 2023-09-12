@@ -17,37 +17,36 @@ startBlastJsEffect();
 	// Preloader
 	$(window).on('load', function () {
 		if ($('#preloader').length) {
-
+			let scrambleInterval, revealInterval;
+	
 			$('#preloader-content').css('opacity', 0); // Make sure preloader content is initially invisible
-
-			setTimeout(function() {
-				$('#preloader-content').animate({ opacity: 1 }, 500, function() { // Fade in preloader content
-
-					// Start the text scrambling after a delay of 1000ms
-					setTimeout(function() {
-						scrambleInterval = setInterval(scramble, 25);  // Start the text scrambling
-						revealInterval = setInterval(reveal, 100);  // Start the text revealing
-					}, 1000);
-				});
-
-				// Wait 2.5 seconds before fading out preloader content
+	
+			$('#preloader-content').animate({ opacity: 1 }, 500, function() { // Fade in preloader content
+				// Start the text scrambling after a delay of 1000ms
 				setTimeout(function() {
-					clearInterval(scrambleInterval);  // Stop the text scrambling
-					clearInterval(revealInterval);  // Stop the text revealing
-
-					$('#preloader-content').animate({ opacity: 0 }, 1000, function() { // Fade out preloader content
-
-						// After preloader content has faded out, wait 500ms before fading out the preloader
-						setTimeout(function() {
-							$('#preloader').fadeOut(750, function() {
-								$(this).remove();
-							});
-						}, 500);
-					});
-				}, 1500);
-			}, 500); // Delay for 500ms before starting fade-in
+					scrambleInterval = setInterval(scramble, 25);  // Start the text scrambling
+					revealInterval = setInterval(reveal, 100);  // Start the text revealing
+				}, 1000);
+			});
+	
+			// Wait until everything is loaded, then start the process to hide the preloader
+			setTimeout(function() {
+				clearInterval(scrambleInterval);  // Stop the text scrambling
+				clearInterval(revealInterval);  // Stop the text revealing
+	
+				$('#preloader-content').animate({ opacity: 0 }, 1000, function() { // Fade out preloader content
+					// After preloader content has faded out, wait 500ms before fading out the preloader
+					setTimeout(function() {
+						$('#preloader').fadeOut(750, function() {
+							$(this).remove();
+						});
+					}, 500);
+				});
+			}, 1500); // Adjust this timeout to control the minimum display time of the preloader
 		}
 	});
+
+	
 
 
   
@@ -199,40 +198,45 @@ window.addEventListener('scroll', showHideScrollForMore);
 		{
 		  element: document.getElementsByClassName("subtitle-1")[0],
 		  text:
-			"Tensorflow object detection models created and trained to recognise many British Sign Language signs for an education and translation platform",
+			"Currently in the process of completing the Cryptopals challenges in both CERT-C standard C code and also in Python - a series of many challenges designed to improve knowledge of cryptography and security",
 		},
 		{
 		  element: document.getElementsByClassName("subtitle-2")[0],
 		  text:
-			"A probability-driven Battleships AI opponent using Python, and an original single-player Battleships game using a soundtrack composed by me",
+			"Tensorflow object detection models created and trained to recognise many British Sign Language signs for an education and translation platform",
 		},
 		{
 		  element: document.getElementsByClassName("subtitle-3")[0],
 		  text:
-			"A personal informatics Flask web application that links a user's Spotify listening data to their productivity when working - 'does that 2 hour heavy metal playlist make me more productive...?'",
+			"A probability-driven Battleships AI opponent using Python, and an original single-player Battleships game using a soundtrack composed by me",
 		},
 		{
-		  element: document.getElementsByClassName("subtitle-4")[0],
-		  text:
-			"A fully AI generated React application created in a team of 4 in the Bath Hack 2023 hackathon - 'Attends a hackathon. Writes 0 lines of code. Leaves'",
+		element: document.getElementsByClassName("subtitle-4")[0],
+			text:
+			  "An enigma machine simulation in Python using Object Oriented Programming",
 		},
 		{
 		  element: document.getElementsByClassName("subtitle-5")[0],
 		  text:
-			"The website you are scrolling through, with a small JavaScript game on the top of the home scree - try clicking a planet! Control the the spaceship with WASD and click to shoot the asteroids! Improvements to come soon...",
+			"A personal informatics Flask web application that links a user's Spotify listening data to their productivity when working - 'does that 2 hour heavy metal playlist make me more productive...?'",
 		},
 		{
 		  element: document.getElementsByClassName("subtitle-6")[0],
 		  text:
-			"An EPQ dissertation analysing the extreme ethical and moral issues surrounding Artificial Intelligence - discussing the potential future demise of humanity was definitely an interesting project",
+			"A fully AI generated React application created in a team of 4 in the Bath Hack 2023 hackathon - 'Attends a hackathon. Writes 0 lines of code. Leaves'",
 		},
 		{
 		  element: document.getElementsByClassName("subtitle-7")[0],
 		  text:
-			"An enigma machine simulation in Python using Object Oriented Programming",
+			"The website you are scrolling through, with a small JavaScript game on the top of the home scree - try clicking a planet! Control the the spaceship with WASD and click to shoot the asteroids! Improvements to come soon...",
 		},
 		{
-			element: document.getElementsByClassName("subtitle-8")[0],
+		  element: document.getElementsByClassName("subtitle-8")[0],
+		  text:
+			"An EPQ dissertation analysing the extreme ethical and moral issues surrounding Artificial Intelligence - discussing the potential future demise of humanity was definitely an interesting project",
+		},
+		{
+			element: document.getElementsByClassName("subtitle-9")[0],
 			text:
 			  "Python program that solves given sudokus using recursion, backtracking, and heuristics",
 		  },
