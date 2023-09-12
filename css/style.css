@@ -260,8 +260,7 @@ html, body {
 }
 
 .intro-title span:hover {
-  color: #ffffff;
-  text-shadow: 0 0 20px #ffffff;
+  color: #00ffea;
 }
 
 .intro-title span:hover:active {
