@@ -15,6 +15,13 @@
   -ms-user-select: none;
 }
 
+@media (max-width: 850px) {
+  .planet-img {
+    display: none;
+  }
+}
+
+
 #page-top
 {
   box-sizing: border-box;

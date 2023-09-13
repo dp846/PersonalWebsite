@@ -1,7 +1,7 @@
 particlesJS("overlay-intro", {
     "particles": {
       "number": {
-        "value": 3,
+        "value": 5,
         "density": {
           "enable": true,
           "value_area": 789.1476416322727
@@ -26,22 +26,22 @@ particlesJS("overlay-intro", {
         }
       },
       "opacity": {
-        "value": 1.5,
+        "value": 3,
         "random": false,
         "anim": {
           "enable": true,
-          "speed": 0.2,
+          "speed": 0.4,
           "opacity_min": 1,
           "sync": false
         }
       },
       "size": {
-        "value": 2,
+        "value": 3.5,
         "random": true,
         "anim": {
           "enable": true,
           "speed": 0.2,
-          "size_min": 1,
+          "size_min": 1.5,
           "sync": false
         }
       },
@@ -71,7 +71,7 @@ particlesJS("overlay-intro", {
       "detect_on": "canvas",
       "events": {
         "onhover": {
-          "enable": true,
+          "enable": false,
           "mode": "bubble" // change this to "repulse" or "bubble" for different effects
         },
         "resize": true
