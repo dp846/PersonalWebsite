@@ -275,7 +275,7 @@ window.addEventListener('scroll', showHideScrollForMore);
 	var span = document.querySelector('#message');
 
 	// Define your messages
-	var messages = ["Click a planet to play", "WASD to move, click to shoot", "Scroll for more"];
+	var messages = ["On a computer? Click a planet to play", "On a computer? WASD to move, click to shoot", "Scroll for more"];
 
 	// Set an initial index
 	var index = 0;

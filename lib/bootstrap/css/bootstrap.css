@@ -50,9 +50,9 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-@-ms-viewport {
+/* @-ms-viewport {
   width: device-width;
-}
+} */
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;

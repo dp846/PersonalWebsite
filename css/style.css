@@ -2,7 +2,7 @@
 
 #game {
   box-sizing: border-box;
-
+  overflow-x: hidden;
 }
 
 #planet, #planet2, #planet3 {
@@ -98,12 +98,13 @@
 
 html, body {
   max-width: 100%;
-  overflow-x: hidden;
   user-select: none;
 
   margin: 0;
   padding: 0;
 }
+
+
 
 
 /* BLAST ANIMATION SUBTITLES */
@@ -125,7 +126,7 @@ html, body {
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Safari */
 }
 
-.text-zone {
+/* .text-zone {
   display: inline-block;
   white-space: nowrap;
   -webkit-transform: translateY(-50%);
@@ -136,7 +137,7 @@ html, body {
   align-items: center;
   justify-content: center;
   text-align: center;
-}
+} */
 
 .text-zone a {
   font-weight: 300;
@@ -586,13 +587,13 @@ a:hover {
 }
 
 
-.navbar-b .navbar-nav .dropdown-item.show .dropdown-menu,
+/* .navbar-b .navbar-nav .dropdown-item.show .dropdown-menu,
 .navbar-b .dropdown.show .dropdown-menu,
 .navbar-b .dropdown-btn.show .dropdown-menu {
   -webkit-transform: translate3d(0px, 0px, 0px);
   transform: translate3d(0px, 0px, 0px);
   visibility: visible !important;
-}
+} */
 
 .navbar-b .dropdown-menu {
   margin: 1.12rem 0 0;
@@ -699,7 +700,7 @@ a:hover {
 .intro .intro-title {
   color: #fff;
   font-weight: 600;
-  font-size: 3rem;
+  font-size: 2.5rem;
   display: none;
 }
 
@@ -880,6 +881,13 @@ a:hover {
   box-shadow: #f4eb42 0 0 1vh 0.1vh,
               #f4eb42 2vh 1vh 2vh 0.3vh;
 }
+
+@media (max-width: 750px) {
+  .black-hole {
+      display: none;
+  }
+}
+
 
 
 
