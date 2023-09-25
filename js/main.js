@@ -45,7 +45,10 @@ startBlastJsEffect();
 			}, 1500); // Adjust this timeout to control the minimum display time of the preloader
 		}
 	});
-
+	
+	
+	
+	
 	
 
 
@@ -66,9 +69,9 @@ startBlastJsEffect();
   const scrollForMore = document.querySelector('.scroll-for-more');
 
 	function showHideScrollForMore() {
-	if (window.pageYOffset === 0) {
+	if (window.scrollY === 0) {
 		scrollForMore.style.opacity = '1';
-		} else {
+	} else {
 			scrollForMore.style.opacity = '0';
 		}
 	}
@@ -275,31 +278,31 @@ window.addEventListener('scroll', showHideScrollForMore);
 	var span = document.querySelector('#message');
 
 	// Define your messages
-	var messages = ["On a computer? Click a planet to play", "On a computer? WASD to move, click to shoot", "Scroll for more"];
+	var messages = ["Scroll for more"];
 
-	// Set an initial index
-	var index = 0;
+	// // Set an initial index
+	// var index = 0;
 
-	// Function to change the message
-	function changeMessage() {
-		// Fade out
-		span.style.opacity = 0;
+	// // Function to change the message
+	// function changeMessage() {
+	// 	// Fade out
+	// 	span.style.opacity = 0;
 
-		// After transition ended, change text and fade in
-		setTimeout(function() {
-			// Update the text inside the span
-			span.textContent = messages[index];
+	// 	// After transition ended, change text and fade in
+	// 	setTimeout(function() {
+	// 		// Update the text inside the span
+	// 		span.textContent = messages[index];
 
-			// Update the index
-			index = (index + 1) % messages.length; // This will loop back to 0 when it reaches the end of the array
+	// 		// Update the index
+	// 		index = (index + 1) % messages.length; // This will loop back to 0 when it reaches the end of the array
 
-			// Fade in
-			span.style.opacity = 1;
-		}, 500); // 500 to match the transition duration in the CSS
-	}
+	// 		// Fade in
+	// 		span.style.opacity = 1;
+	// 	}, 500); // 500 to match the transition duration in the CSS
+	// }
 
-	// Call the function every 3 seconds (3000 milliseconds)
-	setInterval(changeMessage, 3000);
+	// // Call the function every 3 seconds (3000 milliseconds)
+	// setInterval(changeMessage, 3000);
 
 
 

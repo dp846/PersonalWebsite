@@ -1,7 +1,7 @@
-particlesJS("overlay-intro", {
+particlesJS("home", {
     "particles": {
       "number": {
-        "value": 5,
+        "value": 3,
         "density": {
           "enable": true,
           "value_area": 789.1476416322727
