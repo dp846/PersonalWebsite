@@ -6,6 +6,8 @@ const spaceship = document.getElementById('spaceship');
 const title = document.getElementsByClassName('container')
 const typing = document.getElementsByClassName('intro-subtitle')
 
+let score = 0;
+
 let shipX = 0;
 let shipY = 0;
 let shipVx = 0;
@@ -17,20 +19,6 @@ let shipVisible = false;
 let lastTimestamp = performance.now();
 const FPSscale = 120;
 
-updatePlanetHoverEffects();
-// Call the updateSvgSize function initially and on window resize
-updateSvgSize();
-
-// Update svgSize on scroll
-window.addEventListener('scroll', () => {
-    updateSvgSize();
-});
-
-// Update svgSize on window resize
-window.addEventListener('resize', () => {
-    updateSvgSize();
-});
-
 const friction = 0.98;
 const topSpeed = 8;
 const initialVelocity = 8;
@@ -39,8 +27,6 @@ let currentTopSpeed = topSpeed;
 const planet1Mass = 600;
 const planet2Mass = 1200;
 const planet3Mass = 300;
-
-
 
 const keys = {
     w: false,
@@ -56,6 +42,25 @@ const trailColor = '#FF69B4'; // Neon pink color
 const projectiles = [];
 const asteroidGravityScale = 0.35; // Adjust this value to change the strength of gravity acting on the asteroids
 
+function updateScore(value) {
+    score += value;
+    const scoreDisplay = document.getElementById("score-display");
+    scoreDisplay.textContent = "Score: " + score;
+}
+
+updatePlanetHoverEffects();
+// Call the updateSvgSize function initially and on window resize
+updateSvgSize();
+
+// Update svgSize on scroll
+window.addEventListener('scroll', () => {
+    updateSvgSize();
+});
+
+// Update svgSize on window resize
+window.addEventListener('resize', () => {
+    updateSvgSize();
+});
 
 function updateSvgSize() {
     const trailSvg = document.getElementById("trail-svg");
@@ -81,8 +86,6 @@ function updateSvgSize() {
     trailSvg.setAttribute("width", width);
     trailSvg.setAttribute("height", height);
 }
-
-
 
 
 function updatePlanetHoverEffects() {
@@ -139,7 +142,13 @@ function spawnSpaceship(x, y) {
     shipVx = initialVelocity;
     shipVy = 0;
 
-    $('.intro-title, .intro-subtitle').animate({opacity: 0}, 700);
+    $('.intro-title, .intro-subtitle').animate({opacity: 0}, 100, function() {
+        // Introduce a delay after the titles have faded out
+        setTimeout(function() {
+            // Fade in the score-display
+            $('#score-display').fadeIn(100);
+        }, 100); // This is a 300ms delay, you can adjust this to your preference
+    });
 }
 
 planet1.addEventListener('click', () => {
@@ -229,21 +238,19 @@ function updateAcceleration() {
     if (keys.d) shipAx = acceleration * boostMultiplier;
 }
 
+function checkSpaceshipOutOfBounds() {
+    if (!shipVisible) return;
 
-// I don't like the idea of being killed when you go out of bounds - commented out until I think of a solution
-// function checkSpaceshipOutOfBounds() {
-//     if (!shipVisible) return;
-
-//     const spaceshipRect = spaceship.getBoundingClientRect();
-//     if (
-//         spaceshipRect.left < 0 ||
-//         spaceshipRect.right > window.innerWidth ||
-//         spaceshipRect.top < 0 ||
-//         spaceshipRect.bottom > window.innerHeight
-//     ) {
-//         destroySpaceship();
-//     }
-// }
+    const spaceshipRect = spaceship.getBoundingClientRect();
+    if (
+        spaceshipRect.left < -1000 ||
+        spaceshipRect.right > window.innerWidth + 1000 ||
+        spaceshipRect.top < -1000 ||
+        spaceshipRect.bottom > window.innerHeight + 1000
+    ) {
+        destroySpaceship();
+    }
+}
 
 
 
@@ -264,7 +271,9 @@ function checkCollision(elem1, elem2, isSpaceship = false) {
     return distance < (radius1 + radius2);
   }
 
-function destroySpaceship() {
+  function destroySpaceship() {
+    gameStarted = false; // To be removed...
+
     shipVisible = false;
     spaceship.style.visibility = 'hidden';
     shipVx = 0;
@@ -275,8 +284,13 @@ function destroySpaceship() {
     updatePlanetHoverEffects();
     clearTrail();
 
-    $('.intro-title, .intro-subtitle').animate({opacity: 1}, 1100);
+    // Fade out the score-display
+    $('#score-display').fadeOut(200, function() {
+        // Once the score is completely faded out, fade in the titles
+        $('.intro-title, .intro-subtitle').animate({opacity: 1}, 400);
+    });
 }
+
 
 function calculateGravityForce(shipX, shipY, planet, planetMass) {
     const planetRect = planet.getBoundingClientRect();
@@ -575,11 +589,10 @@ function checkSpaceshipAsteroidCollisions() {
         if (checkCollision(spaceship, asteroid.element, true)) {
             // Destroy the spaceship
             createExplosion(shipX, shipY)
+            
             destroySpaceship();
 
-            // Remove the asteroid
-            document.body.removeChild(asteroid.element);
-            asteroids.splice(i, 1);
+            destroyAsteroid(i);
 
             // No need to check further collisions for the spaceship
             break;
@@ -605,9 +618,9 @@ function checkProjectileAsteroidCollisions() {
                 document.body.removeChild(projectile.element);
                 projectiles.splice(i, 1);
 
-                // Remove the asteroid
-                document.body.removeChild(asteroid.element);
-                asteroids.splice(j, 1);
+                // Remove the asteroid and add to score
+                updateScore(1);
+                destroyAsteroid(j);
 
                 // No need to check further collisions for this projectile
                 break;
@@ -678,11 +691,12 @@ const spawnTimeDecreasePerWave = 100;
 
 function initGame() {
     if (gameStarted) return;
+
+    // Reset the score to 0
+    score = 0;
+    updateScore(0);
+
     asteroidSpawnLoop(); // Comment out if not workinggggg
-
-
-    // const numAsteroids = asteroidWaveCount + (currentWave - 1) * addedAsteroidsPerWave;
-    // startNewWave(numAsteroids, spawnTimeDecreasePerWave);
 }
 
 function startNewWave(numAsteroids, spawnTimeDecrease) {
@@ -800,7 +814,7 @@ function updateAsteroidPositions(deltaTime) {
 }
 
 
-var elementsToFade = $('.intro-title, .intro-subtitle');
+// var elementsToFade = $('.intro-title, .intro-subtitle');
 
 
 
@@ -818,6 +832,8 @@ function gameLoop(timestamp) {
     updateAsteroidPositions(deltaTime);
 
     updateProjectilePositions(deltaTime);
+
+    checkSpaceshipOutOfBounds();
    
   // Check for collisions between projectiles and asteroids
   checkProjectileAsteroidCollisions();

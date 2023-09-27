@@ -32,20 +32,6 @@
   <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
 
 
-
-  <!-- <script type="module">
-    import { rainbowCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
-		new rainbowCursor({
-			length: 100,
-			colors: ["rgba(33, 255, 255,0.8)", "rgba(255, 33, 133,0.8)"],
-			size: 3.5,
-			// element: cursorEffectElement
-		  });
-  </script> -->
-
-
-
-
   <style type="text/css">body { cursor: url('data:image/x-icon;base64,AAACAAEAICAQAAYAAADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAA8usAAP///wCUjwAA4NkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAAAAAAjEgAAAAAAAAAAAAAAAAAAIxIAAAAAAAAAAAAAAAAAAjEgAAAAAAAAAAAAAAIAAAIxIAAAAAAAAAAAAAACIAAjEgAAAAAAAAAAAAAAAhIAIxIAAAAAAAAAAAAAAAIRIjEgAAAAAAAAAAAAAAACExIxIAAAAAAAAAAAAAAAAhMzMSIiIAAAAAAAAAAAAAITMzMREgAAAAAAAAAAAAACEzMzNCAAAAAAAAAAAAAAAhMzMxIAAAAAAAAAAAAAAAITMzEgAAAAAAAAAAAAAAACEzMSAAAAAAAAAAAAAAAAAhMxIAAAAAAAAAAAAAAAAAITEgAAAAAAAAAAAAAAAAACESAAAAAAAAAAAAAAAAAAAhIAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAD////////////////////////////////////////////////////////////8////+H////h////w///98P///OH///xh///8A////AP///wAP//8AH///AD///wB///8A////Af///wP///8H////D////x////8/////f///w=='), auto; }</style>
 
 
@@ -54,9 +40,11 @@
 </head>
 
 <body id="page-top">
+  <div class="stars"></div>
 
   <div class="game">
     
+    <div id="score-display" class="hidden">Score: 0</div>
     <img id="planet" class="planet-img" src="img/planet.png">
     <img id="planet2" class="planet-img" src="img/planet2.png">
     <img id="planet3" class="planet-img" src="img/planet3.png">
@@ -82,7 +70,7 @@
 
 
 
-  <!--/ Nav Star /-->
+  <!--/ Nav Start /-->
   <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll" href="#page-top">danparsley.co.uk</a>
@@ -113,20 +101,14 @@
   </nav>
   <!--/ Nav End /-->
 
-  <!--/ Intro Skew Star /-->
-  <!-- style="background-image: url(img/bg.jpg)" -->
+  <!--/ Intro /-->
   <div id="home" class="intro route">
     <div class="intro-content display-table">
       <div class="table-cell">
         <div class="container">
-          
-          <div class="oscillate-text">
-
             <h1 class="intro-title">Hi there, I'm Dan.</h1>
-
-          </div>
-
-          <p class="intro-subtitle"><span class="text-slider-items">Cryptography|Machine Learning|Software Engineering|Web Development|Artificial Intelligence|Game Development</span><strong class="text-slider"></strong></p>
+          <br>
+          <br>
         </div>
       </div>
     </div>
@@ -148,10 +130,7 @@
   <section id="about" class="about-mf sect-pt4 route">
     <div class="col-sm-12">
       <div class="title-box text-center">
-
         <br>
-
-      
         <div class="black-hole"></div>
         
         <span class="header">
@@ -392,7 +371,7 @@
   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="lib/lightbox/js/lightbox.min.js"></script>
   <script src="lib/typed/typed.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> -->
 
   <!-- Attempt to use icons -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -400,7 +379,7 @@
 
 
   <script src="js/game.js"></script>
-  <script src="js/backgroundStars.js"></script>
+  <!-- <script src="js/backgroundStars.js"></script> -->
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
   <script src="js/ciphereffect.js"></script>

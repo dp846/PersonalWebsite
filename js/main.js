@@ -47,7 +47,28 @@ startBlastJsEffect();
 	});
 	
 	
-	
+	// Background stars
+	const numStars = 20;  // Adjust this value for more or fewer stars
+	const starContainer = document.querySelector('.stars');
+	const viewportWidth = window.innerWidth;
+	const viewportHeight = window.innerHeight;
+
+	for (let i = 0; i < numStars; i++) {
+		const star = document.createElement('div');
+		star.className = 'star';
+		
+		// Randomize the size of the star in the range of 1px to 4px
+		const starSize = Math.floor(Math.random() * 4) + 1;
+		star.style.width = `${starSize}px`;
+		star.style.height = `${starSize}px`;
+		star.style.borderRadius = '50%';
+
+		star.style.top = `${Math.random() * viewportHeight}px`;
+		star.style.left = `${Math.random() * viewportWidth}px`;
+		starContainer.appendChild(star);
+	}
+
+
 	
 	
 

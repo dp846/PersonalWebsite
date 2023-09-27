@@ -1,5 +1,23 @@
 /* GAME CSS */
 
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: white;
+  border-radius: 50%;
+}
+
 #game {
   box-sizing: border-box;
   overflow-x: hidden;
@@ -20,7 +38,6 @@
     display: none;
   }
 }
-
 
 #page-top
 {
@@ -81,7 +98,21 @@
   z-index: 1;
 }
 
+#score-display {
+  color: #fff;
+  display: none;
+  font-family: '8bitFont', sans-serif;
+  font-size: 32px; 
+  position: absolute; 
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  text-align: center;  /* Center the text */
+}
 
+.hidden {
+  display: none;
+}
 
 @keyframes explosion {
   0% {
@@ -109,9 +140,14 @@ html, body {
 
 /* BLAST ANIMATION SUBTITLES */
 
+/* Fonts */
 @import url("https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600");
 @import url("https://fonts.googleapis.com/css?family=La+Belle+Aurore");
 @import url("https://fonts.googleapis.com/css?family=Exo:700,800");
+@font-face {
+  font-family: '8bitFont';
+  src: url('../lib/other-fonts/PressStart2P-vaV7.ttf') format('truetype');
+}
 
 
 .container {
@@ -174,29 +210,6 @@ html, body {
 
 .intro-title span:hover:active {
   transition-duration: 1s;
-}
-
-
-.oscillate-text {
-  font-weight: bold;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  animation: oscillate-animation 7s ease-in-out infinite;  
-}
-
-@keyframes oscillate-animation {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-3px);
-  }
-  100% {
-    transform: translateY(0);
-  }
 }
 
 body {
