@@ -7,7 +7,7 @@ A personal website coded in HTML, CSS and (a lot of) JavaScript - in continuous 
 
 What will be a full game at some point, is now just a playable demo. Click any planet to spawn in a ship and use WASD to move and mouse click to shoot at incoming asteroids.
 
-### Future features coming (once I am no longer drowning in coursework):
+### Future features coming!!! (once I have significantly more spare time...):
 - Wave system for multiple waves of asteroids
 - Hitpoints for planets and you have to defend them and stop them being destroyed
 - Score system and leaderboard system?
