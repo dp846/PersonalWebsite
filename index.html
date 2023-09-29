@@ -18,7 +18,6 @@
   <!-- Libraries CSS Files -->
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <!-- <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet"> -->
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
@@ -28,8 +27,6 @@
 
   <script src="https://kit.fontawesome.com/50d99e6d73.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
 
 
   <style type="text/css">body { cursor: url('data:image/x-icon;base64,AAACAAEAICAQAAYAAADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAA8usAAP///wCUjwAA4NkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAAAAAAjEgAAAAAAAAAAAAAAAAAAIxIAAAAAAAAAAAAAAAAAAjEgAAAAAAAAAAAAAAIAAAIxIAAAAAAAAAAAAAACIAAjEgAAAAAAAAAAAAAAAhIAIxIAAAAAAAAAAAAAAAIRIjEgAAAAAAAAAAAAAAACExIxIAAAAAAAAAAAAAAAAhMzMSIiIAAAAAAAAAAAAAITMzMREgAAAAAAAAAAAAACEzMzNCAAAAAAAAAAAAAAAhMzMxIAAAAAAAAAAAAAAAITMzEgAAAAAAAAAAAAAAACEzMSAAAAAAAAAAAAAAAAAhMxIAAAAAAAAAAAAAAAAAITEgAAAAAAAAAAAAAAAAACESAAAAAAAAAAAAAAAAAAAhIAAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAD////////////////////////////////////////////////////////////8////+H////h////w///98P///OH///xh///8A////AP///wAP//8AH///AD///wB///8A////Af///wP///8H////D////x////8/////f///w=='), auto; }</style>
@@ -42,6 +39,7 @@
 <body id="page-top">
   <div class="stars"></div>
 
+  <!-- Game container start -->
   <div class="game">
     
     <div id="score-display" class="hidden">Score: 0</div>
@@ -67,6 +65,7 @@
 
     <img id="spaceship" src="img/spaceship.jpg">
   </div>
+  <!-- Game end -->
 
 
 
@@ -93,7 +92,7 @@
             <a class="nav-link js-scroll" href="#work">Projects</a>
           </li>
           <!-- <li class="nav-item">
-            <a class="nav-link js-scroll" href="#blog">Other Stuff</a>
+            <a class="nav-link js-scroll" href="#blog">A blog might come... or something else... not sure yet</a>
           </li> -->
         </ul>
       </div>
@@ -101,7 +100,7 @@
   </nav>
   <!--/ Nav End /-->
 
-  <!--/ Intro /-->
+  <!--/ Intro start/-->
   <div id="home" class="intro route">
     <div class="intro-content display-table">
       <div class="table-cell">
@@ -116,21 +115,21 @@
     <div class="scroll-for-more">
       <span id="message">Scroll For More</span>
       <div class="down-arrow"></div>
+   </div>
   </div>
-  
-    
+  <!--/ Intro end/-->
 
-  </div>
-
+  <!-- Just some empty space for a bit of scrolling room -->
   <section id="empty-space" class="about-mf sect-pt4 route">
     <br><br><br><br><br><br><br><br><br><br><br><br>
   </section>
 
-
+  <!--/ About Start /-->
   <section id="about" class="about-mf sect-pt4 route">
     <div class="col-sm-12">
       <div class="title-box text-center">
         <br>
+        
         <div class="black-hole"></div>
         
         <span class="header">
@@ -155,7 +154,7 @@
           <p><i class="fa-regular fa-envelope"></i><a href="mailto:danparsley03@gmail.com" class="link email">d.r.parsleyoaa@gmail.com</a></p>
           <p><i class="fa-solid fa-phone"></i><a href="tel: 07398229780" class="link phone"> (+44) 07398 229780</a></p>
           <p><i class="fa-brands fa-github"></i><a href="https://github.com/dp846" class="link github"> github.com/dp846</a></p>
-          <p><i class="fa-solid fa-file-lines"></i><a href="https://drive.google.com/file/d/1zzxThZeQDNYhrw3sYGWnlHfKcqjXxRre/view?usp=sharing" class="link cv">Check out my CV</a></p>
+          <!-- <p><i class="fa-solid fa-file-lines"></i><a href="link to new cv will go here when it is complete..." class="link cv">Check out my CV</a></p> -->
 
         </div>
 
@@ -167,7 +166,9 @@
       </div>
     </div>
   </section>
+  <!--/ About end /-->
 
+  <!--/ Counter icons start /-->
   <div class="section-counter paralax-mf bg-image">
     <div class="overlay-mf"></div>
     <div class="container">
@@ -219,19 +220,15 @@
       </div>
     </div>
   </div>
+  <!--/ Counter icons end /-->
 
-
-
-
-  <!--/ Section Portfolio Start /-->
+  <!--/ Projects start /-->
   <section id="work" class="portfolio-mf sect-pt4 route">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
           <div class="title-box text-center">
-
             <br>
-
             <span class="header">
               <div class="text-zone">
                   <h1 aria-label="about me" class="blast-root">
@@ -240,27 +237,21 @@
                 <script src='js/blast.js'></script>
               </div>
               </span>
-
-
             <p class="subtitle-a">
               Here's some projects I've worked on - hover to find out more about them. The source code for most of them can be found on my <a href="https://github.com/dp846" class="cv"><b>GitHub</b></a>.
             </p>
-
             <br>
             <br>
-
-
             <div class="cards-container"></div>
-
-            <div class="card" >
-              <div class="card-content" onclick="window.open('https://cryptopals.com/', '_blank');">
-                <h3 class="card-title">
-                  Cryptopals - Cryptography Training Challenges
-                  <ion-icon name="link-outline" style="margin-left: 8px; vertical-align: middle;"></ion-icon>
-                </h3>
-                <h4 class="card-subtitle subtitle-1"></h4>
+              <div class="card" >
+                <div class="card-content" onclick="window.open('https://cryptopals.com/', '_blank');">
+                  <h3 class="card-title">
+                    Cryptopals - Cryptography Training Challenges
+                    <ion-icon name="link-outline" style="margin-left: 8px; vertical-align: middle;"></ion-icon>
+                  </h3>
+                  <h4 class="card-subtitle subtitle-1"></h4>
+                </div>
               </div>
-            </div>
 
               <div class="card">
                 <div class="card-content" onclick="window.open('https://github.com/dp846/SlingoModels', '_blank');">
@@ -332,8 +323,7 @@
                   <h4 class="card-subtitle subtitle-9"></h4>
                 </div>
               </div>
-          </div>
-          
+            </div>
       </div>
     </div>
 
@@ -347,18 +337,14 @@
     </div>
 
   </section>
-  <!--/ Section Portfolio End /-->
+  <!--/ Projects end /-->
 
-
-
-
-
+  <!--/ Preloader /-->
   <div id="preloader">
     <div id="preloader-content">
       <div class="loading-text">Loading...</div>
     </div>
   </div>
-  
 
   <!-- JavaScript Libraries -->
   <script src="lib/jquery/jquery.min.js"></script>
@@ -371,17 +357,18 @@
   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="lib/lightbox/js/lightbox.min.js"></script>
   <script src="lib/typed/typed.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> -->
 
-  <!-- Attempt to use icons -->
+  <!-- Icons -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
 
-
+  <!-- Game JS -->
   <script src="js/game.js"></script>
-  <!-- <script src="js/backgroundStars.js"></script> -->
-  <!-- Template Main Javascript File -->
+
+  <!-- Main JS for website (kind of everything else)-->
   <script src="js/main.js"></script>
+
+  <!-- Ciphertext effect JS - for preloader -->
   <script src="js/ciphereffect.js"></script>
 
 </body>
