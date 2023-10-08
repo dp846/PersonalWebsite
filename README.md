@@ -22,8 +22,6 @@ What will be a full game at some point, is now just a playable demo. Click any p
 ![image](https://github.com/dp846/PersonalWebsite/assets/117474143/5d27d7b1-a1e6-49f4-b0a7-260759ff1788)
 
 
-
-
 ## Credits:
 
 https://codepen.io/bob6664569/pen/rOzmve  

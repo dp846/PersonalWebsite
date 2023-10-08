@@ -67,8 +67,8 @@
 
 #planet {
   position: absolute;
-  left: 65%;
-  top: 55%;
+  left: 69%;
+  top: 60%;
   width: 9vw; /* Changed from 'em' to 'vw' */
   height: 9vw; /* Changed from 'em' to 'vw' */
   border-radius: 50%;
