@@ -1229,6 +1229,29 @@ button:hover .button-text {
   width: 100%;
 }
 
+.linkedin {
+  color: #fff;
+  position: relative;
+  text-decoration: none;
+  transition: text-decoration 0.2s ease-in-out;
+}
+
+.linkedin:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  height: 2px;
+  width: 0;
+  background-color: currentColor;
+  transition: width 0.2s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.linkedin:hover:before {
+  width: 100%;
+}
+
 
 .fa-phone {
   color: #00ffff;
@@ -1251,6 +1274,16 @@ button:hover .button-text {
 }
 
 .fa-github {
+  color: #00ffff;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateX(-1.5rem) scale(1.4);
+  font-size: 24px;
+  transition: all 0.3s ease-in-out;
+}
+
+.fa-linkedin {
   color: #00ffff;
   margin-right: 10px;
   display: inline-block;
