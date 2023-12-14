@@ -42,7 +42,7 @@ startBlastJsEffect();
 						});
 					}, 500);
 				});
-			}, 1500); // Adjust this timeout to control the minimum display time of the preloader
+			}, 2100); // Adjust this timeout to control the minimum display time of the preloader
 		}
 	});
 	

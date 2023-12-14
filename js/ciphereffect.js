@@ -24,8 +24,8 @@ function reveal() {
   }
 }
 
-scrambleInterval = setInterval(scramble, 25);
-revealInterval = setInterval(reveal, 350);
+scrambleInterval = setInterval(scramble, 30);
+revealInterval = setInterval(reveal, 90);
 
 // New function to stop scrambling and revealing and hide the text
 function stopAndHide() {
