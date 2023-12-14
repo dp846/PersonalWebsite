@@ -1,3 +1,9 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=La+Belle+Aurore");
+@import url("https://fonts.googleapis.com/css?family=Exo:700,800");
+
+
 /* GAME CSS */
 
 .stars {
@@ -98,18 +104,6 @@
   z-index: 1;
 }
 
-#score-display {
-  color: #fff;
-  display: none;
-  font-family: '8bitFont', sans-serif;
-  font-size: 32px; 
-  position: absolute; 
-  top: 50%; 
-  left: 50%;
-  transform: translate(-50%, -50%); 
-  text-align: center;  /* Center the text */
-}
-
 .hidden {
   display: none;
 }
@@ -139,16 +133,6 @@ html, body {
 }
 
 /* BLAST ANIMATION SUBTITLES */
-
-/* Fonts */
-@import url("https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600");
-@import url("https://fonts.googleapis.com/css?family=La+Belle+Aurore");
-@import url("https://fonts.googleapis.com/css?family=Exo:700,800");
-@font-face {
-  font-family: '8bitFont';
-  src: url('../lib/other-fonts/PressStart2P-vaV7.ttf') format('truetype');
-}
-
 
 .container {
   -webkit-transform-style: preserve-3d;
@@ -213,7 +197,7 @@ html, body {
 }
 
 body {
-  background: #02010e;
+  background: #0b0b0e;
   color: #BBE1FA;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   cursor: url('/img/cursor.cur');
@@ -507,32 +491,32 @@ a:hover {
 
 .navbar-b.navbar-reduce {
   transition: all .5s ease-in-out;
-  background-color: #fff;
+  background-color: #ffffff;
   padding-top: 15px;
   padding-bottom: 15px;
 }
 
 .navbar-b.navbar-reduce .nav-link {
-  color: #0F4C75;
+  color: #04141f;
 }
 
 .navbar-b.navbar-reduce .nav-link:before {
-  background-color: #0F4C75;
+  background-color: #04141f;
 }
 
 .navbar-b.navbar-reduce .nav-link:hover {
-  color: #0F4C75;
+  color: #04141f;
 }
 
 .navbar-b.navbar-reduce .show > .nav-link,
 .navbar-b.navbar-reduce .active > .nav-link,
 .navbar-b.navbar-reduce .nav-link.show,
 .navbar-b.navbar-reduce .nav-link.active {
-  color: #0F4C75;
+  color: #04141f;
 }
 
 .navbar-b.navbar-reduce .navbar-brand {
-  color: #0F4C75;
+  color: #04141f;
 }
 
 .navbar-b.navbar-reduce .navbar-toggler span {
@@ -543,10 +527,6 @@ a:hover {
   color: #fff;
   font-size: 1.6rem;
   font-weight: 600;
-}
-
-.navbar-b .navbar-brand:hover {
-  transform: scale(1.06);
 }
 
 
@@ -796,7 +776,7 @@ a:hover {
   position: absolute;
   display: flex;
   border-radius: 50%;
-  animation: anim 9s linear infinite;
+  animation: anim 30s linear infinite;
   z-index: -1;
 }
 
@@ -807,7 +787,7 @@ a:hover {
 
 .black-hole {
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: 70%;
 
   background: #000;
@@ -828,7 +808,7 @@ a:hover {
 
 .black-hole:before, .black-hole:after {
   content: '';
-  background: #fff;
+  background: #ffffff;
   position: relative;
   top: 6vh;
 }
@@ -846,34 +826,6 @@ a:hover {
       display: none;
   }
 }
-
-
-
-.about-mf .box-shadow-full {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-
-.about-mf .about-img {
-  margin-bottom: 2rem;
-}
-
-.about-mf .new-slider-items {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  display: none;
-}
-
-.personal-photo {
-  text-align: center;
-}
-
-
-.shell-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 
 /*======================================
 //--//-->   COUNTER
@@ -1134,6 +1086,39 @@ button:hover .button-text {
 //--//-->   ABOUT ME LINKS
 ======================================*/
 
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-details {
+  text-align: left;
+  margin-left: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-details p {
+  vertical-align: center;
+}
+
+
+.image-column {
+  width: 200px;
+  height: auto;
+}
+
+.image-column img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px #00ffff;
+}
+
 
 .phone {
   color: #fff;
@@ -1265,40 +1250,42 @@ button:hover .button-text {
 
 .fa-envelope {
   color: #00ffff;
-  margin-right: 10px;
+  margin-right: 30px;
   display: inline-block;
   vertical-align: middle;
-  transform: translateX(-1.5rem) scale(1.4);
+  transform: translateY(-3px) scale(1.25);
   font-size: 24px;
   transition: all 0.3s ease-in-out;
 }
 
 .fa-github {
   color: #00ffff;
-  margin-right: 10px;
+  margin-right: 30px;
   display: inline-block;
   vertical-align: middle;
-  transform: translateX(-1.5rem) scale(1.4);
+  transform: translateY(-3px) scale(1.25);
   font-size: 24px;
   transition: all 0.3s ease-in-out;
 }
 
 .fa-linkedin {
   color: #00ffff;
-  margin-right: 10px;
+  margin-right: 30px;
   display: inline-block;
   vertical-align: middle;
-  transform: translateX(-1.5rem) scale(1.4);
+  transform: translateY(-3px) scale(1.25);
   font-size: 24px;
   transition: all 0.3s ease-in-out;
 }
 
 .fa-file-lines {
   color: #00ffff;
-  margin-right: 10px;
+  margin-right: 30px;
   display: inline-block;
   vertical-align: middle;
-  transform: translateX(-1.5rem)scale(1.25);
+
+  /* For some reason the file-lines logo is a couple pixels left so doesn't look aligned with the others - manual fix */
+  transform: translateY(-3px) translateX(2px) scale(1.25); 
   font-size: 24px;
   transition: all 0.3s ease-in-out;
 }

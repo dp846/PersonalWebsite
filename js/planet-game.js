@@ -80,8 +80,11 @@ function initGame() {
 // Adds the argument value to the score and updates the score display
 function updateScore(value) {
     score += value;
-    const scoreDisplay = document.getElementById("score-display");
-    scoreDisplay.textContent = "Score: " + score;
+
+    // Removed score display for now - unsure of where to put it
+
+    // const scoreDisplay = document.getElementById("score-display");
+    // scoreDisplay.textContent = "Score: " + score;
 }
 
 // -------------- GAME FUNCTIONALITY END ------------------ //
@@ -276,12 +279,9 @@ function spawnSpaceship(x, y) {
     shipVx = initialVelocity;
     shipVy = 0;
 
-    // Fade out the intro title and fade in the score-display instead
-    $('.intro-title').animate({opacity: 0}, 100, function() {
-        setTimeout(function() {
-            $('#score-display').fadeIn(100);
-        }, 100);
-    });
+    // Fade out the intro title
+    $('.intro-title').animate({opacity: 0}, 250);
+
 }
 
 // Destroy the spaceship (player died...)
@@ -299,11 +299,9 @@ function destroySpaceship() {
     // End the game (a lives system will be added later - for now, just end the game and reset the score whenever the player dies)
     GAMEACTIVE = false;
 
-    // Fade out the score-display
-    $('#score-display').fadeOut(200, function() {
-        // Once the score is completely faded out, fade in the titles
-        $('.intro-title').animate({opacity: 1}, 400);
-    });
+    // Fade back in the title
+    $('.intro-title').animate({opacity: 1}, 400);
+
 }
 
 // Destroy ship if it goes too far out of the screen
