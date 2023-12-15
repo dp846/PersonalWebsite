@@ -15,7 +15,6 @@
   z-index: -1;
 }
 
-
 .star {
   position: absolute;
   width: 2px;
@@ -716,19 +715,6 @@ a:hover {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*======================================
 //--//-->   ABOUT
 ======================================*/
@@ -752,7 +738,7 @@ a:hover {
 
 .large-star {
   position: absolute;
-  top: -30%;
+  top: -60%;
   left: 70%;
 
   background: #ffea8e;
@@ -792,6 +778,63 @@ a:hover {
   }
 }
 
+/* Shooting star */
+
+.shooting-star {
+  display:block;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#FFF;
+  top:-100px;
+  left:-100px;
+  position:relative;
+  transform-origin:100% 0;
+  animation: star-ani 14s ease-out 2s infinite;
+  animation-direction: normal;
+  opacity:0;
+}
+.shooting-star:after {
+  content:'';
+  position:absolute;
+  top:-4px;
+  left:4px;
+  border:2px solid #F00;
+  border-width:2px 150px 2px 150px; 
+  border-color:transparent transparent transparent #FFF;
+  transform:rotate(185deg) translate3d(1px, -1px, 0);
+  transform-origin:0% 100%;
+  animation-direction: normal;
+}
+
+@keyframes star-ani {
+  0%, 6% { 
+    opacity: 0;
+    transform: scale(0) rotate(0) translate3d(0, 0, 0);
+  }
+  10% { 
+    opacity: 1;
+  }
+  14%, 100% { /* Remainder is the delay period */
+    opacity: 0;
+    transform: scale(1) rotate(0) translate3d(1000px, 100px, 0);
+  }
+}
+
+@-webkit-keyframes star-ani {
+  0%, 6% { 
+    opacity: 0;
+    transform: scale(0) rotate(0) translate3d(0, 0, 0);
+  }
+  10% { 
+    opacity: 1;
+  }
+  14%, 100% { /* Remainder is the delay period */
+    opacity: 0;
+    transform: scale(1) rotate(0) translate3d(1000px, 100px, 0);
+  }
+}
+
 /*======================================
 //--//-->   COUNTER
 ======================================*/
@@ -820,13 +863,6 @@ a:hover {
 /*======================================
 //--//-->   PORTFOLIO
 ======================================*/
-:root {
-  --border: rgb(3, 169, 244);
-
-  --g1: rgb(98, 0, 234);
-  --g2: rgb(236, 64, 122);
-  --g3: rgb(253, 216, 53);
-}
 
 .cards-container {
   background-color: rgb(10, 10, 10);
@@ -838,7 +874,8 @@ a:hover {
 }
 
 .card {
-  border: 0.2vmin solid var(--border);
+  border: 0.1vmin solid var(--border);
+  box-shadow: 0 0 5px var(--border);
   cursor: pointer;
   position: relative;
   width: 100%;
@@ -890,8 +927,8 @@ a:hover {
 
 .card-content {
   background-image: radial-gradient(
-    rgba(255, 255, 255, 0.2) 8%, 
-    transparent 8%
+    rgba(255, 255, 255, 0.2) 5%, 
+    transparent 10%
   );
   background-position: 0% 0%;
   background-size: 5vmin 5vmin;
@@ -899,7 +936,7 @@ a:hover {
   padding: 2.5vmin;
   position: relative;
   transition: background-position 350ms ease;
-  width: calc(100% - 10vmin);
+  width: calc(100%);
   z-index: 2;
 }
 
@@ -948,6 +985,7 @@ a:hover {
 
 
 :root {
+  --border: #00ffff;
   --g1: rgb(98, 0, 234);
   --g2: rgb(236, 64, 122);
   --g3: rgb(253, 216, 53);
@@ -993,6 +1031,7 @@ button.learn-more .circle {
   height: 3rem;
   border-radius: 1.625rem;
   border: 2px solid var(--border);
+  box-shadow: 0 0 3px var(--border);
 }
 button.learn-more .circle .icon {
   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
@@ -1081,7 +1120,8 @@ button:hover .button-text {
   border-radius: 50%;
   object-fit: cover;
   overflow: hidden;
-  box-shadow: 0 0 0 2px #00ffff;
+  border: 4px solid var(--border);
+  box-shadow: 0 0 10px var(--border);
 }
 
 
