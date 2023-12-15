@@ -1,7 +1,6 @@
 const planet1 = document.getElementById('planet');
 const planet2 = document.getElementById('planet2');
 const planet3 = document.getElementById('planet3');
-const blackhole = document.getElementById('black-hole');
 const spaceship = document.getElementById('spaceship');
 const title = document.getElementsByClassName('container')
 const typing = document.getElementsByClassName('intro-subtitle')

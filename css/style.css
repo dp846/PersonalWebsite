@@ -75,8 +75,8 @@
   position: absolute;
   left: 69%;
   top: 60%;
-  width: 9vw; /* Changed from 'em' to 'vw' */
-  height: 9vw; /* Changed from 'em' to 'vw' */
+  width: 7vw; /* Changed from 'em' to 'vw' */
+  height: 7vw; /* Changed from 'em' to 'vw' */
   border-radius: 50%;
   box-shadow: 0px 0px 40px #00ffea;
   z-index: 1;
@@ -86,8 +86,8 @@
   position: absolute;
   left: 25%;
   top: 60%;
-  width: 10vw; /* Changed from 'em' to 'vw' */
-  height: 10vw; /* Changed from 'em' to 'vw' */
+  width: 8vw; /* Changed from 'em' to 'vw' */
+  height: 8vw; /* Changed from 'em' to 'vw' */
   border-radius: 50%;
   box-shadow: 0px 0px 40px #ffae00;
   z-index: 1;
@@ -97,8 +97,8 @@
   position: absolute;
   left: 48%;
   top: 25%;
-  width: 6vw; /* Changed from 'em' to 'vw' */
-  height: 6vw; /* Changed from 'em' to 'vw' */
+  width: 5vw; /* Changed from 'em' to 'vw' */
+  height: 5vw; /* Changed from 'em' to 'vw' */
   border-radius: 50%;
   box-shadow: 0px 0px 40px #ea00ff;
   z-index: 1;
@@ -197,7 +197,7 @@ html, body {
 }
 
 body {
-  background: #0b0b0e;
+  background: #02010e;
   color: #BBE1FA;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   cursor: url('/img/cursor.cur');
@@ -363,7 +363,7 @@ a:hover {
   bottom: 0;
   z-index: 9999;
   overflow: hidden;
-  background: #02010e;
+  background: #020108;
 }
 
 #preloader-content {
@@ -675,41 +675,6 @@ a:hover {
   }
 }
 
-
-
-.intro-single {
-  height: 350px;
-}
-
-.intro-single .intro-content {
-  margin-top: 30px;
-}
-
-.intro-single .intro-title {
-  text-transform: uppercase;
-  font-size: 3rem;
-}
-
-.intro-single .breadcrumb {
-  background-color: transparent;
-  color: #0078ff;
-}
-
-.intro-single .breadcrumb .breadcrumb-item:before {
-  color: #cde1f8;
-}
-
-.intro-single .breadcrumb .breadcrumb-item.active {
-  color: #cde1f8;
-}
-
-.intro-single .breadcrumb a {
-  color: #fff;
-}
-
-
-
-
 .scroll-for-more {
   position: fixed;
   bottom: 20px;
@@ -772,7 +737,7 @@ a:hover {
   --rotation: 0deg;
 }
 
-.black-hole, .black-hole:before, .black-hole:after {
+.large-star, .large-star:before, .large-star:after {
   position: absolute;
   display: flex;
   border-radius: 50%;
@@ -785,12 +750,12 @@ a:hover {
   100% {transform: rotate(calc(var(--rotation) - 360deg)) scale(1)}
 }
 
-.black-hole {
+.large-star {
   position: absolute;
-  top: 10%;
+  top: -30%;
   left: 70%;
 
-  background: #000;
+  background: #ffea8e;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -806,14 +771,14 @@ a:hover {
 }
 
 
-.black-hole:before, .black-hole:after {
+.large-star:before, .large-star:after {
   content: '';
   background: #ffffff;
   position: relative;
   top: 6vh;
 }
 
-.black-hole:before {
+.large-star:before {
   width: 3vmin;
   height: 4vmin;
   left: 20vmin;
@@ -822,7 +787,7 @@ a:hover {
 }
 
 @media (max-width: 750px) {
-  .black-hole {
+  .large-star {
       display: none;
   }
 }
