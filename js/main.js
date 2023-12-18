@@ -63,8 +63,8 @@ startBlastJsEffect();
 		star.style.height = `${starSize}px`;
 		star.style.borderRadius = '50%';
 
-		star.style.top = `${Math.random() * viewportHeight}px`;
-		star.style.left = `${Math.random() * viewportWidth}px`;
+		star.style.top = `${Math.random() * 100}%`;
+		star.style.left = `${Math.random() * 100}%`;
 		starContainer.appendChild(star);
 	}
 

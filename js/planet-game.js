@@ -26,9 +26,9 @@ let asteroids = [];
 
 // Ship variables
 const initialVelocity = 8;
-const friction = 0.98;
-const topSpeed = 8;
-const acceleration = 0.2;
+const friction = 0.992;
+const topSpeed = 9;
+const acceleration = 0.17;
 let shipX = 0;
 let shipY = 0;
 let shipVx = 0;
@@ -417,7 +417,7 @@ function spawnProjectile(targetX, targetY) {
     const projectile = document.createElement('div');
     projectile.style.position = 'absolute';
     projectile.style.width = '4px';
-    projectile.style.height = '100px'; // Increase the length here
+    projectile.style.height = '50px'; // Length of projectile
     projectile.style.backgroundColor = 'rgba(235, 52, 122, 1)';
     projectile.style.left = `${shipX}px`;
     projectile.style.top = `${shipY}px`;
@@ -425,14 +425,14 @@ function spawnProjectile(targetX, targetY) {
   
     const distanceX = targetX - shipX;
     const distanceY = targetY - shipY;
-    const angle = Math.atan2(distanceY, distanceX) * (180 / Math.PI) + 90; // Add 90 degrees rotation here
+    const angle = Math.atan2(distanceY, distanceX) * (180 / Math.PI) + 90;
     projectile.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
   
     const glowStyle = `
       box-shadow: 0 0 10px rgba(235, 52, 122, 0.5), 
                   0 0 20px rgba(235, 52, 122, 0.5), 
                   0 0 30px rgba(235, 52, 122, 0.5), 
-                  0 0 40px rgba(235, 52, 122, 0.5);
+                  0 0 80px rgba(235, 52, 122, 0.5);
     `;
     projectile.style.cssText += glowStyle;
   
