@@ -27,8 +27,8 @@ let asteroids = [];
 // Ship variables
 const initialVelocity = 8;
 const friction = 0.992;
-const topSpeed = 9;
 const acceleration = 0.17;
+let topSpeed = 7.5;
 let shipX = 0;
 let shipY = 0;
 let shipVx = 0;
@@ -142,6 +142,16 @@ function updateTrail() {
             trailGradient.setAttribute('y1', startY);
             trailGradient.setAttribute('x2', endX);
             trailGradient.setAttribute('y2', endY);
+
+            if (keys.shift) {
+                // Update the trail to be thicker and more intense when boosting
+                trailPath.setAttribute('stroke-width', trailSize * 2);
+
+            } else {
+                // Update the trail colour to be normal and less intense when not boosting
+                trailPath.setAttribute('stroke-width', trailSize);
+
+            }
         }
 
         // Update the path data
@@ -322,7 +332,8 @@ function checkSpaceshipOutOfBounds() {
 function updateShipAcceleration() {
     if (!shipVisible) return;
 
-    const boostMultiplier = keys.shift ? 3 : 1; // Triple acceleration when boosting with shift
+    const boostMultiplier = keys.shift ? 2.5 : 1; // Increase acceleration when boosting with shift
+    topSpeed = keys.shift ? currentTopSpeed * boostMultiplier : currentTopSpeed; // Boosting topSpeed
     
     shipAx = 0;
     shipAy = 0;
