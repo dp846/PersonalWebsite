@@ -33,10 +33,10 @@
 </head>
 
 <body id="page-top">
-  <div class="stars"></div>
+  <!-- <div class="stars"></div> -->
 
   <!-- Game container start -->
-  <div class="game">
+  <!-- <div class="game">
     
     <img id="planet" class="planet-img" src="img/planet.png">
     <img id="planet2" class="planet-img" src="img/planet2.png">
@@ -59,7 +59,7 @@
     </svg>
 
     <img id="spaceship" src="img/spaceship.png">
-  </div>
+  </div> -->
   <!-- Game end -->
 
 
@@ -107,6 +107,8 @@
       </div>
     </div>
 
+    <div class="large-star"></div>
+
     <div class="scroll-for-more">
       <span id="message">Scroll For More</span>
       <div class="down-arrow"></div>
@@ -114,55 +116,67 @@
   </div>
   <!--/ Intro end/-->
 
+  <span class="shooting-star"></span>
+
   <!-- Just some empty space for a bit of scrolling room -->
   <section id="empty-space" class="about-mf sect-pt4 route">
-    <br><br><br><br><br><br><br><br><br><span class="shooting-star"></span><br><br><br><br><br><br><br><br><br>
+    <br><br>
   </section>
 
   <!--/ About Start /-->
   <section id="about" class="about-mf sect-pt4 route">
-    <div class="col-sm-12">
-      <div class="title-box text-center">
+
         <br>
-        
-        <div class="large-star"></div>
-        
-        <span class="header">
-        <div class="text-zone">
-            <h1 aria-label="about me" class="blast-root">
-              Who Am I?
-            </h1>
+
+        <h1 aria-label="about me" class="title-a">
+          Who am I?
+        </h1>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="container">
+          <div class="profile-container">
+
+            <div class="portrait-details-container">
+
+              <div class="image-column">
+                <img src="img/my-portrait.jpg" alt=""/>
+              </div>
+
+              <br>
+
+              <div class="contact-details">
+                <div class="contact-container"><a href="tel:07398229780"><i class="fa fa-phone"></i></a></div>
+                <div class="contact-container"><a href="https://www.linkedin.com/in/dan-parsley"><i class="fa-brands fa-linkedin"></i></a></div>
+                <div class="contact-container"><a href="mailto:danparsley03@gmail.com"><i class="fa-regular fa-envelope"></i></a></div>
+                <div class="contact-container"><a href="https://github.com/dp846"><i class="fa-brands fa-github"></i></a></div>
+              </div>
+
+            </div>
+
+            <p class="profile-text">
+              I'm currently on an industrial placement year at <a href="https://pqshield.com/" class="cv"><b>PQShield</PQShield></b></a> as
+              part of their software team - next year I will be back at the University of Bath to finish my Computer Science degree. <br><br> Personally, I like all things tech-y, but I have keen interests in Cryptography and AI, the two mega-trends of recent years. Keep scrolling 
+              to find out a bit more about what I've been up to - at University, at work, and in my free time.
+            </p>
+
         </div>
-        </span>
-
-        <p class="subtitle-a">
-          Hi there, I'm Dan. I'm studying Computer Science at the University of Bath. I'm currently on an industrial placement year at <a href="https://pqshield.com/" class="cv"><b>PQShield</PQShield></b></a> as
-          part of their software team. Personally, I like all things <i>tech-y</i>, but I have keen interests in Cryptography and AI, the two mega-trends of recent years. Keep scrolling 
-          to find out a bit more about what I've been up to - at University, at work, and in my free time.
-        </p>
-
-        <br>
-        <br>
-
-        <div class="profile-container">
-          <div class="image-column">
-            <img src="img/portrait.jpg" alt=""/>
-          </div>
-
-          <div class="contact-details">
-            <p><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/dan-parsley/" class="link linkedin">linkedin.com/dan-parsley</a></p>
-            <p><i class="fa-regular fa-envelope"></i><a href="mailto:danparsley03@gmail.com" class="link email">d.r.parsleyoaa@gmail.com</a></p>
-            <p><i class="fa-brands fa-github"></i><a href="https://github.com/dp846" class="link github">github.com/dp846</a></p>
-            <p><i class="fa-solid fa-file-lines"></i><a href="https://drive.google.com/file/d/1STC0ZhIscgQnOWuq98WiL-P2lK2-JD_L/view?usp=sharing" class="link cv">Check out my CV</a></p>
-          </div>
-        </div>        
       </div>
-    </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <!-- Lets add a CV call to action button here:   <p><i class="fa-solid fa-file-lines"></i><a href="https://drive.google.com/file/d/1STC0ZhIscgQnOWuq98WiL-P2lK2-JD_L/view?usp=sharing" class="link cv"></a></p> -->
+
   </section>
   <!--/ About end /-->
 
   <!--/ Counter icons start /-->
-  <div class="section-counter paralax-mf bg-image">
+  <div class="section-counter paralax-mf bg-image" style="background-image: url(img/orange-space.jpg)">
     <div class="overlay-mf"></div>
     <div class="container">
       <div class="row">
@@ -217,7 +231,7 @@
 
   <!-- Just some empty space for a bit of scrolling room -->
   <section id="empty-space" class="about-mf sect-pt4 route">
-    <br><br><br><br><br><span class="shooting-star"></span><br><br><br><br><br>
+    <br><br><br><br></span>
   </section>
 
   <!--/ Projects start /-->
@@ -227,14 +241,10 @@
         <div class="col-sm-12">
           <div class="title-box text-center">
             <br>
-            <span class="header">
-              <div class="text-zone">
-                  <h1 aria-label="about me" class="blast-root">
-                    Projects
-                  </h1>
-                <script src='js/blast.js'></script>
-              </div>
-              </span>
+            <h1 aria-label="about me" class="title-a">
+              Projects
+            </h1>
+          <script src='js/blast.js'></script>
             <p class="subtitle-a">
               Here's some projects I've worked on - hover to find out more about them. The source code for most of them can be found on my <a href="https://github.com/dp846" class="cv"><b>GitHub</b></a>.
             </p>
@@ -338,11 +348,11 @@
   <!--/ Projects end /-->
 
   <!--/ Preloader /-->
-  <div id="preloader">
+  <!-- <div id="preloader">
     <div id="preloader-content">
       <div class="loading-text">Entering into your orbit...</div>
     </div>
-  </div>
+  </div> -->
 
   <!-- JavaScript Libraries -->
   <script src="lib/jquery/jquery.min.js"></script>
@@ -364,7 +374,7 @@
   <a href="https://www.flaticon.com/free-icons/planet" title="planet icons"></a> 
 
   <!-- Game JS -->
-  <script src="js/planet-game.js"></script>
+  <!-- <script src="js/planet-game.js"></script> -->
 
   <!-- Main JS for website (kind of everything else)-->
   <script src="js/main.js"></script>

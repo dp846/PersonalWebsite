@@ -48,25 +48,25 @@ startBlastJsEffect();
 	
 	
 	// Background stars
-	const numStars = 20;  // Adjust this value for more or fewer stars
-	const starContainer = document.querySelector('.stars');
-	const viewportWidth = window.innerWidth;
-	const viewportHeight = window.innerHeight;
+	// const numStars = 20;  // Adjust this value for more or fewer stars
+	// const starContainer = document.querySelector('.stars');
+	// const viewportWidth = window.innerWidth;
+	// const viewportHeight = window.innerHeight;
 
-	for (let i = 0; i < numStars; i++) {
-		const star = document.createElement('div');
-		star.className = 'star';
+	// for (let i = 0; i < numStars; i++) {
+	// 	const star = document.createElement('div');
+	// 	star.className = 'star';
 		
-		// Randomize the size of the star in the range of 1px to 4px
-		const starSize = Math.floor(Math.random() * 4) + 1;
-		star.style.width = `${starSize}px`;
-		star.style.height = `${starSize}px`;
-		star.style.borderRadius = '50%';
+	// 	// Randomize the size of the star in the range of 1px to 4px
+	// 	const starSize = Math.floor(Math.random() * 4) + 1;
+	// 	star.style.width = `${starSize}px`;
+	// 	star.style.height = `${starSize}px`;
+	// 	star.style.borderRadius = '50%';
 
-		star.style.top = `${Math.random() * 100}%`;
-		star.style.left = `${Math.random() * 100}%`;
-		starContainer.appendChild(star);
-	}
+	// 	star.style.top = `${Math.random() * 100}%`;
+	// 	star.style.left = `${Math.random() * 100}%`;
+	// 	starContainer.appendChild(star);
+	// }
 
 
 	
@@ -252,7 +252,7 @@ window.addEventListener('scroll', showHideScrollForMore);
 		{
 		  element: document.getElementsByClassName("subtitle-7")[0],
 		  text:
-			"The website you are scrolling through, with a small JavaScript game on the top of the home scree - try clicking a planet! Control the the spaceship with WASD and click to shoot the asteroids! Improvements to come soon...",
+			"The website you are scrolling through, with a small JavaScript game on the top of the home screen - try clicking a planet! Control the the spaceship with WASD and click to shoot the asteroids! Improvements to come soon...",
 		},
 		{
 		  element: document.getElementsByClassName("subtitle-8")[0],
