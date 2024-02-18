@@ -10,93 +10,42 @@
     }
   })
 
+  // Navbar theme selector
+  document.addEventListener('DOMContentLoaded', function() {
+	const bodyElement = document.body;
+	const themeToggle = document.getElementById('theme-toggle');
+	const bgImg = document.querySelector('.bg-image');
   
-// Call the function from Blast.js file as soon as the page loads
-startBlastJsEffect();
-
-	// Preloader
-	$(window).on('load', function () {
-		if ($('#preloader').length) {
-			let scrambleInterval, revealInterval;
-	
-			$('#preloader-content').css('opacity', 0); // Make sure preloader content is initially invisible
-	
-			$('#preloader-content').animate({ opacity: 1 }, 500, function() { // Fade in preloader content
-				// Start the text scrambling after a delay of 1000ms
-				setTimeout(function() {
-					scrambleInterval = setInterval(scramble, 25);  // Start the text scrambling
-					revealInterval = setInterval(reveal, 100);  // Start the text revealing
-				}, 1000);
-			});
-	
-			// Wait until everything is loaded, then start the process to hide the preloader
-			setTimeout(function() {
-				clearInterval(scrambleInterval);  // Stop the text scrambling
-				clearInterval(revealInterval);  // Stop the text revealing
-	
-				$('#preloader-content').animate({ opacity: 0 }, 1000, function() { // Fade out preloader content
-					// After preloader content has faded out, wait 500ms before fading out the preloader
-					setTimeout(function() {
-						$('#preloader').fadeOut(750, function() {
-							$(this).remove();
-						});
-					}, 500);
-				});
-			}, 2100); // Adjust this timeout to control the minimum display time of the preloader
-		}
+	themeToggle.addEventListener('click', function() {
+	  bodyElement.classList.toggle('light-theme');
+	  bodyElement.classList.toggle('dark-theme');
+  
+	  if (bodyElement.classList.contains('light-theme')) {
+		bgImg.style.backgroundImage = 'url(../img/blue-background.png)';
+	  } else {
+		bgImg.style.backgroundImage = 'url(../img/orange-space.jpg)';
+	  }
 	});
-	
-	
-	// Background stars
-	// const numStars = 20;  // Adjust this value for more or fewer stars
-	// const starContainer = document.querySelector('.stars');
-	// const viewportWidth = window.innerWidth;
-	// const viewportHeight = window.innerHeight;
-
-	// for (let i = 0; i < numStars; i++) {
-	// 	const star = document.createElement('div');
-	// 	star.className = 'star';
-		
-	// 	// Randomize the size of the star in the range of 1px to 4px
-	// 	const starSize = Math.floor(Math.random() * 4) + 1;
-	// 	star.style.width = `${starSize}px`;
-	// 	star.style.height = `${starSize}px`;
-	// 	star.style.borderRadius = '50%';
-
-	// 	star.style.top = `${Math.random() * 100}%`;
-	// 	star.style.left = `${Math.random() * 100}%`;
-	// 	starContainer.appendChild(star);
-	// }
-
-
-	
-	
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  });
   
 
+  
 
+  
+	// Call the function from Blast.js file as soon as the page loads
+	startBlastJsEffect();
 
-  //Scroll for more indicator
-  const scrollForMore = document.querySelector('.scroll-for-more');
+	//Scroll for more indicator
+	const scrollForMore = document.querySelector('.scroll-for-more');
 
-	function showHideScrollForMore() {
-	if (window.scrollY === 0) {
-		scrollForMore.style.opacity = '1';
-	} else {
-			scrollForMore.style.opacity = '0';
+		function showHideScrollForMore() {
+		if (window.scrollY === 0) {
+			scrollForMore.style.opacity = '1';
+		} else {
+				scrollForMore.style.opacity = '0';
+			}
 		}
-	}
-
+		
 showHideScrollForMore(); // Call the function to display the indicator initially
 window.addEventListener('scroll', showHideScrollForMore);
 
@@ -159,46 +108,6 @@ window.addEventListener('scroll', showHideScrollForMore);
 		}
 	});
 
-	/*--/ Star Typed /--*/
-	if ($('.text-slider').length == 1) {
-    var typed_strings = $('.text-slider-items').text();
-		var typed = new Typed('.text-slider', {
-			strings: typed_strings.split('|'),
-			typeSpeed: 40,
-			loop: true,
-			backDelay: 1500,
-			backSpeed: 30
-		});
-	}
-
-	/*--/ Star Typed /--*/
-	if ($('.new-slider').length == 1) {
-		var typed_strings = $('.new-slider-items').text();
-			var typed2 = new Typed('.new-slider', {
-				strings: typed_strings.split(','),
-				typeSpeed: 60,
-				loop: true,
-				backDelay: 1500,
-				backSpeed: 25,
-			});
-		}
-
-	/*--/ Testimonials owl /--*/
-	$('#testimonial-mf').owlCarousel({
-		margin: 20,
-		autoplay: true,
-		autoplayTimeout: 4000,
-		autoplayHoverPause: true,
-		responsive: {
-			0: {
-				items: 1,
-			}
-		}
-	});
-
-
-
-
 	// Code for the subtitles on the portfolio projects
 	const createWord = (text, index) => {
 		const word = document.createElement("span");
@@ -252,7 +161,7 @@ window.addEventListener('scroll', showHideScrollForMore);
 		{
 		  element: document.getElementsByClassName("subtitle-7")[0],
 		  text:
-			"The website you are scrolling through, with a small JavaScript game on the top of the home screen - try clicking a planet! Control the the spaceship with WASD and click to shoot the asteroids! Improvements to come soon...",
+			"This personal portfolio website you are scrolling through.",
 		},
 		{
 		  element: document.getElementsByClassName("subtitle-8")[0],
@@ -290,43 +199,5 @@ window.addEventListener('scroll', showHideScrollForMore);
 		window.addEventListener("scroll", checkCardPosition);
 		checkCardPosition();
 	  });
-	
-
-	
-	//Update the scroll for more widget to also include details on how to play the game:
-	// Get the div
-	// Get the span
-	var span = document.querySelector('#message');
-
-	// Define your messages
-	var messages = ["Scroll for more"];
-
-	// // Set an initial index
-	// var index = 0;
-
-	// // Function to change the message
-	// function changeMessage() {
-	// 	// Fade out
-	// 	span.style.opacity = 0;
-
-	// 	// After transition ended, change text and fade in
-	// 	setTimeout(function() {
-	// 		// Update the text inside the span
-	// 		span.textContent = messages[index];
-
-	// 		// Update the index
-	// 		index = (index + 1) % messages.length; // This will loop back to 0 when it reaches the end of the array
-
-	// 		// Fade in
-	// 		span.style.opacity = 1;
-	// 	}, 500); // 500 to match the transition duration in the CSS
-	// }
-
-	// // Call the function every 3 seconds (3000 milliseconds)
-	// setInterval(changeMessage, 3000);
-
-
-
-	
 
 })(jQuery);
