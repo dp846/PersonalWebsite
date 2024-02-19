@@ -219,13 +219,13 @@ h6 {
 
 a {
   color: var(--text-col);
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 a:hover {
-  color: var(---highlight-col);
+  color: var(--highlight-col);
   text-decoration: none;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 
@@ -625,6 +625,29 @@ a:hover {
   --rotation: 0deg;
 }
 
+.light-theme-img {
+  display: none;
+}
+
+.light-theme .light-theme-img {
+  display: flex;
+  background-image: url('../img/keyboard.png');
+  background-size: cover; /* Adjust the background size as needed */
+  width: 320px; /* Set width to fill the container */
+  height: 160px; /* Set width to fill the container */
+  max-width: 500px;
+  min-width: 150px;
+  position: absolute;
+  top: 37%;
+  left: 60%;
+  transform: rotate(10deg);
+}
+
+.dark-theme .light-theme-img {
+  display: none;
+}
+
+
 .large-star {
   display: none; /* Initially hide the star */
 }
@@ -1014,7 +1037,7 @@ button:hover .circle .icon.arrow {
   transform: translate(1rem, 0);
 }
 button:hover .button-text {
-  color: var(--border-col);
+  color: var(--icon-col);
 }
 
 /*======================================
@@ -1149,6 +1172,9 @@ button:hover .button-text {
   font-size: 1.75rem;
 }
 
+.fa-palette {
+  margin-left: 0.75rem;
+}
 
 
 
