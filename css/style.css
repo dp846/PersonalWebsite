@@ -842,11 +842,11 @@ a:hover {
 }
 
 
-
-
 .more-projects {
   text-align: center;
   padding: 2em;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
 
 button {
@@ -950,7 +950,6 @@ button:hover .button-text {
   flex-direction: row;
 }
 
-
 .image-column {
   width: auto;
 }
@@ -997,11 +996,6 @@ button:hover .button-text {
   align-items: center;
   flex-direction: column;
 }
-
-
-
-
-
 
 .contact-container {
   position: relative;
@@ -1074,12 +1068,47 @@ button:hover .button-text {
   margin-left: 0.75rem;
 }
 
+/*======================================
+//--//-->   FOOTER
+======================================*/
 
+footer {
+  padding: 2rem;
+  border-top:4px solid var(--border-col);
+  text-align: center;
+}
 
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1.5rem;
+}
 
+.footer-content p {
+  margin: 0;
+  color: var(--text-col);
+}
 
+.footer-content nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin-right: 1.5rem;
+}
 
-/* Media stuff */
+.footer-content nav ul li {
+  display: inline;
+  margin-right: 1.5rem;
+}
+
+.footer-content nav ul li a {
+  text-decoration: none;
+  color: var(--text-col);
+}
+
+/*======================================
+//--//-->   MEDIA
+======================================*/
 
 @media only screen and (max-width: 1024px) {
   .profile-container {
@@ -1096,7 +1125,6 @@ button:hover .button-text {
     text-align: center; /* Center align the text */
   }
 }
-
 
 @media (min-width: 577px) {
   .counter-box {
