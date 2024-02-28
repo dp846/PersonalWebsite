@@ -131,48 +131,48 @@ window.addEventListener('scroll', showHideScrollForMore);
 		{
 		  element: document.getElementsByClassName("subtitle-1")[0],
 		  text:
-			"Currently in the process of completing the Cryptopals challenges in both CERT-C standard C code and also in Python - a series of many challenges designed to improve knowledge of cryptography and security",
+			"Completed the first two sets of the Cryptopals challenges in CERT-C standard C code - a series of many challenges designed to improve knowledge of cryptography and security.",
 		},
 		{
 		  element: document.getElementsByClassName("subtitle-2")[0],
 		  text:
-			"Tensorflow object detection models created and trained to recognise many British Sign Language signs for an education and translation platform",
+			"Tensorflow object detection models created and trained to recognise many British Sign Language signs for an education and translation platform.",
 		},
 		{
 		  element: document.getElementsByClassName("subtitle-3")[0],
 		  text:
-			"A probability-driven Battleships AI opponent using Python, and an original single-player Battleships game using a soundtrack composed by me",
+			"A probability-driven Battleships AI opponent using Python, and an original single-player Battleships game using a soundtrack made by me.",
 		},
 		{
 		element: document.getElementsByClassName("subtitle-4")[0],
 			text:
-			  "An enigma machine simulation in Python using Object Oriented Programming",
+			"An enigma machine simulation in Python using Object Oriented Programming - admittedly not as cool as the real thing.",
 		},
 		{
 		  element: document.getElementsByClassName("subtitle-5")[0],
 		  text:
-			"A personal informatics Flask web application that links a user's Spotify listening data to their productivity when working - 'does that 2 hour heavy metal playlist make me more productive...?'",
+			"A personal informatics Flask web application that links a user's Spotify listening data to their productivity, aiming to answer the all important question we all have - 'does that 36 hour heavy metal playlist make me more productive?'",
 		},
 		{
 		  element: document.getElementsByClassName("subtitle-6")[0],
 		  text:
-			"A fully AI generated React application created in a team of 4 in the Bath Hack 2023 hackathon - 'Attends a hackathon. Writes 0 lines of code. Leaves'",
+			"Leveraged and prompted AI generative models to fully generate a job-searching platform created with React in a team of 4 at the Bath Hack 2023 hackathon, all with one goal in mind - 'Attends a hackathon. Writes 0 lines of code. Leaves.'",
 		},
 		{
 		  element: document.getElementsByClassName("subtitle-7")[0],
 		  text:
-			"This personal portfolio website you are scrolling through.",
+			"This personal portfolio website you are scrolling through. ",
 		},
 		{
 		  element: document.getElementsByClassName("subtitle-8")[0],
 		  text:
-			"An EPQ dissertation analysing the extreme ethical and moral issues surrounding Artificial Intelligence - discussing the potential future demise of humanity was definitely an interesting project",
+			"A dissertation analysing the extreme ethical and moral issues surrounding Artificial Intelligence - discussing the potential future demise of humanity was definitely an interesting topic.",
 		},
 		{
 			element: document.getElementsByClassName("subtitle-9")[0],
 			text:
-			  "Python program that solves given sudokus using recursion, backtracking, and heuristics",
-		  },
+			"Python program that solves given sudokus using recursion, backtracking, and heuristics. I enjoy solving puzzles as much as the next guy, but getting code to do it for you is enjoyable too.",
+		}
 	  ];
 	  
 	  subtitles.forEach(({ element, text }) => createSubtitle(text, element));

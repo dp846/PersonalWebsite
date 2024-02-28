@@ -22,122 +22,20 @@
 :root {
   --background-col: #040024;
   --text-col: #fff;
-  --unfocussed-col: #5f606b;
+  --unfocussed-col: #6d6d6e;
   --highlight-col: #ff8800;
   --border-col: #fff;
   --icon-col: #fff;
-  --lattice-col: rgba(255, 255, 255, 0.5);
-  --g1: rgb(234, 0, 35);
-  --g2: rgb(255, 144, 8);
-  --g3: rgb(219, 255, 89);
+  --lattice-col: rgba(255, 255, 255, 0.155);
+  --g1: rgb(234, 0, 74);
+  --g2: rgb(255, 119, 8);
+  --g3: rgb(255, 249, 89);
 }
 
 :root {
   --dark-background-image: url(../img/orange-space.jpg);
   --light-background-image: url(../img/blue-background.png);
 }
-
-
-/* Light theme should have the shooting star and large star disabled */
-
-/* GAME CSS */
-
-#game {
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
-
-#planet, #planet2, #planet3 {
-  position: absolute;
-  border-radius: 50%;
-
-  user-select: none;
-  -webkit-user-drag: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-
-@media (max-width: 850px) {
-  .planet-img {
-    display: none;
-  }
-}
-
-#page-top
-{
-  box-sizing: border-box;
-}
-
-#spaceship {
-  display: inline-block;
-  width: 3.5vw;
-  height: 3.5vw;
-  border-radius: 50%;
-  position: absolute;
-  z-index: 1;
-  visibility: hidden;
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transform-origin: center;
-}
-
-#asteroid {
-  background-image: url('img/asteroid.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#planet {
-  position: absolute;
-  left: 69%;
-  top: 60%;
-  width: 7vw;
-  height: 7vw;
-  border-radius: 50%;
-  box-shadow: 0px 0px 40px #ff8800;
-  z-index: 1;
-}
-
-#planet2 {
-  position: absolute;
-  left: 25%;
-  top: 60%;
-  width: 8vw; 
-  height: 8vw;
-  border-radius: 50%;
-  box-shadow: 0px 0px 40px #ffae00;
-  z-index: 1;
-}
-
-#planet3 {
-  position: absolute;
-  left: 48%;
-  top: 25%;
-  width: 5vw;
-  height: 5vw;
-  border-radius: 50%;
-  box-shadow: 0px 0px 40px #ea00ff;
-  z-index: 1;
-}
-
-.hidden {
-  display: none;
-}
-
-@keyframes explosion {
-  0% {
-    opacity: 1;
-    transform: scale(0);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(2);
-  }
-}
-
-/* End of game CSS */
 
 html, body {
   max-width: 100%;

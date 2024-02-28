@@ -1,0 +1,99 @@
+
+/* GAME CSS */
+
+#game {
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+  #planet, #planet2, #planet3 {
+    position: absolute;
+    border-radius: 50%;
+  
+    user-select: none;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  
+  @media (max-width: 850px) {
+    .planet-img {
+      display: none;
+    }
+  }
+  
+  #page-top
+  {
+    box-sizing: border-box;
+  }
+  
+  #spaceship {
+    display: inline-block;
+    width: 3.5vw;
+    height: 3.5vw;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    visibility: hidden;
+  
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+  }
+  
+  #asteroid {
+    background-image: url('img/asteroid.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  #planet {
+    position: absolute;
+    left: 69%;
+    top: 60%;
+    width: 7vw;
+    height: 7vw;
+    border-radius: 50%;
+    box-shadow: 0px 0px 40px #ff8800;
+    z-index: 1;
+  }
+  
+  #planet2 {
+    position: absolute;
+    left: 25%;
+    top: 60%;
+    width: 8vw; 
+    height: 8vw;
+    border-radius: 50%;
+    box-shadow: 0px 0px 40px #ffae00;
+    z-index: 1;
+  }
+  
+  #planet3 {
+    position: absolute;
+    left: 48%;
+    top: 25%;
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    box-shadow: 0px 0px 40px #ea00ff;
+    z-index: 1;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  @keyframes explosion {
+    0% {
+      opacity: 1;
+      transform: scale(0);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(2);
+    }
+  }
+  
+  /* End of game CSS */
