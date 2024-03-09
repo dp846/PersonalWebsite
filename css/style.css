@@ -525,11 +525,11 @@ a:hover {
 
 .light-theme-img {
   display: none;
+  background-image: url('../img/keyboard.png');
 }
 
 .light-theme .light-theme-img {
   display: flex;
-  background-image: url('../img/keyboard.png');
   background-size: cover; /* Adjust the background size as needed */
   width: 320px; /* Set width to fill the container */
   height: 160px; /* Set width to fill the container */
@@ -539,6 +539,7 @@ a:hover {
   top: 37%;
   left: 60%;
   transform: rotate(10deg);
+  transition: all 1s;
 }
 
 .dark-theme .light-theme-img {
