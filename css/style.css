@@ -81,9 +81,6 @@ html, body {
   color: var(---highlight-col);
 }
 
-
-
-
 .intro-title span {
   font-size: 1.3em;
   text-align: left;
@@ -523,23 +520,80 @@ a:hover {
   --rotation: 0deg;
 }
 
+.img-container {
+  display: block;
+  background-size: cover; /* Adjust the background size as needed */
+  width: 280px; /* Set width to fill the container */
+  height: 145px; /* Set width to fill the container */
+  max-width: 500px;
+  min-width: 150px;
+  top: 37%;
+  left: 65%;
+  position: absolute;
+  transform: rotate(10deg);
+  z-index: 100;
+}
+
 .light-theme-img {
   display: none;
   background-image: url('../img/keyboard.png');
 }
 
+.light-theme-img:hover {
+  transform: scale(1.1) rotate(-5deg);
+}
+
 .light-theme .light-theme-img {
-  display: flex;
+  display: block;
   background-size: cover; /* Adjust the background size as needed */
-  width: 320px; /* Set width to fill the container */
-  height: 160px; /* Set width to fill the container */
+  width: 280px; /* Set width to fill the container */
+  height: 145px; /* Set width to fill the container */
   max-width: 500px;
   min-width: 150px;
   position: absolute;
-  top: 37%;
-  left: 60%;
-  transform: rotate(10deg);
-  transition: all 1s;
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+.light-theme-img .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 16px;
+  background: #ffffff;
+  color: #ffffff;
+  padding: 10px 8px;
+  /* border-radius: 5px; */
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  left: 50%; /* position the tooltip in the middle of the parent */
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.light-theme-img .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #ffffff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.light-theme-img:hover .tooltip {
+  top: -55px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.light-theme-img .tooltip,
+.light-theme-img .tooltip::before {
+  background: var(--highlight-col);
+  color: var(--icon-col);
 }
 
 .dark-theme .light-theme-img {
@@ -793,6 +847,7 @@ a:hover {
   font-weight: 200;
   margin: 0px;
   text-align: left;
+  color: var(--icon-col);
 }
 
 .card-title {
@@ -832,7 +887,7 @@ a:hover {
 .card-title,
 .card-subtitle,
 .card-subtitle-word {
-  color: var(--text-col); /* Set default text color */
+  color: var(--text-col);
   transition: color 0.3s ease; /* Add transition for text color */
 }
 
@@ -842,6 +897,76 @@ a:hover {
   color: var(--icon-col); /* Change text color on hover */
 }
 
+/* Square cards */
+
+.square-cards-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.square-card {
+  padding: 1rem;
+  width: 50vw; /* Set width to 50% of the viewport width */
+  height: 25vw; /* Set height to 50% of the viewport width */
+  position: relative; /* Ensure proper positioning for pseudo-element */
+  background-size: cover;
+  background-position: center; /* Center the background image */
+}
+
+.square-card::before {
+  content: ""; /* Required for pseudo-element */
+  position: absolute; /* Position the pseudo-element relative to its parent */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: inherit; /* Inherit background image from parent */
+  opacity: 0.4; /* Initial opacity */
+  transition: opacity 0.3s ease; /* Add transition effect */
+}
+
+.square-card:hover::before {
+  opacity: 0; /* Change opacity on hover */
+  transition: opacity 0.5s ease; /* Smooth transition on hover */
+}
+
+.square-card:not(:hover)::before {
+  opacity: 0.4; /* Revert to initial opacity when not hovering */
+  transition: opacity 0.5s ease; /* Smooth transition when not hovering */
+}
+
+.square-cards-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.square-card:nth-child(1) {
+  background-image: url(../img/slingo.png);
+  margin-right: 1rem;
+}
+
+.square-card:nth-child(2) {
+  background-image: url(../img/planet-defense.png);
+  margin-left: 1rem;
+}
+
+.square-card:hover::before {
+  background-position: 0% 0%; /* Makes it not instant */
+}
+
+/* External link icon */
+.external-link{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 2em; /* Adjust size as needed */
+  color: var(--icon-col);
+}
+
+
+/* More projects button */
 
 .more-projects {
   text-align: center;
@@ -1113,6 +1238,10 @@ footer {
 
 @media only screen and (max-width: 1024px) {
   .profile-container {
+    flex-direction: column; /* Change flex direction to column */
+  }
+
+  .square-cards-container {
     flex-direction: column; /* Change flex direction to column */
   }
 

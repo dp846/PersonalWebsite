@@ -172,7 +172,12 @@ window.addEventListener('scroll', showHideScrollForMore);
 			element: document.getElementsByClassName("subtitle-9")[0],
 			text:
 			"Python program that solves given sudokus using recursion, backtracking, and heuristics. I enjoy solving puzzles as much as the next guy, but getting code to do it for you is enjoyable too.",
-		}
+		},
+		{
+			element: document.getElementsByClassName("subtitle-10")[0],
+			text:
+			"A demo of a space-themed asteroid shooter. Curently in development as a side project - we'll see where it goes.",
+		},
 	  ];
 	  
 	  subtitles.forEach(({ element, text }) => createSubtitle(text, element));
