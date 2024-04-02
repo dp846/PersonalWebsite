@@ -13,7 +13,6 @@ const planet1 = document.getElementById('planet');
 const planet2 = document.getElementById('planet2');
 const planet3 = document.getElementById('planet3');
 const spaceship = document.getElementById('spaceship');
-const typing = document.getElementsByClassName('intro-subtitle')
 
 // Game variables
 let score = 0;
@@ -81,10 +80,8 @@ function initGame() {
 function updateScore(value) {
     score += value;
 
-    // Removed score display for now - unsure of where to put it
-
-    // const scoreDisplay = document.getElementById("score-display");
-    // scoreDisplay.textContent = "Score: " + score;
+    const scoreDisplay = document.getElementById("score-display");
+    scoreDisplay.textContent = "Score: " + score;
 }
 
 // -------------- GAME FUNCTIONALITY END ------------------ //
@@ -289,8 +286,12 @@ function spawnSpaceship(x, y) {
     shipVx = initialVelocity;
     shipVy = 0;
 
-    // Fade out the intro title
-    $('.intro-title').animate({opacity: 0}, 250);
+    // Fade out the game title
+    $('.game-title').animate({opacity: 0}, 500);
+
+    // Hide the subtitle
+    var subtitle = document.querySelector('.game-subtitle');
+    subtitle.style.visibility = 'hidden';
 
 }
 
@@ -302,6 +303,7 @@ function destroySpaceship() {
     shipVy = 0;
     shipAx = 0;
     shipAy = 0;
+    score = 0;
 
     // Play smooth animation for the svg trail disappearing at point of death
     clearTrail();
@@ -310,7 +312,11 @@ function destroySpaceship() {
     GAMEACTIVE = false;
 
     // Fade back in the title
-    $('.intro-title').animate({opacity: 1}, 400);
+    $('.game-title').animate({opacity: 1}, 400);
+
+    // Show the subtitle
+    var subtitle = document.querySelector('.game-subtitle');
+    subtitle.style.visibility = 'visible';
 
 }
 

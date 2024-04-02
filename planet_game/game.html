@@ -1,17 +1,39 @@
-  <!-- Ciphertext effect JS - for preloader -->
-  <!-- <script src="js/ciphereffect.js"></script> -->
+ <head>
+  <!-- Main Stylesheet File -->
+  <link href="./game.css" rel="stylesheet">
+ </head>
 
+ <body>
     <!--/ Preloader /-->
-  <!-- <div id="preloader">
+  <div id="preloader">
     <div id="preloader-content">
       <div class="loading-text">Entering into your orbit...</div>
     </div>
-  </div> -->
-
+  </div>
 
     <!-- Game container start -->
-  <!-- <div class="game">
-    
+  <div id="game" class="game">
+
+    <!-- A central title for Planet Defense -->
+    <div class="game-title">Planet Defense - Playable Demo</div>
+    <div class="game-subtitle">Click a planet to begin.</div>
+
+    <!-- A score counter -->
+    <div class="score"><span id="score-display">Score: 0</span></div>
+
+    <!-- Navbar start -->
+    <div class="navbar">
+      <!-- Removed about for now - possibly will be added in future -->
+      <!-- <a id="about-button" class="about" href="#">About</a> -->
+      <a class="return-home" href="https://danparsley.co.uk/">Return Home</a>
+    </div>
+    <!-- Navbar end -->
+
+    <!-- About content start -->
+    <div id="about-content" style="display: none;">
+      <p>This is some information about the game...</p>
+    </div>
+
     <img id="planet" class="planet-img" src="img/planet.png">
     <img id="planet2" class="planet-img" src="img/planet2.png">
     <img id="planet3" class="planet-img" src="img/planet3.png">
@@ -33,5 +55,18 @@
     </svg>
 
     <img id="spaceship" src="img/spaceship.png">
-  </div> -->
+  </div>
   <!-- Game end -->
+
+  <!-- Ciphertext effect JS - for preloader -->
+  <script src="../lib/jquery/jquery.min.js"></script>
+  <script src="js/ciphereffect.js"></script>
+  <script src="js/preloader.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="js/background-stars.js"></script>
+
+  <!-- Game JS -->
+  <script src="js/planet-game.js"></script>
+
+</body>
