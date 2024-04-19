@@ -23,7 +23,7 @@
 	  if (bodyElement.classList.contains('light-theme')) {
 		bgImg.style.backgroundImage = 'url(../img/blue-background.png)';
 	  } else {
-		bgImg.style.backgroundImage = 'url(../img/orange-space.jpg)';
+		bgImg.style.backgroundImage = 'url(../img/orange-background.png)';
 	  }
 	});
   });

@@ -2,6 +2,8 @@
 @import url("https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600");
 @import url("https://fonts.googleapis.com/css?family=La+Belle+Aurore");
 @import url("https://fonts.googleapis.com/css?family=Exo:700,800");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 
 
 /* Light theme */
@@ -33,7 +35,7 @@
 }
 
 :root {
-  --dark-background-image: url(../img/orange-space.jpg);
+  --dark-background-image: url(../img/orange-background.png);
   --light-background-image: url(../img/blue-background.png);
 }
 
@@ -98,7 +100,7 @@ html, body {
 body {
   background: var(--background-col);
   color: var(--text-col);
-  font-family: "Anek Latin", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   cursor: url('/img/cursor.cur');
   box-sizing: border-box;
 }
@@ -130,7 +132,6 @@ a:hover {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url('./img/background.jpg');
   height: 500px;
   color: white;
 }
@@ -184,15 +185,15 @@ a:hover {
 /*--/ Title A /--*/
 
 .title-a {
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
-  font-family: "Anek Latin", serif;
   font-size: 3rem;
   font-weight: 550;
 }
 
 .subtitle-a {
   font-size: 1.6rem;
-  font-family: "Anek Latin", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin-bottom: 14px;
   padding: 2.5rem;
 
@@ -462,11 +463,11 @@ a:hover {
 .intro .intro-content {
   text-align: left;
   position: absolute;
-  font-family: "Anek Latin", serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .intro .intro-title {
-  font-weight: 600;
+  font-weight: 3000;
   font-size: 2.5rem;
   display: none;
 }
@@ -513,7 +514,6 @@ a:hover {
 .about .about-content {
   text-align: left;
   position: absolute;
-  font-family: "Anek Latin", serif;
 }
 
 :root {
@@ -843,7 +843,6 @@ a:hover {
 
 .card-title,
 .card-subtitle {
-  font-family: "Anek Latin", sans-serif;
   font-weight: 200;
   margin: 0px;
   text-align: left;
@@ -851,7 +850,7 @@ a:hover {
 }
 
 .card-title {
-  font-size: 2.2em; 
+  font-size: 2.2em;
 }
 
 .card-subtitle {
@@ -1086,14 +1085,12 @@ button:hover .button-text {
   height: auto;
   object-fit: cover;
   overflow: hidden; 
-  border-radius: 5%;
-  border:2px solid var(--border-col);
+  border-radius: 4%;
 }
 
 .profile-text {
   color: var(--text-col);
   font-size: 1.6rem;
-  font-family: "Anek Latin", sans-serif;
   padding-left: 5rem;
 
   max-width: 750px;
