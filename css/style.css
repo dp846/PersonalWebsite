@@ -1,7 +1,4 @@
 /* Fonts */
-@import url("https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600");
-@import url("https://fonts.googleapis.com/css?family=La+Belle+Aurore");
-@import url("https://fonts.googleapis.com/css?family=Exo:700,800");
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 
@@ -556,6 +553,7 @@ a:hover {
 }
 
 .light-theme-img .tooltip {
+  font-family: 'Montserrat', sans-serif;
   position: absolute;
   top: 0;
   font-size: 16px;
@@ -1130,38 +1128,9 @@ button:hover .button-text {
   padding: 0;
   cursor: pointer;
   outline: none;
-  border: 2px solid transparent;
   border-radius: 10%;
   overflow: hidden;
-  transition: border-color 0.3s ease, background-size 0.3s ease; /* Adjust transition timings */
   margin: 0.6rem;
-}
-
-.contact-container:before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  background: linear-gradient(
-    130deg, 
-    transparent 0% 33%, 
-    var(--g1) 66%, 
-    var(--g2) 83.5%, 
-    var(--g3) 100%
-  );
-  background-position: 0% 0%;
-  background-size: 300% 300%;
-  border-radius: inherit;
-  transition: all 0.3s ease; /* Adjust transition timing for the background */
-  z-index: -1;
-  opacity: 0; /* Initially make the background transparent */
-}
-
-.contact-container:hover:before {
-  background-position: 100% 100%;
-  opacity: 1; /* Make the background visible on hover */
 }
 
 .contact-container i {
@@ -1171,15 +1140,14 @@ button:hover .button-text {
   z-index: 2;
 }
 
+.contact-container:hover:before {
+  background-position: 100% 100%;
+  opacity: 1; /* Make the background visible on hover */
+}
+
 .contact-container:hover i {
-  color: var(--icon-col);
+  color: var(--text-col);
 }
-
-.contact-container:hover {
-  border-color: var(--border-col);
-}
-
-
 
 .fa-phone, .fa-envelope, .fa-github, .fa-file-lines, .fa-linkedin {
   display: inline-block;
