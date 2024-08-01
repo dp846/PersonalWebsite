@@ -176,7 +176,7 @@
 		{
 			element: document.getElementsByClassName("subtitle-10")[0],
 			text:
-				"A demo of a space-themed asteroid shooter. Curently in development as a side project - we'll see where it goes.",
+				"A small early stage demo of a spacey-themed asteroid shooter I'm working on, inspired by the arcade classics. It's currently in development as a side project, whenever I have a spare minute and a cup of tea.",
 		},
 	];
 
