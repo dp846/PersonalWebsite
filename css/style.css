@@ -795,7 +795,7 @@ a:hover {
 //--//-->   COUNTER
 ======================================*/
 
-.section-counter {
+.section-counter .dark-theme {
   background-image: var(--dark-background-image);
 }
 

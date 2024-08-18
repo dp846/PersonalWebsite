@@ -14,17 +14,19 @@
 	document.addEventListener('DOMContentLoaded', function () {
 		const bodyElement = document.body;
 		const themeToggle = document.getElementById('theme-toggle');
-		const bgImg = document.querySelector('.bg-image');
+		const bgImgs = document.querySelectorAll('.bg-image'); // Select all elements with the bg-image class
 
 		themeToggle.addEventListener('click', function () {
 			bodyElement.classList.toggle('light-theme');
 			bodyElement.classList.toggle('dark-theme');
 
-			if (bodyElement.classList.contains('light-theme')) {
-				bgImg.style.backgroundImage = 'url(../img/blue-background.png)';
-			} else {
-				bgImg.style.backgroundImage = 'url(../img/orange-background.png)';
-			}
+			const backgroundImage = bodyElement.classList.contains('light-theme')
+				? 'url(../img/blue-background.png)'
+				: 'url(../img/orange-background.png)';
+
+			bgImgs.forEach(bgImg => {
+				bgImg.style.backgroundImage = backgroundImage;
+			});
 		});
 	});
 
