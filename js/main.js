@@ -22,7 +22,7 @@
 
 			const backgroundImage = bodyElement.classList.contains('light-theme')
 				? 'url(../img/blue-background.png)'
-				: 'url(../img/orange-background.png)';
+				: 'url(../img/orange-background2.png)';
 
 			bgImgs.forEach(bgImg => {
 				bgImg.style.backgroundImage = backgroundImage;
@@ -130,6 +130,11 @@
 		text.split(" ").map((word, index) => addWord(word, index, subtitleElement));
 
 	const subtitles = [
+		{
+			element: document.getElementsByClassName("subtitle-0")[0],
+			text:
+				"For PQShield, I co-wrote a C library implementation of a post-quantum variant of Noise using ML-KEM. This project was dedicatied to an InnovateUK initiative.",
+		},
 		{
 			element: document.getElementsByClassName("subtitle-1")[0],
 			text:
