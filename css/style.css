@@ -1247,7 +1247,7 @@ button:hover .button-text {
 .grid-container {
   columns: 3 200px;
   column-gap: 1.5rem;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 
   div {
