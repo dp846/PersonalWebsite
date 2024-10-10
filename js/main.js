@@ -22,7 +22,7 @@
 
 			const backgroundImage = bodyElement.classList.contains('light-theme')
 				? 'url(../img/blue-background.png)'
-				: 'url(../img/orange-background2.png)';
+				: 'url(../img/orange-background.png)';
 
 			bgImgs.forEach(bgImg => {
 				bgImg.style.backgroundImage = backgroundImage;
