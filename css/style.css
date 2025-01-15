@@ -950,70 +950,71 @@ a:hover {
 
 /* Square cards */
 
+/* Square cards container */
 .square-cards-container {
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Individual square cards */
 .square-card {
   padding: 1rem;
-  width: 50vw;
-  /* Set width to 50% of the viewport width */
-  height: 25vw;
-  /* Set height to 50% of the viewport width */
+  width: 50vw; /* 50% of the viewport width */
+  height: 25vw; /* 25% of the viewport width */
   position: relative;
-  /* Ensure proper positioning for pseudo-element */
   background-size: cover;
   background-position: center;
-  /* Center the background image */
+  margin: 0 1rem;
 }
 
+/* Text styling inside the card */
+.square-card-text {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  color: var(--icon-col);
+  font-size: 1.8rem; /* Adjust as needed */
+  font-weight: bold;
+  z-index: 0; /* Place above the ::before overlay */
+  text-align: center; /* Center-align text if multiline */
+  pointer-events: none; /* Prevent interaction with the text */
+}
+
+/* Black overlay */
 .square-card::before {
   content: "";
-  /* Required for pseudo-element */
   position: absolute;
-  /* Position the pseudo-element relative to its parent */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: inherit;
-  /* Inherit background image from parent */
-  opacity: 0.4;
-  /* Initial opacity */
-  transition: opacity 0.3s ease;
-  /* Add transition effect */
+  background-color: rgba(0, 0, 0, 0.4); /* Black with 40% transparency */
+  opacity: 0.5; /* Default opacity */
+  transition: opacity 0.3s ease; /* Smooth fade effect */
 }
 
+/* On hover: fully transparent */
 .square-card:hover::before {
-  opacity: 0;
-  /* Change opacity on hover */
-  transition: opacity 0.5s ease;
-  /* Smooth transition on hover */
+  opacity: 0; /* Fully transparent on hover */
 }
 
-.square-card:not(:hover)::before {
-  opacity: 0.4;
-  /* Revert to initial opacity when not hovering */
-  transition: opacity 0.5s ease;
-  /* Smooth transition when not hovering */
-}
-
-.square-cards-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* Specific card images */
 .square-card:nth-child(1) {
   background-image: url(../img/slingo.png);
-  margin-right: 1rem;
 }
 
 .square-card:nth-child(2) {
   background-image: url(../img/planet-defense.png);
-  margin-left: 1rem;
+}
+
+.square-card:nth-child(3) {
+  background-image: url(../img/vizdoom.jpg);
+}
+
+.square-card:nth-child(4) {
+  background-image: url(../img/raytracer.png);
 }
 
 .square-card:hover::before {

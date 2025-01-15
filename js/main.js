@@ -185,6 +185,16 @@
 			text:
 				"A small early stage demo of a spacey-themed asteroid shooter I'm working on, inspired by the arcade classics. It's currently in development as a side project, whenever I have a spare minute and a cup of tea.",
 		},
+		{
+			element: document.getElementsByClassName("subtitle-11")[0],
+			text:
+				"Created and trained visual reinforcement learning agents in Python for an environment based on the first-person shooter game DOOM. These included Proximal Policy Optimisation and Deep Q-Networks.",
+		},
+		{
+			element: document.getElementsByClassName("subtitle-12")[0],
+			text:
+				"Made complex adaptations to a bare-bones C++ raytracer, including adding support for lighting models, reflection, refraction, photon mapping, and rendering caustics.",
+		},
 	];
 
 	subtitles.forEach(({ element, text }) => createSubtitle(text, element));
