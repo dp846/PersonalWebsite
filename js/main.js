@@ -195,6 +195,11 @@
 			text:
 				"Made complex adaptations to a bare-bones C++ raytracer, including adding support for lighting models, reflection, refraction, photon mapping, and rendering caustics.",
 		},
+		{
+			element: document.getElementsByClassName("subtitle-13")[0],
+			text:
+				"Natural Language Processing project to extract features from an IMDb movie review dataset for sentiment analysis (predicting whether a new unseen review is positive or negative).",
+		},
 	];
 
 	subtitles.forEach(({ element, text }) => createSubtitle(text, element));
