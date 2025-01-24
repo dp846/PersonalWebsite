@@ -200,6 +200,11 @@
 			text:
 				"Natural Language Processing project to extract features from an IMDb movie review dataset for sentiment analysis (predicting whether a new unseen review is positive or negative).",
 		},
+		{
+			element: document.getElementsByClassName("subtitle-14")[0],
+			text:
+				"My final year project I am currently working on, involving looking into the effects of post-quantum cryptography on TLS and how underlying TCP settings interact with the protocol to impact performance.",
+		},
 	];
 
 	subtitles.forEach(({ element, text }) => createSubtitle(text, element));
