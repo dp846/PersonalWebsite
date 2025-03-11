@@ -555,7 +555,7 @@ a:hover {
   max-width: 500px;
   min-width: 150px;
   top: 37%;
-  left: 65%;
+  left: 63%;
   position: absolute;
   transform: rotate(10deg);
   z-index: 100;
@@ -563,7 +563,7 @@ a:hover {
 
 .light-theme-img {
   display: none;
-  background-image: url('../img/keyboard.png');
+  background-image: url('../img/blue-keyboard.png');
 }
 
 .light-theme-img:hover {
@@ -574,9 +574,9 @@ a:hover {
   display: block;
   background-size: cover;
   /* Adjust the background size as needed */
-  width: 280px;
+  width: 400px;
   /* Set width to fill the container */
-  height: 145px;
+  height: 170px;
   /* Set width to fill the container */
   max-width: 500px;
   min-width: 150px;
