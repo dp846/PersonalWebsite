@@ -183,6 +183,11 @@ a:hover {
   padding: 8rem 0;
 }
 
+.page-bottom{
+  position: relative;
+  padding: 26rem 0;
+}
+
 .display-table {
   width: 100%;
   height: 100%;

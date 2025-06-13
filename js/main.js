@@ -203,7 +203,7 @@
 		{
 			element: document.getElementsByClassName("subtitle-14")[0],
 			text:
-				"My final year project I am currently working on, involving looking into the effects of post-quantum cryptography on TLS and how underlying TCP settings interact with the protocol to impact performance.",
+				"My final year university dissertation involved looking into the effects of post-quantum signatures on TLS and how TCP's initial congestion window size impacts performance of the protocol.",
 		},
 	];
 
