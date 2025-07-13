@@ -223,7 +223,8 @@ a:hover {
   /* alternative to word-wrap for better browser support */
   margin: 0 auto;
   /* center the div horizontally within its container */
-  text-align: left;
+  text-align: justify;
+  text-justify: inter-word;
   /* center the text within the div */
 }
 
@@ -1182,7 +1183,9 @@ button:hover .button-text {
   word-wrap: break-word;
   overflow-wrap: break-word;
   margin: 0 auto;
-  text-align: left;
+
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .contact-details {

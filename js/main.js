@@ -203,7 +203,7 @@
 		{
 			element: document.getElementsByClassName("subtitle-14")[0],
 			text:
-				"My final year university dissertation involved looking into the effects of post-quantum signatures on TLS and how TCP's initial congestion window size impacts performance of the protocol.",
+				"My final year university dissertation involved looking into the effects of post-quantum signatures on TLS, and how TCP's initial congestion window size impacts performance of the protocol. Achieved a grade of 89%.",
 		},
 	];
 
