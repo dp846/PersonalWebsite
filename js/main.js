@@ -148,22 +148,17 @@
 		{
 			element: document.getElementsByClassName("subtitle-3")[0],
 			text:
-				"A probability-driven Battleships AI opponent using Python, and an original single-player Battleships game using a soundtrack made by me.",
+				"A unique spin on the classic board game Battleships game with moving ships and my own soundtrack, also featuring a probability-driven AI opponent.",
 		},
 		{
 			element: document.getElementsByClassName("subtitle-4")[0],
 			text:
-				"An enigma machine simulation in Python using Object Oriented Programming - admittedly not as cool as the real thing.",
+				"An enigma machine simulation in Python - admittedly not as cool as the real thing.",
 		},
 		{
 			element: document.getElementsByClassName("subtitle-5")[0],
 			text:
 				"A personal informatics Flask web application that links a user's Spotify listening data to their productivity, aiming to answer the all important question we all have - 'does that 36 hour heavy metal playlist make me more productive?'",
-		},
-		{
-			element: document.getElementsByClassName("subtitle-6")[0],
-			text:
-				"Leveraged and prompted AI generative models to fully generate a job-searching platform created with React in a team of 4 at the Bath Hack 2023 hackathon, all with one goal in mind - 'Attends a hackathon. Writes 0 lines of code. Leaves.'",
 		},
 		{
 			element: document.getElementsByClassName("subtitle-7")[0],
@@ -231,5 +226,18 @@
 		window.addEventListener("scroll", checkCardPosition);
 		checkCardPosition();
 	});
+
+	// Parallax bg
+	window.addEventListener("scroll", function() {
+		const parallaxSections = document.querySelectorAll(".paralax-mf");
+		parallaxSections.forEach(section => {
+		  let scrolled = window.pageYOffset - section.offsetTop;
+		  let pageHeight = document.body.scrollHeight - window.innerHeight;
+		  let sectionStart = section.offsetTop / pageHeight;
+		  let baseOffset = sectionStart * 100;
+		  section.style.backgroundPositionY = (scrolled * -0.10 - baseOffset) + "px";
+		});
+	  });
+	  
 
 })(jQuery);

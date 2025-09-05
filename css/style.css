@@ -180,12 +180,11 @@ a:hover {
 
 .paralax-mf {
   position: relative;
-  padding: 8rem 0;
-}
-
-.page-bottom{
-  position: relative;
-  padding: 26rem 0;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
 }
 
 .display-table {
@@ -911,11 +910,11 @@ a:hover {
 }
 
 .card-title {
-  font-size: 2.2em;
+  font-size: 2.4em;
 }
 
 .card-subtitle {
-  font-size: 1.2em;
+  font-size: 1.6em;
   margin-top: 2vmin;
 }
 
