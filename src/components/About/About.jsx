@@ -8,7 +8,7 @@ export default function About() {
         <div className={styles.grid}>
           <div className={styles.imageCol}>
             <img
-              src="/img/my-portrait.jpg"
+              src={`${import.meta.env.BASE_URL}img/my-portrait.jpg`}
               alt="Dan Parsley"
               className={styles.portrait}
             />

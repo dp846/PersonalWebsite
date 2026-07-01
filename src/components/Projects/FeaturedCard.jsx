@@ -5,7 +5,7 @@ export default function FeaturedCard({ project }) {
     <div className={styles.card}>
       <div
         className={styles.image}
-        style={{ backgroundImage: `url(${project.image})` }}
+        style={{ backgroundImage: `url(${import.meta.env.BASE_URL}${project.image.replace(/^\//, '')})` }}
         role="img"
         aria-label={project.title}
       />
