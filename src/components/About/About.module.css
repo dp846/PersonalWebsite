@@ -1,0 +1,87 @@
+.about {
+  padding: 8rem 0 6rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 4rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.imageCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.portrait {
+  width: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+  display: block;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.socialLinks a {
+  font-size: 1.6rem;
+  color: var(--unfocussed-col);
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: block;
+  line-height: 1;
+}
+
+.socialLinks a:hover {
+  color: var(--highlight-col);
+  transform: translateY(-2px);
+}
+
+.bio {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: var(--text-col);
+  padding-top: 0.5rem;
+}
+
+.link {
+  color: var(--highlight-col);
+  font-weight: 600;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: var(--highlight-col);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .imageCol {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .bio {
+    text-align: justify;
+  }
+}

@@ -1,0 +1,275 @@
+/* ── Coordinate contract ─────────────────────────────────────────────
+   All sections: 110 px wide. Glass: 210 px tall.
+   Glass slope per side: 22 px / 210 px = 0.1048 px/px (≈ 6° from vertical).
+   Junction x-coords:
+     cap bottom  = glass top    = x 27–83  (56 px)
+     glass bottom = base top   = x 5–105  (100 px)
+     base waist                = x 27–83  (56 px)
+   Cap top (continues glass slope over 26 px): x 30–80 (50 px).
+   Specular runs parallel to the RIGHT glass wall → rotate(+6deg).
+   Inside-stroke trick: apply same clip-path to SVG, use stroke-width 3 —
+     outer 1.5 px is clipped, leaving 1.5 px of stroke on the inside.    */
+
+/* ── Anchor ───────────────────────────────────────────────────────── */
+.lamp {
+  position: absolute;
+  right: 28.5vw;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 0;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .lamp {
+    display: block;
+  }
+}
+
+/* ── Float body ───────────────────────────────────────────────────── */
+/* Two independent CSS individual-transform animations with incommensurable
+   periods (9 s vs 11 s). When translate is near a keyframe (low velocity),
+   rotate is still mid-cycle, so the lamp is always visibly moving.       */
+.lampBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation:
+    lampDrift 9s  ease-in-out infinite,
+    lampTilt  11s ease-in-out infinite;
+}
+
+@keyframes lampDrift {
+  0%   { translate:   0px   0px; }
+  25%  { translate:   9px -11px; }
+  50%  { translate:  -4px  -7px; }
+  75%  { translate: -10px   8px; }
+  100% { translate:   0px   0px; }
+}
+
+@keyframes lampTilt {
+  0%   { rotate:  0.0deg; }
+  30%  { rotate:  2.5deg; }
+  65%  { rotate: -2.2deg; }
+  100% { rotate:  0.0deg; }
+}
+
+/* ── Cap section wrapper ─────────────────────────────────────────── */
+.capSection {
+  position: relative;
+  z-index: 2;
+  margin-bottom: -1px;
+}
+
+/* ── Top cap: upside-down trapezoid continuing glass wall slope ───── */
+.topCap {
+  width: 110px;
+  height: 26px;
+  clip-path: polygon(30px 0px, 80px 0px, 83px 26px, 27px 26px);
+  background: linear-gradient(to right,
+    #a0a0a0  0%,
+    #d8d8d8 25%,
+    #f2f2f2 46%,
+    #d5d5d5 67%,
+    #9e9e9e 100%
+  );
+  filter: drop-shadow(0 3px 7px rgba(0, 0, 0, 0.55));
+}
+
+/* Cap inside-stroke outline — clip-path matches topCap, stroke-width 3
+   so only the inner 1.5 px is visible.                                 */
+.capOutline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110px;
+  height: 26px;
+  pointer-events: none;
+  z-index: 1;
+  clip-path: polygon(30px 0px, 80px 0px, 83px 26px, 27px 26px);
+}
+
+/* ── Glow wrapper ────────────────────────────────────────────────── */
+.glassOuter {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 22px var(--lava-glow));
+}
+
+/* ── Glass body ──────────────────────────────────────────────────── */
+.glass {
+  width: 110px;
+  height: 210px;
+  clip-path: polygon(27px 0px, 83px 0px, 105px 210px, 5px 210px);
+  background:
+    radial-gradient(ellipse at 50% 82%, var(--lava-inner-tint) 0%, transparent 68%),
+    var(--lava-glass);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Specular strip — parallel to the RIGHT glass wall (+6°).
+   Right wall goes from (83,0) to (105,210): leans right going down. */
+.glass::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 30px;
+  width: 7px;
+  height: 110px;
+  border-radius: 4px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.30), transparent);
+  transform: rotate(6deg);
+  transform-origin: top center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Glass inside-stroke outline: clip-path = glass shape, stroke-width 3 */
+.glassOutline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110px;
+  height: 210px;
+  pointer-events: none;
+  z-index: 3;
+  clip-path: polygon(27px 0px, 83px 0px, 105px 210px, 5px 210px);
+  overflow: visible;
+}
+
+.rimPath {
+  fill: none;
+  stroke: var(--lava-outline);
+  stroke-width: 3;
+}
+
+/* Shared metallic rim stroke for cap and base outlines */
+.metalRim {
+  fill: none;
+  stroke: #888888;
+  stroke-width: 3;
+}
+
+/* ── Blobs ───────────────────────────────────────────────────────── */
+.blob1,
+.blob2,
+.blob3,
+.blob4 {
+  position: absolute;
+  background: radial-gradient(ellipse at 38% 33%, var(--lava-a), var(--lava-b) 85%);
+  opacity: 0.88;
+  border-radius: 50%;
+}
+
+.blob1 {
+  width: 75px;
+  height: 72px;
+  left: 17px;
+  bottom: 10px;
+  animation: float1 22s ease-in-out infinite, morph1 14s ease-in-out infinite;
+}
+
+.blob2 {
+  width: 50px;
+  height: 52px;
+  left: 30px;
+  bottom: 38px;
+  animation: float2 27s ease-in-out infinite 2.5s, morph2 17s ease-in-out infinite 0.8s;
+}
+
+.blob3 {
+  width: 38px;
+  height: 42px;
+  left: 36px;
+  top: 20px;
+  animation: float3 17s ease-in-out infinite 5s, morph1 11s ease-in-out infinite 3s;
+}
+
+.blob4 {
+  width: 58px;
+  height: 56px;
+  left: 26px;
+  bottom: 72px;
+  animation: float4 30s ease-in-out infinite 1s, morph2 20s ease-in-out infinite 2s;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0); }
+  15%       { transform: translate(4px, -34px); }
+  35%       { transform: translate(-3px, -88px); }
+  55%       { transform: translate(5px, -136px); }
+  75%       { transform: translate(-3px, -76px); }
+  90%       { transform: translate(2px, -22px); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0); }
+  20%       { transform: translate(-4px, -43px); }
+  45%       { transform: translate(6px, -103px); }
+  65%       { transform: translate(-4px, -55px); }
+  85%       { transform: translate(3px, -118px); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0); }
+  25%       { transform: translate(5px, 38px); }
+  50%       { transform: translate(-5px, 89px); }
+  75%       { transform: translate(4px, 33px); }
+}
+
+@keyframes float4 {
+  0%, 100% { transform: translate(0, 0); }
+  18%       { transform: translate(-3px, -29px); }
+  40%       { transform: translate(5px, -73px); }
+  60%       { transform: translate(-4px, -29px); }
+  80%       { transform: translate(2px, -59px); }
+}
+
+@keyframes morph1 {
+  0%, 100% { border-radius: 55% 45% 60% 40% / 50% 55% 45% 50%; }
+  33%       { border-radius: 42% 58% 46% 54% / 62% 38% 62% 38%; }
+  66%       { border-radius: 62% 38% 54% 46% / 44% 62% 38% 56%; }
+}
+
+@keyframes morph2 {
+  0%, 100% { border-radius: 48% 52% 38% 62% / 60% 42% 58% 40%; }
+  40%       { border-radius: 62% 38% 60% 40% / 38% 62% 40% 60%; }
+  70%       { border-radius: 40% 60% 52% 48% / 54% 46% 62% 38%; }
+}
+
+/* ── Base section wrapper ────────────────────────────────────────── */
+.baseSection {
+  position: relative;
+  z-index: 2;
+  margin-top: -1px;
+}
+
+/* ── Base spool ──────────────────────────────────────────────────── */
+.base {
+  width: 110px;
+  height: 58px;
+  clip-path: path('M 5,0 L 105,0 C 108,12 86,18 83,29 C 86,40 108,46 105,58 L 5,58 C 2,46 24,40 27,29 C 24,18 2,12 5,0 Z');
+  background: linear-gradient(to right,
+    #a0a0a0  0%,
+    #d8d8d8 25%,
+    #f2f2f2 46%,
+    #d5d5d5 67%,
+    #9e9e9e 100%
+  );
+  filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.60));
+}
+
+/* Base inside-stroke outline */
+.baseOutline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110px;
+  height: 58px;
+  pointer-events: none;
+  z-index: 1;
+  clip-path: path('M 5,0 L 105,0 C 108,12 86,18 83,29 C 86,40 108,46 105,58 L 5,58 C 2,46 24,40 27,29 C 24,18 2,12 5,0 Z');
+  overflow: visible;
+}

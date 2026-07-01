@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+[data-theme="dark"] {
+  --background-col: #040024;
+  --text-col: #fff;
+  --unfocussed-col: #6d6d6e;
+  --highlight-col: #ff8800;
+  --border-col: #fff;
+  --icon-col: #fff;
+  --lattice-col: rgba(255, 255, 255, 0.155);
+  --g1: rgb(234, 0, 78);
+  --g2: rgb(255, 119, 8);
+  --g3: rgb(255, 183, 89);
+  --divider-img: url('/img/orange-background.png');
+  --particle-rgb: 255, 255, 255;
+  --highlight-rgb: 255, 175, 55;
+  --canvas-edge-opacity: 0.50;
+  --lava-a: #ffb230;
+  --lava-b: #ff4000;
+  --lava-glass: rgba(6, 2, 44, 0.82);
+  --lava-glass-border: rgba(255, 140, 40, 0.15);
+  --lava-glow: rgba(255, 90, 0, 0.16);
+  --lava-outline: rgba(140, 200, 255, 0.50);
+  --lava-inner-tint: rgba(255, 110, 0, 0.09);
+}
+
+[data-theme="light"] {
+  --background-col: #eeeeee;
+  --text-col: #040024;
+  --unfocussed-col: #5f606b;
+  --highlight-col: #0040ff;
+  --border-col: #040024;
+  --icon-col: #eeeeee;
+  --lattice-col: rgba(141, 141, 141, 0.5);
+  --g1: rgb(82, 0, 234);
+  --g2: rgb(8, 49, 255);
+  --g3: rgb(89, 255, 227);
+  --divider-img: url('/img/blue-background.png');
+  --particle-rgb: 4, 0, 36;
+  --highlight-rgb: 0, 64, 255;
+  --canvas-edge-opacity: 0.80;
+  --lava-a: #55b4ff;
+  --lava-b: #0044cc;
+  --lava-glass: rgba(210, 224, 255, 0.82);
+  --lava-glass-border: rgba(0, 50, 160, 0.18);
+  --lava-glow: rgba(0, 80, 200, 0.14);
+  --lava-outline: rgba(20, 60, 180, 0.50);
+  --lava-inner-tint: rgba(0, 0, 0, 0);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--background-col);
+  color: var(--text-col);
+  font-family: 'Montserrat', sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-col);
+  margin: 0;
+}
+
+a {
+  color: var(--text-col);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--highlight-col);
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}

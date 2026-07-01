@@ -1,0 +1,16 @@
+.divider {
+  height: 35vh;
+  background-image: var(--divider-img);
+  background-size: cover;
+  background-position: center 50%;
+  background-repeat: no-repeat;
+  will-change: background-position;
+}
+
+.tall {
+  height: 70vh;
+}
+
+.full {
+  height: 90vh;
+}
