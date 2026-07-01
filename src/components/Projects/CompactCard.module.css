@@ -38,8 +38,8 @@
   position: relative;
   z-index: 1;
   padding: 1.75rem 2rem;
-  background-image: radial-gradient(var(--lattice-col) 10%, transparent 10%);
-  background-size: 20px 20px;
+  background-image: radial-gradient(var(--lattice-col) 7.5%, transparent 7.5%);
+  background-size: 40px 40px;
   background-position: 0 0;
   transition: background-position 350ms ease;
   height: 100%;

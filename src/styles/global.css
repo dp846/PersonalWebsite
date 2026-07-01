@@ -12,6 +12,7 @@
   --g2: rgb(255, 119, 8);
   --g3: rgb(255, 183, 89);
   --divider-img: url('/img/orange-background.png');
+  --divider-img-2: url('/img/orange-ocean.png');
   --particle-rgb: 255, 255, 255;
   --highlight-rgb: 255, 175, 55;
   --canvas-edge-opacity: 0.50;
@@ -36,6 +37,7 @@
   --g2: rgb(8, 49, 255);
   --g3: rgb(89, 255, 227);
   --divider-img: url('/img/blue-background.png');
+  --divider-img-2: url('/img/blue-ocean.png');
   --particle-rgb: 4, 0, 36;
   --highlight-rgb: 0, 64, 255;
   --canvas-edge-opacity: 0.80;

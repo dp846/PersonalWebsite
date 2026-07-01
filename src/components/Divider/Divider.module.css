@@ -14,3 +14,7 @@
 .full {
   height: 90vh;
 }
+
+.ocean {
+  background-image: var(--divider-img-2);
+}

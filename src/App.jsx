@@ -16,7 +16,7 @@ export default function App() {
         <About />
         <Divider size="tall" />
         <Projects />
-        <Divider size="full" />
+        <Divider size="full" variant="ocean" />
       </main>
       <Footer />
     </ThemeProvider>

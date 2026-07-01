@@ -22,7 +22,7 @@ export default function About() {
                 <i className="fa-brands fa-github" />
               </a>
               <a
-                href="https://www.linkedin.com/in/danparsley/"
+                href="https://www.linkedin.com/in/dan-parsley/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"

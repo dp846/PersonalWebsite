@@ -17,11 +17,11 @@
   inset: 0;
   background-size: cover;
   background-position: center;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: filter 0.4s ease;
 }
 
 .card:hover .image {
-  transform: scale(1.06);
+  filter: brightness(0.8) blur(1px);
 }
 
 .overlay {
