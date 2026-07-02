@@ -31,8 +31,10 @@
 
 .portrait {
   width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 6px;
   object-fit: cover;
+  object-position: center center;
   display: block;
 }
 
