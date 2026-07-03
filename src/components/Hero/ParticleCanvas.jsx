@@ -87,7 +87,6 @@ export default function ParticleCanvas() {
       H = h;
     };
     setSize();
-    window.addEventListener('resize', setSize);
 
     const particles = Array.from({ length: PARTICLE_COUNT }, () => ({
       x: Math.random() * W,
@@ -96,6 +95,17 @@ export default function ParticleCanvas() {
       vy: (Math.random() - 0.5) * 0.5,
       r: Math.random() * 1.5 + 0.5,
     }));
+
+    const handleResize = () => {
+      const scaleX = canvas.offsetWidth / W;
+      const scaleY = canvas.offsetHeight / H;
+      setSize();
+      for (const p of particles) {
+        p.x = Math.max(0, Math.min(W, p.x * scaleX));
+        p.y = Math.max(0, Math.min(H, p.y * scaleY));
+      }
+    };
+    window.addEventListener('resize', handleResize);
 
     // Track per-frame: which particles currently have a lit connecting edge.
     // Prevents glowing nodes with no visible wave edge attached.
@@ -214,7 +224,7 @@ export default function ParticleCanvas() {
 
     return () => {
       cancelAnimationFrame(animId);
-      window.removeEventListener('resize', setSize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 

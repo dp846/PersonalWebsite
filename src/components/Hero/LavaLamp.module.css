@@ -13,7 +13,7 @@
 /* ── Anchor ───────────────────────────────────────────────────────── */
 .lamp {
   position: absolute;
-  right: 28.5vw;
+  right: calc(25vw - 55px);
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
@@ -153,6 +153,10 @@
 }
 
 /* ── Blobs ───────────────────────────────────────────────────────── */
+/* Three independent CSS individual-transform properties (translate, scale)
+   plus border-radius morph — all compose without conflict because they
+   target different properties. Incommensurable periods ensure each blob
+   is always in a unique combined state.                                 */
 .blob1,
 .blob2,
 .blob3,
@@ -168,7 +172,10 @@
   height: 72px;
   left: 17px;
   bottom: 10px;
-  animation: float1 22s ease-in-out infinite, morph1 14s ease-in-out infinite;
+  animation:
+    float1     22s  ease-in-out infinite,
+    morph1     14s  ease-in-out infinite,
+    blobPulse1  6.5s ease-in-out infinite;
 }
 
 .blob2 {
@@ -176,7 +183,10 @@
   height: 52px;
   left: 30px;
   bottom: 38px;
-  animation: float2 27s ease-in-out infinite 2.5s, morph2 17s ease-in-out infinite 0.8s;
+  animation:
+    float2     27s  ease-in-out infinite 2.5s,
+    morph2     17s  ease-in-out infinite 0.8s,
+    blobPulse2  8s  ease-in-out infinite 1.2s;
 }
 
 .blob3 {
@@ -184,7 +194,10 @@
   height: 42px;
   left: 36px;
   top: 20px;
-  animation: float3 17s ease-in-out infinite 5s, morph1 11s ease-in-out infinite 3s;
+  animation:
+    float3     17s  ease-in-out infinite 5s,
+    morph1     11s  ease-in-out infinite 3s,
+    blobPulse3  5.5s ease-in-out infinite 3.5s;
 }
 
 .blob4 {
@@ -192,51 +205,89 @@
   height: 56px;
   left: 26px;
   bottom: 72px;
-  animation: float4 30s ease-in-out infinite 1s, morph2 20s ease-in-out infinite 2s;
+  animation:
+    float4     30s  ease-in-out infinite 1s,
+    morph2     20s  ease-in-out infinite 2s,
+    blobPulse4  7s  ease-in-out infinite 0.5s;
 }
 
+/* Float: CSS individual `translate` (not `transform`) — composes with scale */
 @keyframes float1 {
-  0%, 100% { transform: translate(0, 0); }
-  15%       { transform: translate(4px, -34px); }
-  35%       { transform: translate(-3px, -88px); }
-  55%       { transform: translate(5px, -136px); }
-  75%       { transform: translate(-3px, -76px); }
-  90%       { transform: translate(2px, -22px); }
+  0%, 100% { translate: 0    0; }
+  15%       { translate: 4px -34px; }
+  35%       { translate: -3px -88px; }
+  55%       { translate: 5px -136px; }
+  75%       { translate: -3px -76px; }
+  90%       { translate: 2px -22px; }
 }
 
 @keyframes float2 {
-  0%, 100% { transform: translate(0, 0); }
-  20%       { transform: translate(-4px, -43px); }
-  45%       { transform: translate(6px, -103px); }
-  65%       { transform: translate(-4px, -55px); }
-  85%       { transform: translate(3px, -118px); }
+  0%, 100% { translate: 0    0; }
+  20%       { translate: -4px -43px; }
+  45%       { translate: 6px -103px; }
+  65%       { translate: -4px -55px; }
+  85%       { translate: 3px  -118px; }
 }
 
 @keyframes float3 {
-  0%, 100% { transform: translate(0, 0); }
-  25%       { transform: translate(5px, 38px); }
-  50%       { transform: translate(-5px, 89px); }
-  75%       { transform: translate(4px, 33px); }
+  0%, 100% { translate: 0    0; }
+  25%       { translate: 5px  38px; }
+  50%       { translate: -5px 89px; }
+  75%       { translate: 4px  33px; }
 }
 
 @keyframes float4 {
-  0%, 100% { transform: translate(0, 0); }
-  18%       { transform: translate(-3px, -29px); }
-  40%       { transform: translate(5px, -73px); }
-  60%       { transform: translate(-4px, -29px); }
-  80%       { transform: translate(2px, -59px); }
+  0%, 100% { translate: 0    0; }
+  18%       { translate: -3px -29px; }
+  40%       { translate: 5px  -73px; }
+  60%       { translate: -4px -29px; }
+  80%       { translate: 2px  -59px; }
 }
 
+/* Morph: more keyframe stops for a more organic, unpredictable shape */
 @keyframes morph1 {
-  0%, 100% { border-radius: 55% 45% 60% 40% / 50% 55% 45% 50%; }
-  33%       { border-radius: 42% 58% 46% 54% / 62% 38% 62% 38%; }
-  66%       { border-radius: 62% 38% 54% 46% / 44% 62% 38% 56%; }
+  0%   { border-radius: 55% 45% 60% 40% / 50% 55% 45% 50%; }
+  20%  { border-radius: 35% 65% 45% 55% / 60% 35% 65% 40%; }
+  40%  { border-radius: 65% 35% 55% 45% / 40% 65% 35% 60%; }
+  60%  { border-radius: 40% 60% 70% 30% / 55% 40% 60% 45%; }
+  80%  { border-radius: 58% 42% 38% 62% / 45% 58% 42% 55%; }
+  100% { border-radius: 55% 45% 60% 40% / 50% 55% 45% 50%; }
 }
 
 @keyframes morph2 {
-  0%, 100% { border-radius: 48% 52% 38% 62% / 60% 42% 58% 40%; }
-  40%       { border-radius: 62% 38% 60% 40% / 38% 62% 40% 60%; }
-  70%       { border-radius: 40% 60% 52% 48% / 54% 46% 62% 38%; }
+  0%   { border-radius: 48% 52% 38% 62% / 60% 42% 58% 40%; }
+  25%  { border-radius: 65% 35% 55% 45% / 38% 65% 35% 62%; }
+  50%  { border-radius: 38% 62% 70% 30% / 62% 35% 65% 38%; }
+  75%  { border-radius: 55% 45% 42% 58% / 45% 58% 40% 60%; }
+  100% { border-radius: 48% 52% 38% 62% / 60% 42% 58% 40%; }
+}
+
+/* Squash-and-stretch: CSS individual `scale` — composes with translate */
+@keyframes blobPulse1 {
+  0%, 100% { scale: 1    1; }
+  25%       { scale: 1.10 0.92; }
+  55%       { scale: 0.94 1.10; }
+  80%       { scale: 1.06 0.96; }
+}
+
+@keyframes blobPulse2 {
+  0%, 100% { scale: 1    1; }
+  30%       { scale: 0.92 1.12; }
+  60%       { scale: 1.08 0.92; }
+  85%       { scale: 0.96 1.06; }
+}
+
+@keyframes blobPulse3 {
+  0%, 100% { scale: 1    1; }
+  35%       { scale: 1.12 0.90; }
+  70%       { scale: 0.90 1.14; }
+}
+
+@keyframes blobPulse4 {
+  0%, 100% { scale: 1    1; }
+  20%       { scale: 0.94 1.08; }
+  50%       { scale: 1.08 0.94; }
+  75%       { scale: 0.96 1.06; }
 }
 
 /* ── Base section wrapper ────────────────────────────────────────── */

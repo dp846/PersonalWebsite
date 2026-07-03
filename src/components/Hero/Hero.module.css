@@ -15,11 +15,13 @@
 }
 
 .content {
-  position: relative;
+  position: absolute;
+  left: 33.33vw;
+  top: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
-  padding: 0 4rem;
-  margin-left: 6vw;
-  max-width: 800px;
+  padding: 0 2rem;
+  width: max-content;
 }
 
 .title {
@@ -76,7 +78,9 @@
 
 @media (max-width: 600px) {
   .content {
+    position: static;
+    transform: none;
+    max-width: none;
     padding: 0 2rem;
-    margin-left: 0;
   }
 }

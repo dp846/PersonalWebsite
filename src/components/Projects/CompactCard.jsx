@@ -14,6 +14,11 @@ export default function CompactCard({ project }) {
             <span key={tag} className={styles.tag}>{tag}</span>
           ))}
         </div>
+        {project.link && (
+          <span className={styles.linkLabel}>
+            {project.cta || 'View project'} &rarr;
+          </span>
+        )}
       </div>
     </div>
   );
