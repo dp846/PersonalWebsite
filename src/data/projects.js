@@ -2,11 +2,11 @@ export const projects = [
   {
     id: 'drop',
     title: 'DROP! - A Strategy Card Game',
-    description: 'Designed a competitive card game from scratch: defined the ruleset and mechanics, produced card artwork in Figma, managed prototype production and playtests. Building a digital adaptation in Rust and Godot with an original soundtrack. Kickstarter planned.',
+    description: 'Designed a competitive card game from scratch: defined the ruleset and mechanics, produced card artwork in Figma, and managed prototype production and playtests. I am currently building a digital adaptation using Rust with an original soundtrack. A kickstarter is planned in the close future.',
     link: 'https://playdropgame.com',
     image: '/img/drop.png',
     featured: true,
-    tags: ['Game Design', 'Figma', 'Rust', 'Godot'],
+    tags: ['Game Design', 'Figma', 'Rust'],
   },
   {
     id: 'raytracer',

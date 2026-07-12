@@ -56,11 +56,17 @@
   transform: translateY(-2px);
 }
 
+.bioCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-top: 0.5rem;
+}
+
 .bio {
   font-size: 1.2rem;
   line-height: 1.9;
   color: var(--text-col);
-  padding-top: 0.5rem;
 }
 
 .link {

@@ -1,7 +1,9 @@
 .divider {
-  position: relative;
-  overflow: hidden;
   height: 35vh;
+  background-image: var(--divider-img);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .tall {
@@ -12,15 +14,6 @@
   height: 90vh;
 }
 
-.bg {
-  position: absolute;
-  inset: -25% 0;
-  background-image: var(--divider-img);
-  background-size: cover;
-  background-position: center;
-  will-change: transform;
-}
-
-.ocean .bg {
+.ocean {
   background-image: var(--divider-img-2);
 }

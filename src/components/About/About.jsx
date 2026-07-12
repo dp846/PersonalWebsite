@@ -32,19 +32,30 @@ export default function About() {
             </div>
           </div>
 
-          <p className={styles.bio}>
-            I'm a software engineer at the post-quantum cryptography start-up{' '}
-            <a href="https://pqshield.com/" className={styles.link}>
-              PQShield
-            </a>{' '}
-            with a first-class degree (82%) in Computer Science from the{' '}
-            <a href="https://www.bath.ac.uk/" className={styles.link}>
-              University of Bath
-            </a>. I have keen interests in security, cryptography, and AI. In my free
-            time I love to travel and produce music. Keep scrolling to find out
-            more about what I've been working on - at university, at work, and
-            in my spare time.
-          </p>
+          <div className={styles.bioCol}>
+            <p className={styles.bio}>
+              I'm a software engineer at{' '}
+              <a href="https://pqshield.com/" className={styles.link}>
+                PQShield
+              </a>
+              , a University of Oxford spinout specialising in post-quantum
+              cryptography. I hold a first-class degree (82%) in Computer Science
+              from the{' '}
+              <a href="https://www.bath.ac.uk/" className={styles.link}>
+                University of Bath
+              </a>
+              .
+            </p>
+            <p className={styles.bio}>
+              I work across PQShield's core software products, including their
+              post-quantum cryptographic library and OpenSSL provider. Outside of
+              work I'll usually have a side project on the go - currently I'm
+              working on creating my strategy card game called{' '}
+              <a href="https://playdropgame.com/" className={styles.link}>
+                DROP!
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </section>
